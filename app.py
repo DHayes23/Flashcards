@@ -17,10 +17,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route("/")
-@app.route("/test")
-def test():
+@app.route("/index")
+def index():
     decks = mongo.db.decks.find()
-    return render_template("test.html", decks=decks)
+    return render_template("index.html", decks=decks)
 
 
 if __name__ == "__main__":
