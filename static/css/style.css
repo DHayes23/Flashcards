@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 .index-heading {
     margin-top: 80px;
 }
@@ -12,4 +22,13 @@
 
 #logo {
     font-size: 4em;
+}
+
+.page-footer {
+    margin-top: 80px;
+}
+
+.footer-icon {
+    margin-left: 160px;
+    margin-right: 160px;
 }
