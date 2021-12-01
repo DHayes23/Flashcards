@@ -1,9 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-   <h3 class="center-align">Learning new vocabulary is easy with Flashcards!</h3>
-   <h4 class="center-align">Click 'Play' on a deck below to get started or <a>Log In</a> to create your own!</h4>
-</div>
+<section class="container">
+    <h3 class="center-align index-heading">Learning new vocabulary is easy with Flashcards!</h3>
+    <h4 class="center-align index-heading">Click 'Play' on a deck below to get started or <a>Log In</a> to create your own!</h4>
+
+    <h4 class="center-align index-heading">All Decks</h4>
+    <div class="row">
+        {% for deck in decks %}
+        <div class="col s12 m6 l4">
+            <div class="card deck-info blue-grey darken-1">
+                <div class="card-content white-text">
+                    <ul>
+                        <li class="center-align card-item"><i class="fas fa-flag fa-3x"></i></li><br>
+                        <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
+                        <li class="card-title center-align card-item">{{ deck.deck_name }}</li><br>
+                        <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
+                        <li class="center-align card-item"><a class="waves-effect waves-light btn-large">Play</a></li>
+                    </ul>
+                </div>
+                <div class="card-action white-text">
+                    <p>Deck created by: {{ deck.deck_created_by }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 {% endblock %}

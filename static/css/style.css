@@ -1,0 +1,11 @@
+.index-heading {
+    margin-top: 80px;
+}
+
+.index-heading:last-of-type {
+    margin-bottom: 40px;
+}
+
+.deck-info {
+    margin: 25px;
+}
