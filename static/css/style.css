@@ -29,5 +29,12 @@ main {
 }
 
 .footer-icon {
-   margin: 40px;
+   margin-top: 40px;
+   margin-right: 40px;
+   margin-left: 40px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: white;
 }
