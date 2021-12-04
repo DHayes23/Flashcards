@@ -1,3 +1,5 @@
+/* Global Rules */
+
 body {
     display: flex;
     min-height: 100vh;
@@ -8,6 +10,8 @@ main {
     flex: 1 0 auto;
 }
 
+/*Base.html Header */
+
 .index-heading {
     margin-top: 80px;
 }
@@ -16,25 +20,27 @@ main {
     margin-bottom: 40px;
 }
 
-.deck-info {
-    margin: 25px;
-}
-
 #logo {
     font-size: 4em;
 }
+
+/* Base.html Footer */
 
 .page-footer {
     margin-top: 80px;
 }
 
 .footer-icon {
-   margin-top: 40px;
-   margin-right: 40px;
-   margin-left: 40px;
+    margin: 40px 40px 10px 40px;
 }
 
 .footer-link {
     text-decoration: none;
     color: white;
+}
+
+/* Index.html Decks */
+
+.deck-info {
+    margin: 25px;
 }
