@@ -4,6 +4,7 @@ from flask import (
       redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -22,6 +23,10 @@ def index():
     decks = mongo.db.decks.find()
     return render_template("index.html", decks=decks)
 
+
+@app.route("/create_an_account", methods=["GET", "POST"])
+def create_an_account():
+    return render_template("create_an_account.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
