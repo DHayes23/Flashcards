@@ -50,7 +50,20 @@
             <li><a href="#"></a></li>
         </ul>
     </header>
-    
+
+    <section>
+        <!-- This section displays Flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flash-messages red darken-4 tracking-in-contract-bck">
+                        <h4 class="center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
     <main>
 
         {% block content %}
