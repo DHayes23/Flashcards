@@ -26,6 +26,26 @@ def index():
 
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
+    if request.method == "POST":
+        # Check if username already exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        if existing_user:
+            flash("Sorry, that username is taken!")
+            return redirect(url_for("create_an_account"))
+
+        new_user = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": False,
+            "my_decks": [],
+            "loved_decks": []
+        }
+        mongo.db.users.insert_one(new_user)
+
+        # Put the user into a 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("You've created your account!")
     return render_template("create_an_account.html")
 
 if __name__ == "__main__":
