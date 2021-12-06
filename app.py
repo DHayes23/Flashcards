@@ -46,6 +46,8 @@ def create_an_account():
         # Put the user into a 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("You've created your account!")
+        return redirect(url_for("my_decks", username=session["user"]))
+
     return render_template("create_an_account.html")
 
 
@@ -63,6 +65,8 @@ def login():
                     session["user"] = request.form.get("username").lower()
                     # flash(f"Thanks {request.form.get('username')}")
                     flash("You've been logged in!")
+                    return redirect(url_for(
+                        "my_decks", username=session["user"]))
             else:
                 # Invalid password match
                 flash("Please enter a valid Username and Password")
@@ -74,6 +78,13 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+@app.route("/my_decks/<username>", methods=["GET", "POST"])
+def my_decks(username):
+    # Find the session user's username from database.
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    return render_template("my_decks.html", username=username)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
