@@ -79,12 +79,26 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/my_decks/<username>", methods=["GET", "POST"])
 def my_decks(username):
     # Find the session user's username from database.
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("my_decks.html", username=username)
+    
+    if session["user"]:
+        return render_template("my_decks.html", username=username)
+    
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # Remove user from session cookies
+    flash("Log Out Successful")
+    session.pop("user")
+    return redirect(url_for("login"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
