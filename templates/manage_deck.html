@@ -4,11 +4,12 @@
 <h3 class="center-align">Manage Deck</h3>
 
 <div class="row">
-    <form class="col s12 m10 offset-m1 l8 offset-l2" method="POST" action="">
+    <form class="col s12 m10 offset-m1 l8 offset-l2" method="POST" action="url_for('manage_deck')">
         <div class="card grey lighten-5">
             <div class="card-content white-text">
                 <div class="row">
                     <div class="col s12">
+                        <!-- This field is used to name the deck. -->
                         <div class="row">
                             <div class="input-field col s12 m10 offset-m1">
                                 <input placeholder="What is your deck called?" id="deck_name" name="deck_name"
@@ -18,9 +19,10 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- This field allows the user to specify which language their deck is in. -->
                         <div class="input-field col s12 l5 offset-l1">
                             <select id="deck_language" name="deck_language" required>
-                                <option value="" disabled selected>What language is your deck in?</option>
+                                <option value="" disabled selected>Choose deck language.</option>
                                 <option value="french">French</option>
                                 <option value="german">German</option>
                                 <option value="italian">Italian</option>
@@ -28,16 +30,18 @@
                             </select>
                             <label for="deck_language">Deck Language</label>
                         </div>
+                        <!-- This field allowes the user to indicate which level of difficulty their deck corresponds with. -->
                         <div class="input-field col s12 l5">
-                            <select id="deck_level" name="deck_level" required>
-                                <option value="" disabled selected>How difficult is your deck?</option>
-                                <option value="1">Beginner</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Advanced</option>
+                            <select id="deck_level" name="deck_level" class="validate" required>
+                                <option value="" disabled selected>Choose deck level.</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
                             </select>
                             <label for="deck_level">Deck Level</label>
                         </div>
                     </div>
+                    <!-- This field prompts the user to provide a brief description of their deck. -->
                     <div class="row">
                         <div class="input-field col s12 l10 offset-l1">
                             <input placeholder="Describe your deck." id="deck_description" name="deck_description"
@@ -46,11 +50,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- This button does not post any changes to the deck and returns the user to the 'My Decks' page. -->
                         <div class="col s6 m4 offset-m2 center-align">
                             <a class="waves-effect waves-light btn-large manage-deck-button red">Discard Changes</a>
                         </div>
+                        <!-- This button posts the changes made to the deck to the server. -->
                         <div class="col s6 m4 center-align">
-                            <a class="waves-effect waves-light btn-large manage-deck-button light-green">Save Changes</a>
+                            <button class="waves-effect waves-light btn-large manage-deck-button light-green"
+                                type="submit">Save Changes</button>
                         </div>
                     </div>
                 </div>
