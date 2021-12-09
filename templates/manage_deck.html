@@ -5,43 +5,52 @@
 
 <div class="row">
     <form class="col s12 m10 offset-m1 l8 offset-l2" method="POST" action="">
-        <div class="card light-green lighten-4">
+        <div class="card grey lighten-5">
             <div class="card-content white-text">
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s12 m10 offset-m1">
-                                <input placeholder="What is your deck called?" id="first_name" type="text"
-                                    class="validate">
-                                <label for="">Deck Name</label>
+                                <input placeholder="What is your deck called?" id="deck_name" name="deck_name"
+                                    minlength="5" maxlength="30" type="text" class="validate" required>
+                                <label for="deck_name">Deck Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 l5 offset-l1">
-                            <select>
+                            <select id="deck_language" name="deck_language" required>
                                 <option value="" disabled selected>What language is your deck in?</option>
-                                <option value="1">French</option>
-                                <option value="2">German</option>
-                                <option value="3">Italian</option>
-                                <option value="4">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="italian">Italian</option>
+                                <option value="spanish">Spanish</option>
                             </select>
-                            <label>Deck Language</label>
+                            <label for="deck_language">Deck Language</label>
                         </div>
                         <div class="input-field col s12 l5">
-                            <select>
+                            <select id="deck_level" name="deck_level" required>
                                 <option value="" disabled selected>How difficult is your deck?</option>
                                 <option value="1">Beginner</option>
                                 <option value="2">Intermediate</option>
                                 <option value="3">Advanced</option>
                             </select>
-                            <label>Deck Level</label>
+                            <label for="deck_level">Deck Level</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 l10 offset-l1">
-                            <input placeholder="Describe your deck." id="last_name" type="text" class="validate">
-                            <label for="last_name">Deck Description</label>
+                            <input placeholder="Describe your deck." id="deck_description" name="deck_description"
+                                minlength="20" maxlength="100" type="text" class="validate" required>
+                            <label for="deck_description">Deck Description</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 m4 offset-m2 center-align">
+                            <a class="waves-effect waves-light btn-large manage-deck-button red">Discard Changes</a>
+                        </div>
+                        <div class="col s6 m4 center-align">
+                            <a class="waves-effect waves-light btn-large manage-deck-button light-green">Save Changes</a>
                         </div>
                     </div>
                 </div>

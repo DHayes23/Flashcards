@@ -51,6 +51,12 @@ main {
     margin: 25px;
 }
 
+/* Manage Deck Form */
+
+.manage-deck-button {
+    width: 100%;
+}
+
 /* Animations */
 
 /* This animation is used to display and highlight Flash messages */
