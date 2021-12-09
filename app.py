@@ -100,8 +100,23 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/manage_deck")
+@app.route("/manage_deck", methods=["GET", "POST"])
 def manage_deck():
+    if request.method == "POST":
+        deck = {
+            "deck_name": request.form.get("deck_name"),
+            "deck_language": request.form.get("deck_language"),
+            "deck_level": request.form.get("deck_level"),
+            "deck_description": request.form.get("deck_description"),
+            "deck_card_contents": [],
+            "deck_created_by": session["user"],
+            "deck_love_counter": 0,
+            "deck_times_played": 0,
+            "deck_number_of_cards": 0,
+        }
+        mongo.db.decks.insert_one(deck)
+        flash("Deck Changes Saved!")
+        return redirect(url_for("my_decks", username=session["user"]))
 
     return render_template("manage_deck.html")
 
