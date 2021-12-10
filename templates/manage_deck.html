@@ -23,10 +23,10 @@
                         <div class="input-field col s12 l5 offset-l1">
                             <select id="deck_language" name="deck_language" required>
                                 <option value="" disabled selected>Choose deck language.</option>
-                                <option value="french">French</option>
-                                <option value="german">German</option>
-                                <option value="italian">Italian</option>
-                                <option value="spanish">Spanish</option>
+                                <option value="french" data-icon="{{ url_for('static', filename='images/flag-icons/france.jpg') }}">French</option>
+                                <option value="german" data-icon="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}">German</option>
+                                <option value="italian" data-icon="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}">Italian</option>
+                                <option value="spanish" data-icon="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}">Spanish</option>
                             </select>
                             <label for="deck_language">Deck Language</label>
                         </div>
