@@ -12,6 +12,37 @@
                 <a href="{{ url_for('manage_deck') }}" class="waves-effect waves-light btn-large">Create
                     New Deck</a>
             </div>
+            <div class="row">
+                <div class="row">
+                    {% for deck in user_decks %}
+                    <div class="col s12 m6 l4">
+                        <div class="card deck-info blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <ul>
+                                    <li class="center-align card-item"><i class="fas fa-flag fa-3x"></i></li><br>
+                                    <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
+                                    <li class="card-title center-align card-item">{{ deck.deck_name }}</li><br>
+                                    <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
+                                    <div class="row">
+                                        <div class="col s4 offset-s2">
+                                            <li class="center-align card-item"><a
+                                                    class="waves-effect waves-light btn-large">Play</a></li>
+                                        </div>
+                                        <div class="col s4">
+                                            <li class="center-align card-item"><a
+                                                    class="waves-effect waves-light btn-large">Edit</a></li>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="card-action white-text">
+                                <p>Deck created by: {{ deck.deck_created_by }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

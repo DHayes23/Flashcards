@@ -85,9 +85,11 @@ def my_decks(username):
     # Find the session user's username from database.
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+
+    user_decks = mongo.db.decks.find({"deck_created_by": username})
     
     if session["user"]:
-        return render_template("my_decks.html", username=username)
+        return render_template("my_decks.html", username=username, user_decks=user_decks)
     
     return redirect(url_for("login"))
 
