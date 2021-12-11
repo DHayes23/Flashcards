@@ -15,16 +15,20 @@
                     <ul>
                         {% if deck.deck_language == "French" %}
                         <li class="center-align card-item flag-icon"><img
-                                src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}" alt=""></li><br>
+                                src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                                alt="Icon sized image of the French flag."></li><br>
                         {% elif deck.deck_language == "German" %}
                         <li class="center-align card-item flag-icon"><img
-                                src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}" alt=""></li><br>
+                                src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                                alt="Icon sized image of the German flag."></li><br>
                         {% elif deck.deck_language == "Italian" %}
                         <li class="center-align card-item flag-icon"><img
-                                src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}" alt=""></li><br>
+                                src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                                alt="Icon sized image of the Italian flag."></li><br>
                         {% elif deck.deck_language == "Spanish" %}
                         <li class="center-align card-item flag-icon"><img
-                                src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}" alt=""></li><br>
+                                src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                                alt="Icon sized image of the Spanish flag."></li><br>
                         {% endif %}
                         <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
                         <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
