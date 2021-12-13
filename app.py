@@ -119,6 +119,8 @@ def manage_deck():
         mongo.db.decks.insert_one(deck)
         flash("Deck Changes Saved!")
         return redirect(url_for("my_decks", username=session["user"]))
+    
+    return render_template("manage_deck.html")
 
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
