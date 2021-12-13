@@ -123,7 +123,7 @@ def manage_deck():
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
-    deck = mongo.db.tasks.find_one({"_id": ObjectId(deck_id)})
+    deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template("edit_deck.html", deck=deck)
 
 
