@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Edit Deck</h3>
+
+<div class="row">
+    <form class="col s12 m10 offset-m1 l8 offset-l2" method="POST" action="{{ url_for('edit_deck', deck_id=deck._id) }}">
+        <div class="card grey lighten-5">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s12">
+                        <!-- This field is used to name the deck. -->
+                        <div class="row">
+                            <div class="input-field col s12 m10 offset-m1">
+                                <input placeholder="What is your deck called?" id="deck_name" name="deck_name"
+                                    minlength="5" maxlength="30" type="text" class="validate" required>
+                                <label for="deck_name">Deck Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- This field allows the user to specify which language their deck is in. -->
+                        <div class="input-field col s12 l5 offset-l1">
+                            <select id="deck_language" name="deck_language" required>
+                                <option value="" disabled selected>Choose deck language.</option>
+                                <option value="French" data-icon="{{ url_for('static', filename='images/flag-icons/france.jpg') }}">French</option>
+                                <option value="German" data-icon="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}">German</option>
+                                <option value="Italian" data-icon="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}">Italian</option>
+                                <option value="Spanish" data-icon="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}">Spanish</option>
+                            </select>
+                            <label for="deck_language">Deck Language</label>
+                        </div>
+                        <!-- This field allows the user to indicate which level of difficulty their deck corresponds with. -->
+                        <div class="input-field col s12 l5">
+                            <select id="deck_level" name="deck_level" class="validate" required>
+                                <option value="" disabled selected>Choose deck level.</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                            <label for="deck_level">Deck Level</label>
+                        </div>
+                    </div>
+                    <!-- This field prompts the user to provide a brief description of their deck. -->
+                    <div class="row">
+                        <div class="input-field col s12 l10 offset-l1">
+                            <input placeholder="Describe your deck." id="deck_description" name="deck_description"
+                                minlength="20" maxlength="100" type="text" class="validate" required>
+                            <label for="deck_description">Deck Description</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- This button does not post any changes to the deck and returns the user to the 'My Decks' page. -->
+                        <div class="col s6 m4 offset-m2 center-align">
+                            <a href="{{ url_for('my_decks', username=session['user']) }}"
+                                class="waves-effect waves-light btn-large manage-deck-button red">Discard Changes</a>
+                        </div>
+                        <!-- This button posts the changes made to the deck to the server. -->
+                        <div class="col s6 m4 center-align">
+                            <button class="waves-effect waves-light btn-large manage-deck-button light-green"
+                                type="submit">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock %}
