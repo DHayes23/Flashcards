@@ -125,6 +125,15 @@ def manage_deck():
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
+    if request.method == "POST":
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
+            "deck_name": request.form.get("deck_name"),
+            "deck_language": request.form.get("deck_language"),
+            "deck_level": request.form.get("deck_level"),
+            "deck_description": request.form.get("deck_description"),
+        }})
+        flash("Deck Changes Saved!")
+
     deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template("edit_deck.html", deck=deck)
 
