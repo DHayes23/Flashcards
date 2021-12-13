@@ -120,7 +120,12 @@ def manage_deck():
         flash("Deck Changes Saved!")
         return redirect(url_for("my_decks", username=session["user"]))
 
-    return render_template("manage_deck.html")
+
+@app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
+def edit_deck(deck_id):
+    deck = mongo.db.tasks.find_one({"_id": ObjectId(deck_id)})
+    return render_template("edit_deck.html", deck=deck)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
