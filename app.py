@@ -138,6 +138,13 @@ def edit_deck(deck_id):
     return render_template("edit_deck.html", deck=deck)
 
 
+@app.route("/delete_deck/<deck_id>")
+def delete_deck(deck_id):
+    mongo.db.decks.remove({"_id": ObjectId(deck_id)})
+    flash("Deck Deleted")
+    return redirect(url_for("my_decks", username=session["user"]))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
