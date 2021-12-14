@@ -55,6 +55,10 @@ main {
     margin: 10px;
 }
 
+.hidden-deck-icon {
+    visibility: hidden;
+}
+
 /* Create Deck Form */
 
 .manage-deck-button {
