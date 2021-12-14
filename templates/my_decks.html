@@ -15,35 +15,25 @@
                 <div class="card deck-info blue-grey darken-1">
                     <div class="card-content white-text">
                         <ul>
-                            {% if deck.deck_language == "French" %}
-                            <li class="center-align card-item flag-icon"><img
-                                    src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
-                                    alt="Icon sized image of the French flag."></li>
-                            <br>
-                            {% elif deck.deck_language == "German" %}
-                            <li class="center-align card-item flag-icon"><img
-                                    src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
-                                    alt="Icon sized image of the German flag."></li>
-                            <br>
-                            {% elif deck.deck_language == "Italian" %}
-                            <li class="center-align card-item flag-icon"><img
-                                    src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
-                                    alt="Icon sized image of the Italian flag."></li>
-                            <br>
-                            {% elif deck.deck_language == "Spanish" %}
-                            <li class="center-align card-item flag-icon"><img
-                                    src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
-                                    alt="Icon sized image of the Spanish flag."></li>
-                            <br>
-                            {% endif %}
+                            <li class="center-align card-item flag-icon">
+                                {% if deck.deck_language == "French" %}
+                                    <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                                        alt="Icon sized image of the French flag.">
+                                {% elif deck.deck_language == "German" %}
+                                    <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                                        alt="Icon sized image of the German flag.">
+                                {% elif deck.deck_language == "Italian" %}
+                                    <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                                        alt="Icon sized image of the Italian flag.">
+                                {% elif deck.deck_language == "Spanish" %}
+                                    <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                                        alt="Icon sized image of the Spanish flag.">
+                                {% endif %}
+                            </li><br>
                             <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
                             <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
                             <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
-                            <li class="center-align card-item deck-button"><a
-                                    class="waves-effect waves-light btn-large">Play</a></li><br>
-                            <li class="center-align card-item deck-button"><a href="{{ url_for('edit_deck', deck_id=deck._id) }}"
-                                    class="waves-effect waves-light btn-large">Edit</a></li>
-
+                            <li class="center-align card-item"><a class="waves-effect waves-light btn-large">Play</a></li>
                         </ul>
                     </div>
                     <div class="card-action white-text">
