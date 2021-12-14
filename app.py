@@ -24,6 +24,24 @@ def index():
     return render_template("index.html", decks=decks)
 
 
+@app.route("/all_decks/<username>")
+def all_decks(username):
+    # Find the session user's username from database.
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    
+    decks = mongo.db.decks.find()
+
+    # Find all decks and all decks created by session user.
+    user_decks = mongo.db.decks.find({"deck_created_by": username})
+    
+    if session["user"]:
+        return render_template("all_decks.html", username=username,
+         decks=decks, user_decks=user_decks)
+    
+    return redirect(url_for("index"))
+
+
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
     if request.method == "POST":
