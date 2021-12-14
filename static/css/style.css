@@ -51,6 +51,10 @@ main {
     margin: 25px;
 }
 
+.deck-icon {
+    margin: 10px;
+}
+
 /* Create Deck Form */
 
 .manage-deck-button {

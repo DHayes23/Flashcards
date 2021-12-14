@@ -13,6 +13,12 @@
             <div class="card deck-info blue-grey darken-1">
                 <div class="card-content white-text">
                     <ul>
+                        {% if session.user %}
+                            <li>
+                                <i class="far fa-3x fa-heart deck-icon left"></i>
+                                <i class="far fa-3x fa-flag deck-icon right"></i>
+                            </li><br>
+                        {% endif %}
                         <li class="center-align card-item flag-icon">
                             {% if deck.deck_language == "French" %}
                                 <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
@@ -31,7 +37,9 @@
                         <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
                         <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
                         <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
-                        <li class="center-align card-item"><a class="waves-effect waves-light btn-large">Play</a></li>
+                        <li class="center-align card-item">
+                            <a class="waves-effect waves-light btn-large">Play</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-action white-text">
