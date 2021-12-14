@@ -102,8 +102,8 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/manage_deck", methods=["GET", "POST"])
-def manage_deck():
+@app.route("/create_deck", methods=["GET", "POST"])
+def create_deck():
     if request.method == "POST":
         deck = {
             "deck_name": request.form.get("deck_name"),
@@ -120,7 +120,7 @@ def manage_deck():
         flash("Deck Changes Saved!")
         return redirect(url_for("my_decks", username=session["user"]))
     
-    return render_template("manage_deck.html")
+    return render_template("create_deck.html")
 
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
