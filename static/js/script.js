@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $('.sidenav').sidenav();
   $('select').formSelect();
+  $('.modal').modal();
 });
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
