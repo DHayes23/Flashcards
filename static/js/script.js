@@ -6,7 +6,7 @@ $(document).ready(function () {
         coverTrigger: false
     });
     $('.collapsible').collapsible({
-        accordion: false
+        accordion: true
     });
 
 });
