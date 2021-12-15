@@ -101,8 +101,7 @@ def my_decks(username):
 def logout():
     # Remove user from session cookies
     flash("Log Out Successful")
-    session.pop("user")
-    session.pop("admin")
+    session.clear()
     return redirect(url_for("login"))
 
 
