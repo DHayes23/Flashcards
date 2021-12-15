@@ -148,6 +148,13 @@ def delete_deck(deck_id):
     return redirect(url_for("my_decks", username=session["user"]))
 
 
+@app.route("/user_management")
+def user_management():
+    users = list(mongo.db.users.find())
+    
+    return render_template("user_management.html", users=users)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
