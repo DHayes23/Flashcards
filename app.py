@@ -62,7 +62,10 @@ def login():
             # Confirm matching password
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
+                    session["user"] = existing_user.get("username")
+                    # The following session is granted to admins,
+                    #  providing special access
+                    session["admin"] = existing_user.get("is_admin")
                     # flash(f"Thanks {request.form.get('username')}")
                     flash("You've been logged in!")
                     return redirect(url_for(
@@ -99,6 +102,7 @@ def logout():
     # Remove user from session cookies
     flash("Log Out Successful")
     session.pop("user")
+    session.pop("admin")
     return redirect(url_for("login"))
 
 
