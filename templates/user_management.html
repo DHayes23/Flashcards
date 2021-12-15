@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="center-align">User Management</h1>
+
+<section class="container">
+        <h4 class="center-align">Administrators</h4>
+        <div class="center-align">
+            <a href="#" class="waves-effect waves-light btn-large">Create
+                New Admin<i class="fas fa-plus-square right"></i></a>
+        </div>
+        <ul class="collapsible popout">
+            {% for user in users %}
+                {% if user.is_admin %}
+                    <li>
+                        <div class="collapsible-header">{{ user.username|title }}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h4 class="center-align">Standard Users</h4>
+        <ul class="collapsible popout">
+            {% for user in users %}
+                {% if not user.is_admin %}
+                    <li>
+                        <div class="collapsible-header">{{ user.username|title }}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+</section>
+
+
+{% endblock %}
