@@ -57,6 +57,11 @@ main {
     width: 100%;
 }
 
+/* Error 404.html and Error 500.html */
+
+.warning-box {
+    margin: 50px;
+}
 /* Animations */
 
 /* This animation is used to display and highlight Flash messages */

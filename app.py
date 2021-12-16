@@ -162,6 +162,18 @@ def admin_delete_user(user_id):
     flash("User Deleted")
 
     return redirect(url_for("user_management", users=users))
+
+
+@app.errorhandler(404)
+def error_404(e):
+
+    return render_template('404_error.html')
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+
+    return render_template('500_error.html')
     
 
 
