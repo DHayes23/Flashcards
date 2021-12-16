@@ -155,6 +155,16 @@ def user_management():
     return render_template("user_management.html", users=users)
 
 
+@app.route("/admin_delete_user/<user_id>")
+def admin_delete_user(user_id):
+    users = list(mongo.db.users.find())
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    flash("User Deleted")
+
+    return redirect(url_for("user_management", users=users))
+    
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
