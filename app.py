@@ -174,7 +174,6 @@ def error_404(e):
 def internal_server_error(e):
 
     return render_template('500_error.html')
-    
 
 
 if __name__ == "__main__":
