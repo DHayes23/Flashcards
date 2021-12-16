@@ -13,7 +13,7 @@
             {% for user in users %}
                 {% if user.is_admin %}
                     <li>
-                        <div class="collapsible-header">{{ user.username|title }}</div>
+                        <div class="collapsible-header"><i class="fas fa-crown"></i>{{ user.username|title }}</div>
                         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                     </li>
                 {% endif %}
@@ -25,8 +25,8 @@
             {% for user in users %}
                 {% if not user.is_admin %}
                     <li>
-                        <div class="collapsible-header">{{ user.username|title }}</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span><a href="{{ url_for('admin_delete_user', user_id=user._id) }}" class="btn-small right">Delete User</a></div>
+                        <div class="collapsible-header"><i class="fas fa-user"></i>{{ user.username|title }}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span><a href="{{ url_for('admin_delete_user', user_id=user._id) }}" class="btn-small right red">Delete User</a></div>
                     </li>
                 {% endif %}
             {% endfor %}
