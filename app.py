@@ -66,6 +66,8 @@ def login():
                     # The following session is granted to admins,
                     #  providing special access
                     session["admin"] = existing_user.get("is_admin")
+                    user_id = str(ObjectId(existing_user.get("_id")))
+                    session["id"] = user_id
                     # flash(f"Thanks {request.form.get('username')}")
                     flash("You've been logged in!")
                     return redirect(url_for(
@@ -115,6 +117,7 @@ def create_deck():
             "deck_description": request.form.get("deck_description"),
             "deck_card_contents": [],
             "deck_created_by": session["user"],
+            "deck_created_by_id": session["id"],
             "deck_love_counter": 0,
             "deck_times_played": 0,
             "deck_number_of_cards": 0,
