@@ -90,10 +90,10 @@ def my_decks(username):
         {"username": session["user"]})["username"]
 
     user_decks = mongo.db.decks.find({"deck_created_by": username})
-    
+
     if session["user"]:
         return render_template("my_decks.html", username=username, user_decks=user_decks)
-    
+
     return redirect(url_for("login"))
 
 
@@ -122,7 +122,7 @@ def create_deck():
         mongo.db.decks.insert_one(deck)
         flash("Deck Changes Saved!")
         return redirect(url_for("my_decks", username=session["user"]))
-    
+
     return render_template("create_deck.html")
 
 
@@ -151,7 +151,7 @@ def delete_deck(deck_id):
 @app.route("/user_management")
 def user_management():
     users = list(mongo.db.users.find())
-    
+
     return render_template("user_management.html", users=users)
 
 
