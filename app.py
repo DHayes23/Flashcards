@@ -212,6 +212,16 @@ def create_new_admin():
         return render_template("create_new_admin.html")
 
 
+@app.route("/deck_management")
+def deck_management():
+
+    if session["admin"]:
+
+        decks = list(mongo.db.decks.find())
+
+        return render_template("deck_management.html", decks=decks)
+
+
 @app.errorhandler(404)
 def error_404(e):
 
