@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -27,6 +28,7 @@ def index():
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
     if request.method == "POST":
+        date = datetime.now().date()
         # Check if username already exists
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -38,6 +40,7 @@ def create_an_account():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "is_admin": False,
+            "join_date": date.strftime("%-d-%b-%Y"),
             "my_decks": [],
             "loved_decks": []
         }
