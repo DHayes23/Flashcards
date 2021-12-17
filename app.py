@@ -69,6 +69,7 @@ def login():
                     # The following session is granted to admins,
                     #  providing special access
                     session["admin"] = existing_user.get("is_admin")
+                    session["super_admin"] = existing_user.get("is_super_admin")
                     user_id = str(ObjectId(existing_user.get("_id")))
                     session["id"] = user_id
                     # flash(f"Thanks {request.form.get('username')}")
@@ -112,88 +113,103 @@ def logout():
 
 @app.route("/create_deck", methods=["GET", "POST"])
 def create_deck():
-    if request.method == "POST":
-        deck = {
-            "deck_name": request.form.get("deck_name"),
-            "deck_language": request.form.get("deck_language"),
-            "deck_level": request.form.get("deck_level"),
-            "deck_description": request.form.get("deck_description"),
-            "deck_card_contents": [],
-            "deck_created_by": session["user"],
-            "deck_created_by_id": session["id"],
-            "deck_love_counter": 0,
-            "deck_times_played": 0,
-            "deck_number_of_cards": 0,
-        }
-        mongo.db.decks.insert_one(deck)
-        flash("Deck Changes Saved!")
-        return redirect(url_for("my_decks", username=session["user"]))
 
-    return render_template("create_deck.html")
+    if session["user"]:
+        if request.method == "POST":
+
+            deck = {
+                "deck_name": request.form.get("deck_name"),
+                "deck_language": request.form.get("deck_language"),
+                "deck_level": request.form.get("deck_level"),
+                "deck_description": request.form.get("deck_description"),
+                "deck_card_contents": [],
+                "deck_created_by": session["user"],
+                "deck_created_by_id": session["id"],
+                "deck_love_counter": 0,
+                "deck_times_played": 0,
+                "deck_number_of_cards": 0,
+            }
+            mongo.db.decks.insert_one(deck)
+            flash("Deck Changes Saved!")
+            return redirect(url_for("my_decks", username=session["user"]))
+
+        return render_template("create_deck.html")
 
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
-    if request.method == "POST":
-        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
-            "deck_name": request.form.get("deck_name"),
-            "deck_language": request.form.get("deck_language"),
-            "deck_level": request.form.get("deck_level"),
-            "deck_description": request.form.get("deck_description"),
-        }})
-        flash("Deck Changes Saved!")
+    if session["user"]:
 
-    deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
-    return render_template("edit_deck.html", deck=deck)
+        if request.method == "POST":
+            mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
+                "deck_name": request.form.get("deck_name"),
+                "deck_language": request.form.get("deck_language"),
+                "deck_level": request.form.get("deck_level"),
+                "deck_description": request.form.get("deck_description"),
+            }})
+            flash("Deck Changes Saved!")
+
+        deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+        return render_template("edit_deck.html", deck=deck)
 
 
 @app.route("/delete_deck/<deck_id>")
 def delete_deck(deck_id):
-    mongo.db.decks.remove({"_id": ObjectId(deck_id)})
-    flash("Deck Deleted")
-    return redirect(url_for("my_decks", username=session["user"]))
+    if session["user"]:
+
+        mongo.db.decks.remove({"_id": ObjectId(deck_id)})
+        flash("Deck Deleted")
+        return redirect(url_for("my_decks", username=session["user"]))
 
 
 @app.route("/user_management")
 def user_management():
-    users = list(mongo.db.users.find())
 
-    return render_template("user_management.html", users=users)
+    if session["admin"]:
+
+        users = list(mongo.db.users.find())
+
+        return render_template("user_management.html", users=users)
 
 
 @app.route("/admin_delete_user/<user_id>")
 def admin_delete_user(user_id):
-    users = list(mongo.db.users.find())
-    mongo.db.users.remove({"_id": ObjectId(user_id)})
-    flash("User Deleted")
+    if session["admin"]:
 
-    return redirect(url_for("user_management", users=users))
+        users = list(mongo.db.users.find())
+        mongo.db.users.remove({"_id": ObjectId(user_id)})
+        flash("User Deleted")
+
+        return redirect(url_for("user_management", users=users))
 
 
 @app.route("/create_new_admin", methods=["GET", "POST"])
 def create_new_admin():
-    if request.method == "POST":
-        date = datetime.now().date()
-        # Check if username already exists
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-        if existing_user:
-            flash("Sorry, that username is taken!")
-            return redirect(url_for("create_new_admin"))
+    if session["super_admin"]:
 
-        new_user = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "is_admin": True,
-            "join_date": date.strftime("%-d-%b-%Y"),
-            "my_decks": [],
-        }
-        mongo.db.users.insert_one(new_user)
+        if request.method == "POST":
+            date = datetime.now().date()
+            # Check if username already exists
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+            if existing_user:
+                flash("Sorry, that username is taken!")
+                return redirect(url_for("create_new_admin"))
 
-        flash("New Admin Created")
-        return redirect(url_for("user_management"))
+            new_user = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password")),
+                "is_admin": True,
+                "is_super_admin": False,
+                "join_date": date.strftime("%-d-%b-%Y"),
+                "my_decks": [],
+            }
+            mongo.db.users.insert_one(new_user)
 
-    return render_template("create_new_admin.html")
+            flash("New Admin Created")
+            return redirect(url_for("user_management"))
+
+        return render_template("create_new_admin.html")
 
 
 @app.errorhandler(404)
