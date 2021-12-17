@@ -167,7 +167,7 @@ def user_management():
 
     if session["admin"]:
 
-        users = list(mongo.db.users.find())
+        users = list(mongo.db.users.find().sort("username"))
 
         return render_template("user_management.html", users=users)
 
@@ -217,7 +217,7 @@ def deck_management():
 
     if session["admin"]:
 
-        decks = list(mongo.db.decks.find())
+        decks = list(mongo.db.decks.find().sort("deck_created_by"))
 
         return render_template("deck_management.html", decks=decks)
 
