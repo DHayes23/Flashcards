@@ -19,7 +19,7 @@
             {% for deck in decks %}
                 <tr>
                     <td>{{ deck.deck_name|title }}</td>
-                    <td>{{ deck.deck_created_by }}</td>
+                    <td>{{ deck.deck_created_by|title }}</td>
                     <td>{{ deck.deck_language }}</td>
                     <td>{{ deck.deck_level }}</td>
                     <td><a class="waves-effect waves-light btn modal-trigger red"
