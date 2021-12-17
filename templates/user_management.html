@@ -14,6 +14,7 @@
         <table class="centered responsive-table striped">
             <thead>
               <tr>
+                  <th></th>
                   <th>Name</th>
                   <th>Join Date</th>
                   <th>Decks</th>
@@ -27,6 +28,7 @@
                     {%if not user.username == "admin"%}
                         {% if user.is_admin %}
                             <tr>
+                                <td><i class="fas fa-crown fa-2x"></i></td>
                                 <td>{{ user.username|title }}</td>
                                 <td>{{ user.join_date }}</td>
                                 <td>$3.76</td>
@@ -55,6 +57,7 @@
         <table class="centered responsive-table striped">
             <thead>
               <tr>
+                  <th></th>
                   <th>Name</th>
                   <th>Join Date</th>
                   <th>Decks</th>
@@ -67,6 +70,7 @@
                 {% for user in users %}
                     {% if not user.is_admin %}
                         <tr>
+                            <td><i class="fas fa-user fa-2x"></i>
                             <td>{{ user.username|title }}</td>
                             <td>{{ user.join_date }}</td>
                             <td>$3.76</td>
