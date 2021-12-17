@@ -222,6 +222,17 @@ def deck_management():
         return render_template("deck_management.html", decks=decks)
 
 
+@app.route("/admin_delete_deck/<deck_id>")
+def admin_delete_deck(deck_id):
+    if session["admin"]:
+
+        decks = list(mongo.db.decks.find())
+        mongo.db.users.remove({"_id": ObjectId(deck_id)})
+        flash("Deck Deleted")
+
+        return redirect(url_for("deck_management", decks=decks))
+
+
 @app.errorhandler(404)
 def error_404(e):
 
