@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    decks = mongo.db.decks.find()
+    decks = list(mongo.db.decks.find())
     return render_template("index.html", decks=decks)
 
 
@@ -227,7 +227,7 @@ def admin_delete_deck(deck_id):
     if session["admin"]:
 
         decks = list(mongo.db.decks.find())
-        mongo.db.users.remove({"_id": ObjectId(deck_id)})
+        mongo.db.decks.remove({"_id": ObjectId(deck_id)})
         flash("Deck Deleted")
 
         return redirect(url_for("deck_management", decks=decks))
