@@ -18,6 +18,7 @@
                   <th>Join Date</th>
                   <th>Decks</th>
                   <th></th>
+                  <th></th>
               </tr>
             </thead>
     
@@ -28,7 +29,8 @@
                             <tr>
                                 <td>{{ user.username|title }}</td>
                                 <td>{{ user.join_date }}</td>
-                                <td></td>
+                                <td>$3.76</td>
+                                <td><a href="" class="btn-small blue">View Decks</a></td>
                                 {% if session.super_admin %}
                                     <td><a class="waves-effect waves-light btn modal-trigger red" href="#delete-admin-modal-{{ user._id }}">Delete Admin</a></td>
                                     <div id="delete-admin-modal-{{ user._id }}" class="modal">
