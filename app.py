@@ -170,6 +170,32 @@ def admin_delete_user(user_id):
     return redirect(url_for("user_management", users=users))
 
 
+@app.route("/create_new_admin", methods=["GET", "POST"])
+def create_new_admin():
+    if request.method == "POST":
+        date = datetime.now().date()
+        # Check if username already exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        if existing_user:
+            flash("Sorry, that username is taken!")
+            return redirect(url_for("create_new_admin"))
+
+        new_user = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": True,
+            "join_date": date.strftime("%-d-%b-%Y"),
+            "my_decks": [],
+        }
+        mongo.db.users.insert_one(new_user)
+
+        flash("New Admin Created")
+        return redirect(url_for("user_management"))
+
+    return render_template("create_new_admin.html")
+
+
 @app.errorhandler(404)
 def error_404(e):
 

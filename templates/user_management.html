@@ -6,7 +6,7 @@
 <section class="container">
         <h4 class="center-align">Administrators</h4>
         <div class="center-align">
-            <a href="#" class="waves-effect waves-light btn-small">Create
+            <a href="{{ url_for('create_new_admin') }}" class="waves-effect waves-light btn-small">Create
                 New Admin<i class="fas fa-plus-square right"></i></a>
         </div>
         <table class="centered responsive-table striped">
@@ -14,19 +14,22 @@
               <tr>
                   <th>Name</th>
                   <th>Join Date</th>
+                  <th>Decks</th>
+                  <th></th>
               </tr>
             </thead>
     
             <tbody>
                 {% for user in users %}
-                    {% if user.is_admin %}
-                        <tr>
-                            <td>{{ user.username|title }}</td>
-                            <td>{{ user.join_date }}</td>
-                            {%if not user.username == "admin"%}
-                                <td><a href="{{ url_for('admin_delete_user', user_id=user._id) }}" class="btn-small red">Delete User</a></td>
-                            {% endif %}
-                        </tr>
+                    {%if not user.username == "admin"%}
+                        {% if user.is_admin %}
+                            <tr>
+                                <td>{{ user.username|title }}</td>
+                                <td>{{ user.join_date }}</td>
+                                <td></td>
+                                <td><a href="{{ url_for('admin_delete_user', user_id=user._id) }}" class="btn-small red">Delete Admin</a></td>
+                            </tr>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </tbody>
