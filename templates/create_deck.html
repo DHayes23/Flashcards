@@ -53,12 +53,12 @@
                         <!-- This button does not post any changes to the deck and returns the user to the 'My Decks' page. -->
                         <div class="col s6 m4 offset-m2 center-align">
                             <a href="{{ url_for('my_decks', username=session['user']) }}"
-                                class="waves-effect waves-light btn-large manage-deck-button red">Discard Changes</a>
+                                class="waves-effect waves-light btn-large manage-deck-button red">Discard Deck</a>
                         </div>
                         <!-- This button posts the changes made to the deck to the server. -->
                         <div class="col s6 m4 center-align">
                             <button class="waves-effect waves-light btn-large manage-deck-button light-green"
-                                type="submit">Save Changes</button>
+                                type="submit">Create Deck</button>
                         </div>
                     </div>
                 </div>
