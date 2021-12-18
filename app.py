@@ -177,7 +177,9 @@ def admin_delete_user(user_id):
 
         users = list(mongo.db.users.find())
         mongo.db.users.remove({"_id": ObjectId(user_id)})
-        flash("User Deleted")
+        mongo.db.decks.remove({"deck_created_by_id": user_id})
+
+        flash("User and Decks Deleted")
 
         return redirect(url_for("user_management", users=users))
 
