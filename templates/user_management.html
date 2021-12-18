@@ -32,7 +32,7 @@
                                 <td>{{ user.username|title }}</td>
                                 <td>{{ user.join_date }}</td>
                                 <td>$3.76</td>
-                                <td><a href="" class="btn-small blue">View Decks</a></td>
+                                <td><a href="{{ url_for('admin_view_decks', user_id=user._id) }}" class="btn-small blue">View Decks</a></td>
                                 {% if session.super_admin %}
                                     <td><a class="waves-effect waves-light btn modal-trigger red" href="#delete-admin-modal-{{ user._id }}">Delete Admin</a></td>
                                     <div id="delete-admin-modal-{{ user._id }}" class="modal">
@@ -74,7 +74,7 @@
                             <td>{{ user.username|title }}</td>
                             <td>{{ user.join_date }}</td>
                             <td>$3.76</td>
-                            <td><a href="" class="btn-small blue">View Decks</a></td>
+                            <td><a href="{{ url_for('admin_view_decks', user_id=user._id) }}" class="btn-small blue">View Decks</a></td>
                             <td><a class="waves-effect waves-light btn modal-trigger red" href="#delete-admin-modal-{{ user._id }}">Delete User</a></td>
                             <div id="delete-admin-modal-{{ user._id }}" class="modal">
                                 <div class="modal-content">

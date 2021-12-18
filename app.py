@@ -218,7 +218,6 @@ def deck_management():
     if session["admin"]:
 
         decks = list(mongo.db.decks.find().sort("deck_created_by"))
-
         return render_template("deck_management.html", decks=decks)
 
 
@@ -229,8 +228,16 @@ def admin_delete_deck(deck_id):
         decks = list(mongo.db.decks.find())
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
         flash("Deck Deleted")
-
+        
         return redirect(url_for("deck_management", decks=decks))
+
+
+@app.route("/admin_view_decks/<user_id>")
+def admin_view_decks(user_id):
+    if session["admin"]:
+
+        user_decks = list(mongo.db.decks.find({"deck_created_by_id": user_id}))
+        return render_template("admin_view_decks.html", user_id=user_id, user_decks=user_decks)
 
 
 @app.errorhandler(404)
