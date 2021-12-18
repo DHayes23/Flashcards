@@ -40,7 +40,7 @@
                                     <div id="delete-admin-modal-{{ user._id }}" class="modal">
                                         <div class="modal-content">
                                             <h4>Delete Admin</h4>
-                                            <p>Are you sure you want to delete {{ user.username }}? This cannot be undone.</p>
+                                            <p>Are you sure you want to delete <strong>{{ user.username|title }}</strong> and all of their <strong>decks</strong>? This operation cannot be undone.</p>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="#!" class="modal-close waves-effect waves-green btn-flat grey lighten-3 left">Cancel</a>
@@ -81,7 +81,7 @@
                             <div id="delete-admin-modal-{{ user._id }}" class="modal">
                                 <div class="modal-content">
                                     <h4>Delete User</h4>
-                                    <p>Are you sure you want to delete {{ user.username }}? This cannot be undone.</p>
+                                    <p>Are you sure you want to delete <strong>{{ user.username|title }}</strong> and all of their <strong>decks</strong>? This operation cannot be undone.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat grey lighten-3 left">Cancel</a>
