@@ -72,7 +72,6 @@ def login():
                     session["super_admin"] = existing_user.get("is_super_admin")
                     user_id = str(ObjectId(existing_user.get("_id")))
                     session["id"] = user_id
-                    # flash(f"Thanks {request.form.get('username')}")
                     flash("You've been logged in!")
                     return redirect(url_for(
                         "my_decks", username=session["user"]))
