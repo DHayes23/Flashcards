@@ -130,6 +130,7 @@ def create_deck():
             "deck_description": request.form.get("deck_description"),
             "deck_card_contents": [],
             "deck_created_by": session["user"],
+            "deck_loved_by": [],
             "deck_love_counter": 0,
             "deck_times_played": 0,
             "deck_number_of_cards": 0,
