@@ -13,12 +13,6 @@
             <div class="card deck-info blue-grey darken-1">
                 <div class="card-content white-text">
                     <ul>
-                        {% if session.user %}
-                            <li>
-                                <i class="far fa-3x fa-heart deck-icon left"></i>
-                                <i class="far fa-3x fa-flag deck-icon right"></i>
-                            </li><br>
-                        {% endif %}
                         <li class="center-align card-item flag-icon">
                             {% if deck.deck_language == "French" %}
                                 <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
