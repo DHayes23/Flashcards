@@ -114,6 +114,14 @@ def logout():
 def create_deck():
 
     if session["user"]:
+        # The following code is used to ensure that a user will have a 'session["id"]'
+        #  even if they have just created their account, and have
+        #  not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+
         if request.method == "POST":
 
             deck = {
