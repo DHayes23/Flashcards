@@ -2,11 +2,43 @@
 {% block content %}
 
 
-<h3 class="center-align">Play Deck: {{ deck.deck_name }}</h3>
+<h3 class="center-align">Play Deck</h3>
 <section class="container">
-    <div class="card grey lighten-5">
-        <div class="card-content white-text">
-            
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel blue-grey darken-1">
+                <ul>
+                    {% if session.user != deck.deck_created_by %}
+                        <li>
+                            <i class="far fa-3x fa-heart deck-icon left"></i>
+                            <i class="far fa-3x fa-flag deck-icon right"></i>
+                        </li><br>
+                    {% else %}
+                        <li>
+                            <i class="hidden-deck-icon far fa-3x fa-heart deck-icon left"></i>
+                            <i class="hidden-deck-icon far fa-3x fa-flag deck-icon right"></i>
+                        </li><br>
+                    {% endif %}
+                    <li class="center-align card-item flag-icon">
+                        {% if deck.deck_language == "French" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                            alt="Icon sized image of the French flag.">
+                            {% elif deck.deck_language == "German" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                            alt="Icon sized image of the German flag.">
+                            {% elif deck.deck_language == "Italian" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                            alt="Icon sized image of the Italian flag.">
+                            {% elif deck.deck_language == "Spanish" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                            alt="Icon sized image of the Spanish flag.">
+                        {% endif %}
+                    </li><br>
+                    <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
+                    <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
+                    <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
