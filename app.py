@@ -155,6 +155,12 @@ def edit_deck(deck_id):
     deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template("edit_deck.html", deck=deck)
 
+@app.route("/play_deck/<deck_id>")
+def play_deck(deck_id):
+
+    deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+    return render_template("play_deck.html", deck=deck)
+
 
 @app.route("/delete_deck/<deck_id>")
 def delete_deck(deck_id):
