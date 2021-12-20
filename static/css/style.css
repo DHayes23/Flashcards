@@ -51,8 +51,14 @@ main {
     margin: 25px;
 }
 
-.deck-icon {
+.deck-heart-icon {
     margin: 10px;
+    color: pink;
+}
+
+.deck-flag-icon {
+    margin: 10px;
+    color: red;
 }
 
 .hidden-deck-icon {
