@@ -25,6 +25,24 @@ def index():
     return render_template("index.html", decks=decks)
 
 
+@app.route("/all_decks/<username>")
+def all_decks(username):
+    # Find the session user's username from database.
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    decks = mongo.db.decks.find()
+
+    # Find all decks and all decks created by session user.
+    user_decks = mongo.db.decks.find({"deck_created_by": username})
+
+    if session["user"]:
+        return render_template(
+            "all_decks.html", username=username, decks=decks, user_decks=user_decks)
+
+    return redirect(url_for("index"))
+
+
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
     if request.method == "POST":
@@ -97,7 +115,8 @@ def my_decks(username):
     user_decks = mongo.db.decks.find({"deck_created_by": username})
 
     if session["user"]:
-        return render_template("my_decks.html", username=username, user_decks=user_decks)
+        return render_template(
+            "my_decks.html", username=username, user_decks=user_decks)
 
     return redirect(url_for("login"))
 
@@ -112,7 +131,6 @@ def logout():
 
 @app.route("/create_deck", methods=["GET", "POST"])
 def create_deck():
-
     if session["user"]:
         # The following code is used to ensure that a user will have a 'session["id"]'
         #  even if they have just created their account, and have
@@ -132,6 +150,7 @@ def create_deck():
                 "deck_card_contents": [],
                 "deck_created_by": session["user"],
                 "deck_created_by_id": session["id"],
+                "deck_loved_by": [],
                 "deck_love_counter": 0,
                 "deck_times_played": 0,
                 "deck_number_of_cards": 0,
@@ -141,7 +160,6 @@ def create_deck():
             return redirect(url_for("my_decks", username=session["user"]))
 
         return render_template("create_deck.html")
-
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
@@ -158,6 +176,55 @@ def edit_deck(deck_id):
 
         deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
         return render_template("edit_deck.html", deck=deck)
+
+
+@app.route("/play_deck/<deck_id>")
+def play_deck(deck_id):
+    if session["user"]:
+
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+        deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+        user_id = str(ObjectId(user.get("_id")))
+
+        return render_template(
+            "play_deck.html", deck=deck, deck_id=deck_id, user_id=user_id)
+
+
+@app.route("/love_deck/<deck_id>")
+def love_deck(deck_id):
+    if session["user"]:
+        # The following code is used to ensure
+        # that a user will have a 'session["id"]'
+        # even if they have just created their account, and have
+        # not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$push": {
+            "deck_loved_by": user_id}})
+
+        return redirect(url_for("play_deck", deck_id=deck_id))
+
+
+@app.route("/unlove_deck/<deck_id>")
+def unlove_deck(deck_id):
+    if session["user"]:
+        # The following code is used to ensure
+        # that a user will have a 'session["id"]'
+        # even if they have just created their account, and have
+        # not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$pull": {
+            "deck_loved_by": user_id}})
+
+        return redirect(url_for("play_deck", deck_id=deck_id))
 
 
 @app.route("/delete_deck/<deck_id>")
