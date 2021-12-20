@@ -15,13 +15,13 @@
                     <ul>
                         {% if session.user != deck.deck_created_by %}
                             <li>
-                                <i class="far fa-3x fa-heart deck-icon left"></i>
-                                <i class="far fa-3x fa-flag deck-icon right"></i>
+                                <i class="far fa-3x fa-heart deck-heart-icon left"></i>
+                                <i class="far fa-3x fa-flag deck-flag-icon right"></i>
                             </li><br>
                         {% else %}
                             <li>
-                                <i class="hidden-deck-icon far fa-3x fa-heart deck-icon left"></i>
-                                <i class="hidden-deck-icon far fa-3x fa-flag deck-icon right"></i>
+                                <i class="hidden-deck-icon far fa-3x fa-heart deck-heart-icon left"></i>
+                                <i class="hidden-deck-icon far fa-3x fa-flag deck-flag-icon right"></i>
                             </li><br>
                         {% endif %}
                         <li class="center-align card-item flag-icon">

@@ -29,16 +29,16 @@ def all_decks(username):
     # Find the session user's username from database.
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    
+
     decks = mongo.db.decks.find()
 
     # Find all decks and all decks created by session user.
     user_decks = mongo.db.decks.find({"deck_created_by": username})
-    
+
     if session["user"]:
-        return render_template("all_decks.html", username=username,
-         decks=decks, user_decks=user_decks)
-    
+        return render_template(
+            "all_decks.html", username=username, decks=decks, user_decks=user_decks)
+
     return redirect(url_for("index"))
 
 
@@ -105,10 +105,11 @@ def my_decks(username):
         {"username": session["user"]})["username"]
 
     user_decks = mongo.db.decks.find({"deck_created_by": username})
-    
+
     if session["user"]:
-        return render_template("my_decks.html", username=username, user_decks=user_decks)
-    
+        return render_template(
+            "my_decks.html", username=username, user_decks=user_decks)
+
     return redirect(url_for("login"))
 
 
@@ -138,7 +139,7 @@ def create_deck():
         mongo.db.decks.insert_one(deck)
         flash("Deck Changes Saved!")
         return redirect(url_for("my_decks", username=session["user"]))
-    
+
     return render_template("create_deck.html")
 
 
@@ -159,9 +160,15 @@ def edit_deck(deck_id):
 
 @app.route("/play_deck/<deck_id>")
 def play_deck(deck_id):
+    if session["user"]:
 
-    deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
-    return render_template("play_deck.html", deck=deck)
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+        deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+        user_id = str(ObjectId(user.get("_id")))
+
+        return render_template(
+            "play_deck.html", deck=deck, deck_id=deck_id, user_id=user_id)
 
 
 @app.route("/love_deck/<deck_id>")
@@ -175,8 +182,7 @@ def love_deck(deck_id):
             {"username": session["user"]})
         user_id = str(ObjectId(user.get("_id")))
         session["id"] = user_id
-        deck = mongo.db.decks.find_one({"_id": deck_id})
-        
+
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$push": {
             "deck_loved_by": user_id}})
 
@@ -194,14 +200,11 @@ def unlove_deck(deck_id):
             {"username": session["user"]})
         user_id = str(ObjectId(user.get("_id")))
         session["id"] = user_id
-        deck = mongo.db.decks.find_one({"_id": deck_id})
-        
+
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$pull": {
             "deck_loved_by": user_id}})
 
         return redirect(url_for("play_deck", deck_id=deck_id))
-
-
 
 
 @app.route("/delete_deck/<deck_id>")
