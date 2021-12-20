@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Deck Management</h3>
+
+<section class="container">
+    <h4 class="center-align">All Decks</h4>
+    <table class="centered responsive-table striped">
+        <thead>
+            <tr>
+                <th>Deck Name</th>
+                <th>Created By</th>
+                <th>Deck Language</th>
+                <th>Deck Level</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for deck in decks %}
+                <tr>
+                    <td>{{ deck.deck_name|title }}</td>
+                    <td>{{ deck.deck_created_by|title }}</td>
+                    <td>{{ deck.deck_language }}</td>
+                    <td>{{ deck.deck_level }}</td>
+                    <td><a class="waves-effect waves-light btn blue"
+                        href="#!">Play Deck</a></td>
+                    <td><a class="waves-effect waves-light btn modal-trigger red"
+                        href="#delete-deck-modal-{{ deck._id }}">Delete Deck</a></td>
+                    <div id="delete-deck-modal-{{ deck._id }}" class="modal">
+                        <div class="modal-content">
+                            <h4>Delete Deck</h4>
+                            <p>Are you sure you want to delete {{ deck.deck_name }}? This cannot be undone.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat grey lighten-3 left">Cancel</a>
+                            <a href="{{ url_for('admin_delete_deck', deck_id=deck._id) }}" class="btn-small red">Delete Deck</a>
+                        </div>
+                    </div>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+
+{% endblock %}
