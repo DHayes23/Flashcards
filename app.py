@@ -156,11 +156,52 @@ def edit_deck(deck_id):
     deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template("edit_deck.html", deck=deck)
 
+
 @app.route("/play_deck/<deck_id>")
 def play_deck(deck_id):
 
     deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template("play_deck.html", deck=deck)
+
+
+@app.route("/love_deck/<deck_id>")
+def love_deck(deck_id):
+    if session["user"]:
+        # The following code is used to ensure
+        # that a user will have a 'session["id"]'
+        # even if they have just created their account, and have
+        # not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+        deck = mongo.db.decks.find_one({"_id": deck_id})
+        
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$push": {
+            "deck_loved_by": user_id}})
+
+        return redirect(url_for("play_deck", deck_id=deck_id))
+
+
+@app.route("/unlove_deck/<deck_id>")
+def unlove_deck(deck_id):
+    if session["user"]:
+        # The following code is used to ensure
+        # that a user will have a 'session["id"]'
+        # even if they have just created their account, and have
+        # not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+        deck = mongo.db.decks.find_one({"_id": deck_id})
+        
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$pull": {
+            "deck_loved_by": user_id}})
+
+        return redirect(url_for("play_deck", deck_id=deck_id))
+
+
 
 
 @app.route("/delete_deck/<deck_id>")

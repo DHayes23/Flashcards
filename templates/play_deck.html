@@ -10,7 +10,8 @@
                 <ul>
                     {% if session.user != deck.deck_created_by %}
                         <li>
-                            <i class="far fa-3x fa-heart deck-icon left"></i>
+                            <a href="{{ url_for('love_deck', deck_id=deck._id) }}" id="love-button"><i class="far fa-3x fa-heart deck-icon left"></i></a>
+                            <a href="{{ url_for('unlove_deck', deck_id=deck._id) }}" id="unlove-button"><i class="fas fa-3x fa-heart-broken deck-icon left"></i></a>
                             <i class="far fa-3x fa-flag deck-icon right"></i>
                         </li><br>
                     {% else %}
