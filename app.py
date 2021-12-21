@@ -47,65 +47,77 @@ def all_decks(username):
 
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
-    if request.method == "POST":
-        date = datetime.now().date()
-        # Check if username already exists
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-        if existing_user:
-            flash("Sorry, that username is taken!")
-            return redirect(url_for("create_an_account"))
+    # Prevents an already logged in user from creating a new account.
+    if session.get("user") is None:
+        if request.method == "POST":
+            date = datetime.now().date()
+            # Check if username already exists
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+            if existing_user:
+                flash("Sorry, that username is taken!")
+                return redirect(url_for("create_an_account"))
 
-        new_user = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "is_admin": False,
-            "join_date": date.strftime("%-d-%b-%Y"),
-            "my_decks": [],
-            "loved_decks": []
-        }
-        mongo.db.users.insert_one(new_user)
+            new_user = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password")),
+                "is_admin": False,
+                "join_date": date.strftime("%-d-%b-%Y"),
+                "my_decks": [],
+                "loved_decks": []
+            }
+            mongo.db.users.insert_one(new_user)
 
-        # Put the user into a 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        flash("You've created your account!")
+            # Put the user into a 'session' cookie
+            session["user"] = request.form.get("username").lower()
+            flash("You've created your account!")
+            return redirect(url_for("my_decks", username=session["user"]))
+
+        return render_template("create_an_account.html")
+
+    else:
+        flash("You already have an account!")
         return redirect(url_for("my_decks", username=session["user"]))
 
-    return render_template("create_an_account.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        # Check if username is in database
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    if session.get("user") is None:
+        if request.method == "POST":
+            # Check if username is in database
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-        if existing_user:
-            # Confirm matching password
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = existing_user.get("username")
-                    # The following session is granted to admins,
-                    #  providing special access
-                    session["admin"] = existing_user.get("is_admin")
-                    session["super_admin"] = existing_user.get("is_super_admin")
-                    user_id = str(ObjectId(existing_user.get("_id")))
-                    session["id"] = user_id
-                    flash("You've been logged in!")
-                    return redirect(url_for(
-                        "my_decks", username=session["user"]))
+            if existing_user:
+                # Confirm matching password
+                if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                        session["user"] = existing_user.get("username")
+                        # The following session is granted to admins,
+                        #  providing special access
+                        session["admin"] = existing_user.get("is_admin")
+                        session["super_admin"] = existing_user.get("is_super_admin")
+                        user_id = str(ObjectId(existing_user.get("_id")))
+                        session["id"] = user_id
+                        flash("You've been logged in!")
+                        return redirect(url_for(
+                            "my_decks", username=session["user"]))
+                else:
+                    # Invalid password match
+                    flash("Please enter a valid Username and Password")
+                    return redirect(url_for("login"))
+
             else:
-                # Invalid password match
+                # Non-existant username
                 flash("Please enter a valid Username and Password")
                 return redirect(url_for("login"))
 
-        else:
-            # Non-existant username
-            flash("Please enter a valid Username and Password")
-            return redirect(url_for("login"))
+        return render_template("login.html")
 
-    return render_template("login.html")
+    else:
+        flash("You've already logged in!")
+        return redirect(url_for("my_decks", username=session["user"]))
 
 
 @app.route("/my_decks/<username>", methods=["GET", "POST"])
