@@ -32,13 +32,15 @@ def all_decks(username):
         {"username": session["user"]})["username"]
 
     decks = mongo.db.decks.find()
+    user = mongo.db.users.find_one(
+                {"username": session["user"]})
+    user_id = str(ObjectId(user.get("_id")))
 
     # Find all decks and all decks created by session user.
-    user_decks = mongo.db.decks.find({"deck_created_by": username})
 
     if session["user"]:
         return render_template(
-            "all_decks.html", username=username, decks=decks, user_decks=user_decks)
+            "all_decks.html", username=username, decks=decks, user_id=user_id)
 
     return redirect(url_for("index"))
 
