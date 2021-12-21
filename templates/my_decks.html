@@ -34,7 +34,8 @@
                             <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
                             <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
                             <li class="center-align card-item">
-                                <a class="waves-effect waves-light btn-large" href="{{ url_for('play_deck', deck_id=deck._id) }}">Play</a>
+                                <a class="waves-effect waves-light btn-large deck-button" href="{{ url_for('edit_deck', deck_id=deck._id) }}">Edit</a>
+                                <a class="waves-effect waves-light btn-large deck-button" href="{{ url_for('play_deck', deck_id=deck._id) }}">Play</a>
                             </li>
                         </ul>
                     </div>
