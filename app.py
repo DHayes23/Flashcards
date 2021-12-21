@@ -27,18 +27,18 @@ def index():
 
 @app.route("/all_decks/<username>")
 def all_decks(username):
-    # Find the session user's username from database.
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
-    decks = mongo.db.decks.find()
-    user = mongo.db.users.find_one(
-                {"username": session["user"]})
-    user_id = str(ObjectId(user.get("_id")))
-
-    # Find all decks and all decks created by session user.
-
     if session["user"]:
+        # Find the session user's username from database.
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        decks = mongo.db.decks.find()
+        user = mongo.db.users.find_one(
+                    {"username": session["user"]})
+        user_id = str(ObjectId(user.get("_id")))
+
+        # Find all decks and all decks created by session user.
+
         return render_template(
             "all_decks.html", username=username, decks=decks, user_id=user_id)
 
@@ -193,6 +193,14 @@ def play_deck(deck_id):
             "play_deck.html", deck=deck, deck_id=deck_id, user_id=user_id)
 
 
+@app.route("/play_deck_anonymous/<deck_id>")
+def play_deck_anonymous(deck_id):
+
+    deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+    return render_template(
+        "play_deck_anonymous.html", deck=deck, deck_id=deck_id)
+
+
 @app.route("/love_deck/<deck_id>")
 def love_deck(deck_id):
     if session["user"]:
@@ -255,7 +263,7 @@ def admin_delete_user(user_id):
         users = list(mongo.db.users.find())
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         mongo.db.decks.remove({"deck_created_by_id": user_id})
-
+        
         flash("User and Decks Deleted")
 
         return redirect(url_for("user_management", users=users))
