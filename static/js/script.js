@@ -8,7 +8,7 @@ $(document).ready(function () {
     $('.collapsible').collapsible({
         accordion: true
     });
-
+    $('#textarea1').val('New Text');
 });
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
