@@ -16,7 +16,7 @@
                             {% elif user_id not in deck.deck_loved_by %}
                                 <li><i class="far fa-3x fa-heart deck-heart-icon left"></i></li>
                             {% endif %}
-                            <li><a href="#"><i class="far fa-3x fa-flag deck-flag-icon right"></i></a></li> 
+                            <li><a href="{{ url_for('create_report', deck_id=deck._id) }}"><i class="far fa-3x fa-flag deck-flag-icon right"></i></a></li> 
                         {% endif %}
                         <li class="center-align card-item flag-icon">
                             {% if deck.deck_language == "French" %}
