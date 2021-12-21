@@ -45,10 +45,14 @@ main {
     color: white;
 }
 
-/* Index.html Decks */
+/* Decks */
 
 .deck-info {
     margin: 25px;
+}
+
+.deck-button {
+    margin: 10px;
 }
 
 .deck-heart-icon {
