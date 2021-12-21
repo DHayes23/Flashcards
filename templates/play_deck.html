@@ -8,12 +8,14 @@
         <div class="col s12">
             <div class="card-panel blue-grey darken-1">
                 <ul>
-                    {% if user_id in deck.deck_loved_by %} 
-                        <li><a href="{{ url_for('unlove_deck', deck_id=deck._id) }}"><i class="fas fa-3x fa-heart deck-heart-icon left"></i></a></li>
-                    {% elif user_id not in deck.deck_loved_by %}
-                        <li><a href="{{ url_for('love_deck', deck_id=deck._id) }}"><i class="far fa-3x fa-heart deck-heart-icon left"></i></a></li>
+                    {% if session.user != deck.deck_created_by %}
+                        {% if user_id in deck.deck_loved_by %} 
+                            <li><a href="{{ url_for('unlove_deck', deck_id=deck._id) }}"><i class="fas fa-3x fa-heart deck-heart-icon left"></i></a></li>
+                        {% elif user_id not in deck.deck_loved_by %}
+                            <li><a href="{{ url_for('love_deck', deck_id=deck._id) }}"><i class="far fa-3x fa-heart deck-heart-icon left"></i></a></li>
+                        {% endif %}
+                    <li><a href="#"><i class="far fa-3x fa-flag deck-flag-icon right"></i></a></li>
                     {% endif %}
-                    <li><a href="#"><i class="far fa-3x fa-flag deck-flag-icon right"></i></a></li> 
                     <li class="center-align card-item flag-icon">
                         {% if deck.deck_language == "French" %}
                         <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
