@@ -340,6 +340,35 @@ def admin_view_decks(user_id):
         return render_template("admin_view_decks.html", user_id=user_id, user_decks=user_decks)
 
 
+@app.route("/create_report/<deck_id>", methods=["GET", "POST"])
+def create_report():
+    if session["user"]:
+        # The following code is used to ensure that a user will have a 'session["id"]'
+        #  even if they have just created their account, and have
+        #  not been granted a 'session["id"]' through login.
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        deck_to_report = mongo.db.decks.find_one(
+            {"_id": ObjectId(deck_id)})
+
+        user_id = str(ObjectId(user.get("_id")))
+        session["id"] = user_id
+
+        if request.method == "POST":
+
+            report = {
+                "deck_name": deck_to_report.deck_name,
+                "report_reason": request.form.get("deck_language"),
+                "deck_description": request.form.get("deck_description"),
+                "report_closed": False
+            }
+            mongo.db.reports.insert_one(report)
+            flash("Thanks, your report has been sumbitted!")
+            return redirect(url_for("my_decks", username=session["user"]))
+
+        return render_template("create_report.html")
+
+
 @app.errorhandler(404)
 def error_404(e):
 
