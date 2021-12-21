@@ -29,29 +29,28 @@
                     <ul class="right hide-on-med-and-down">
                         {% if not session.user %}
                         <li><a href="{{ url_for('index') }}">Home</a></li>
-
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
                         {% endif %}
                         {% if session.user %}
                             <li><a href="{{ url_for('all_decks', username=session['user']) }}">Home</a></li>
-                        {% if session.admin %}
-                            <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
-                            <ul id="admin-dropdown" class="dropdown-content">
-                                <li><a href="#!">Dashboard</a></li>
-                                <li class="divider"></li>
-                                <li><a href="{{ url_for('user_management') }}">User Management</a></li>
-                                <li class="divider"></li>
-                                <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
-                            </ul>
-                            <li><a class="dropdown-trigger" href="#!" data-target="admin-dropdown">Admin Utilities</a></li>
-                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                        {% endif %}
-                        {% if not session.admin %}
-                            {% if session.user %}
+                            {% if session.admin %}
                                 <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
+                                <ul id="admin-dropdown" class="dropdown-content">
+                                    <li><a href="#!">Dashboard</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('user_management') }}">User Management</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
+                                </ul>
+                                <li><a class="dropdown-trigger" href="#!" data-target="admin-dropdown">Admin Utilities</a></li>
                                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                            {% else %}
-                                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                                <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
+                            {% endif %}
+                            {% if not session.admin %}
+                                {% if session.user %}
+                                    <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
+                                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </ul>
@@ -63,25 +62,32 @@
             <li>
                 <h4 class="center-align">Flashcards</h4>
             </li>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
+            {% if not session.user %}
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
+            {% endif %}
+            {% if session.user %}
+                <li><a href="{{ url_for('all_decks', username=session['user']) }}">Home</a></li>
                 {% if session.admin %}
                     <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
-                    <li><a href="#!">Dashboard</a></li>
-                    <li><a href="{{ url_for('user_management') }}">User Management</a></li>
-                    <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
+                    <ul id="admin-dropdown-mobile" class="dropdown-content">
+                        <li><a href="#!">Dashboard</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('user_management') }}">User Management</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
+                    </ul>
+                    <li><a class="dropdown-trigger" href="#!" data-target="admin-dropdown-mobile">Admin Utilities</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% endif %}
                 {% if not session.admin %}
                     {% if session.user %}
                         <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
                     {% endif %}
                 {% endif %}
+            {% endif %}
         </ul>
     </header>
 
