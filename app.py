@@ -227,6 +227,7 @@ def love_deck(deck_id):
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$push": {
             "deck_loved_by": user_id}})
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_love_counter": 1}})
 
         return redirect(url_for("play_deck", deck_id=deck_id))
 
@@ -245,6 +246,7 @@ def unlove_deck(deck_id):
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$pull": {
             "deck_loved_by": user_id}})
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_love_counter": -1}})
 
         return redirect(url_for("play_deck", deck_id=deck_id))
 
