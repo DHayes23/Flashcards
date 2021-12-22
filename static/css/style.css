@@ -75,6 +75,16 @@ main {
     width: 100%;
 }
 
+/* Create Report Form */
+
+.report-checkbox {
+    margin: 10px;
+}
+
+.form-sub-heading {
+    margin: 40px;
+}
+
 /* Error 404.html and Error 500.html */
 
 .warning-box {
