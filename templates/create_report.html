@@ -1,17 +1,132 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Create Deck</h3>
-
-<div class="row">
-    <form class="col s12 m10 offset-m1 l8 offset-l2" method="POST" action="{{ url_for('create_deck') }}">
-        <div class="card grey lighten-5">
-            <div class="card-content white-text">
-                
+<h3 class="center-align">Report this Deck?</h3>
+<div class="row container">
+    <div class="col s12 l4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content">
+                <ul>
+                    <li class="center-align card-item flag-icon">
+                        {% if deck.deck_language == "French" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                            alt="Icon sized image of the French flag.">
+                        {% elif deck.deck_language == "German" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                            alt="Icon sized image of the German flag.">
+                        {% elif deck.deck_language == "Italian" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                            alt="Icon sized image of the Italian flag.">
+                        {% elif deck.deck_language == "Spanish" %}
+                        <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                            alt="Icon sized image of the Spanish flag.">
+                        {% endif %}
+                    </li><br>
+                    <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
+                    <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
+                    <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
+                    <li class="card-title center-align card-item">Created by: {{ deck.deck_created_by|title }}</li><br>
+                    <li class="center-align card-item">
+                        <a class="waves-effect waves-light btn-small blue" href="{{ url_for('play_deck', deck_id=deck._id) }}">Return to Deck</a>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <h5 class="hide-on-med-and-down">When you report a deck, our Admins will review the deck and, if necessary, will make changes to its content.</h5>
+        <h5 class="hide-on-med-and-down">In severe cases, a deck may be deleted.</h5>
+    </div>
+
+    <form class="col s12 l8" method="POST" action="{{ url_for('create_report', deck_id=deck._id) }}">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <ul>
+                    <h4 class="center-align">I am reporting this deck because:</h4>
+                    <div class="row">
+                        <div class="col m6">
+                            <p class="report-checkbox">
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">Cards are not in the correct language.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">It contains improperly translated cards.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">The level stated is not appropriate for the content.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">It does not contain cards relevant to the deck name.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">It contains offensive language and/or themes.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">It contain cards which aren't relevant to the deck name.</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span class="report-checkbox">Of a reason not within this list. (Please explain below)</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s12">
+                            <h5 class="center-align form-sub-heading">Tell us more about why you're reporting this deck below.</h5>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <textarea id="report-details" class="materialize-textarea validate" required ></textarea>
+                              <label for="report-details">Report Details</label>
+                            </div>
+                          </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col s6 m4 offset-m2 center-align">
+                            <a href="{{ url_for('play_deck', deck_id=deck._id) }}"
+                                class="waves-effect waves-light btn-large manage-deck-button red">Cancel</a>
+                        </div>
+                        <!-- This button posts the changes made to the deck to the server. -->
+                        <div class="col s6 m4 center-align">
+                            <button class="waves-effect waves-light btn-large manage-deck-button light-green"
+                                type="submit">Report</button>
+                        </div>
+                    </div>
+            </div>
+            </ul>
         </div>
     </form>
 </div>
+
 </div>
 
 {% endblock %}
