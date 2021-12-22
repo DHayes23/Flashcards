@@ -24,6 +24,8 @@
                     <td>{{ deck.deck_level }}</td>
                     <td><a class="waves-effect waves-light btn blue"
                         href="{{ url_for('play_deck', deck_id=deck._id) }}">Play Deck</a></td>
+                    <td><a class="waves-effect waves-light btn orange"
+                        href="{{ url_for('edit_deck', deck_id=deck._id) }}">Edit Deck</a></td>
                     <td><a class="waves-effect waves-light btn modal-trigger red"
                         href="#delete-deck-modal-{{ deck._id }}">Delete Deck</a></td>
                     <div id="delete-deck-modal-{{ deck._id }}" class="modal">
