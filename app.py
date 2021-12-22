@@ -346,6 +346,7 @@ def create_report(deck_id):
         # The following code is used to ensure that a user will have a 'session["id"]'
         #  even if they have just created their account, and have
         #  not been granted a 'session["id"]' through login.
+        date = datetime.now().date()
         user = mongo.db.users.find_one(
             {"username": session["user"]})
         deck = mongo.db.decks.find_one(
@@ -358,6 +359,9 @@ def create_report(deck_id):
 
             report = {
                 "deck_name": deck.get("deck_name"),
+                "deck_id": deck.get("_id"),
+                "reported_by": user.get("username"),
+                "report_date": date.strftime("%-d-%b-%Y"),
                 "report_check_1": request.form.get("report_check_1"),
                 "report_check_2": request.form.get("report_check_2"),
                 "report_check_3": request.form.get("report_check_3"),
@@ -372,6 +376,25 @@ def create_report(deck_id):
             return redirect(url_for("my_decks", username=session["user"]))
 
         return render_template("create_report.html", deck=deck)
+
+
+@app.route("/report_management")
+def report_management():
+
+    if session["admin"]:
+
+        reports = mongo.db.reports.find({"report_closed": False}).sort("report_date")
+        return render_template("report_management.html", reports=reports)
+
+@app.route("/admin_close_report/<report_id>")
+def admin_close_report(report_id):
+    if session["admin"]:
+
+        mongo.db.reports.update({"_id": ObjectId(report_id)}, {"$set": {
+                "report_closed": "true"}})
+        flash("Report Closed")
+        
+        return redirect(url_for("report_management"))
 
 
 @app.errorhandler(404)
