@@ -21,7 +21,7 @@
 
     <header>
         <!-- Mobile Collapsible Navbar from Materialize shows a standard navbar when on larger screens and shows a burger menu when viewed on mobile. -->
-        <div class="navbar-fixed">
+        <div id="top-nav" class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
                     {% if not session.user %}
@@ -99,13 +99,13 @@
     <section>
         <!-- This section displays Flash messages -->
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="row flash-messages red darken-4 tracking-in-contract-bck">
-            <h4 class="center-align">{{ message }}</h4>
-        </div>
-        {% endfor %}
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flash-messages red darken-4 tracking-in-contract-bck">
+                        <h4 class="center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
     </section>
 
@@ -129,8 +129,9 @@
                     <a href="mailto:d.hayesacademy23@gmail.com" target="_blank" class="footer-link"><i
                             class="fas fa-envelope-square fa-3x footer-icon"></i></a>
                 </div>
-                <div class="col s12">&#169; Denis Hayes 2021</div>
+                <div class="col s12 center-align">&#169; Denis Hayes 2021</div>
             </div>
+            <div class="row center-align"><a class="btn-small orange" href="#top-nav">Back to Top</a></div>
         </div>
 
         </div>

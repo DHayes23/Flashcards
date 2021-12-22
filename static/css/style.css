@@ -1,5 +1,9 @@
 /* Global Rules */
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     display: flex;
     min-height: 100vh;

@@ -9,6 +9,7 @@ $(document).ready(function () {
         accordion: true
     });
     $('#textarea1').val('New Text');
+    $('.scrollspy').scrollSpy();
 });
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
