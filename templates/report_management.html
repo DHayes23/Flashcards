@@ -10,10 +10,12 @@
         {% for report in reports %}
         {% if report.report_closed != "true" %}
         <li>
-            <div class="collapsible-header">Deck Name: {{ report.deck_name|title }}</div>
+            <div class="collapsible-header grey lighten-2">
+                <span><i class="fas fa-file-alt"></i><strong>Deck Name:</strong> {{ report.deck_name|title }} <br><br> <i class="fas fa-user fa-2x"></i><strong>Reported By: </strong>{{ report.reported_by|title }}<br><br> <i class="fas fa-calendar-alt"></i><strong>Date of Report: </strong>{{ report.report_date|title }}</span>
+            </div>
             <div class="collapsible-body">
                 <div class="row">
-                    <h5 class="center-align form-sub-heading">Report Reasons:</h5>
+                    <h5 class="center-align form-sub-heading"><strong>Report Reasons:</strong></h5>
                     <div class="col m6 l4">
                         <label>
                             {% if report.report_check_1 == "true" %}
@@ -77,8 +79,14 @@
                    
                 </div>
                 <hr>
-                <h5 class="center-align form-sub-heading">Report Details:</h5>
-                <div class="row">"{{ report.report_details }}" -{{ report.reported_by|title }}</div>
+                <h5 class="center-align form-sub-heading"><strong>Report Details:</strong></h5>
+                <div class="row">
+                    <div class="card-panel grey lighten-1 center-align">
+                        <span>
+                            "{{ report.report_details }}" -{{ report.reported_by|title }}
+                        </span>
+                      </div>
+                </div>
                 <div class="row">Report created on: {{ report.report_date }}</div>
                 <div class="row">
                     <div class="col s6 m4 offset-m2 center-align">
