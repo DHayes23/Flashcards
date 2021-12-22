@@ -69,8 +69,7 @@
                                 <label for="report_check_3">
                                     <input type="checkbox" value="true" id="report_check_3" name="report_check_3"
                                         class="filled-in" />
-                                    <span class="report-checkbox">The level stated is not appropriate for the
-                                        content.</span>
+                                    <span class="report-checkbox">The content does not align with the level.</span>
                                 </label>
                             </p>
                         </div>
@@ -79,7 +78,7 @@
                                 <label for="report_check_4">
                                     <input type="checkbox" value="true" id="report_check_4" name="report_check_4"
                                         class="filled-in" />
-                                    <span class="report-checkbox">The deck name and content don't match. </span>
+                                    <span class="report-checkbox">The deck name and content don't match.</span>
                                 </label>
                             </p>
                         </div>
@@ -118,7 +117,7 @@
                             <a href="{{ url_for('play_deck', deck_id=deck._id) }}"
                                 class="waves-effect waves-light btn-large manage-deck-button red">Cancel</a>
                         </div>
-                        <!-- This button posts the changes made to the deck to the server. -->
+                        <!-- This button posts the changes made to the report to the server. -->
                         <div class="col s6 m4 center-align">
                             <button class="waves-effect waves-light btn-large manage-deck-button light-green"
                                 type="submit">Report</button>
