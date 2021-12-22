@@ -24,7 +24,12 @@
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('index') }}" class="brand-logo center" id="logo">Flashcards</a>
+                    {% if not session.user %}
+                        <a href="{{ url_for('index') }}" class="brand-logo center" id="logo">Flashcards</a>
+                    {% endif %}
+                    {% if session.user %}
+                        <a href="{{ url_for('all_decks', username=session['user']) }}" class="brand-logo center" id="logo">Flashcards</a>
+                    {% endif %}
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if not session.user %}
