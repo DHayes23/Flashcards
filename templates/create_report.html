@@ -48,8 +48,8 @@
                     <div class="row">
                         <div class="col m6">
                             <p class="report-checkbox">
-                                <label for="report-check-1">
-                                    <input type="checkbox" id="report-check-1" name="report-check-1"
+                                <label for="report_check_1">
+                                    <input type="checkbox" value="true" id="report_check_1" name="report_check_1"
                                         class="filled-in" />
                                     <span class="report-checkbox">Cards are not in the correct language.</span>
                                 </label>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="col m6">
                             <p>
-                                <label for="report-check-2">
-                                    <input type="checkbox" id="report-check-2" name="report-check-2"
+                                <label for="report_check_2">
+                                    <input type="checkbox" value="true" id="report_check_2" name="report_check_2"
                                         class="filled-in" />
                                     <span class="report-checkbox">It contains improperly translated cards.</span>
                                 </label>
@@ -66,8 +66,8 @@
                         </div>
                         <div class="col m6">
                             <p>
-                                <label for="report-check-3">
-                                    <input type="checkbox" id="report-check-3" name="report-check-3"
+                                <label for="report_check_3">
+                                    <input type="checkbox" value="true" id="report_check_3" name="report_check_3"
                                         class="filled-in" />
                                     <span class="report-checkbox">The level stated is not appropriate for the
                                         content.</span>
@@ -76,8 +76,8 @@
                         </div>
                         <div class="col m6">
                             <p>
-                                <label for="report-check-4">
-                                    <input type="checkbox" id="report-check-4" name="report-check-4"
+                                <label for="report_check_4">
+                                    <input type="checkbox" value="true" id="report_check_4" name="report_check_4"
                                         class="filled-in" />
                                     <span class="report-checkbox">The deck name and content don't match. </span>
                                 </label>
@@ -85,8 +85,8 @@
                         </div>
                         <div class="col m6">
                             <p>
-                                <label for="report-check-5">
-                                    <input type="checkbox" id="report-check-5" name="report-check-5"
+                                <label for="report_check_5">
+                                    <input type="checkbox" value="true" id="report_check_5" name="report_check_5"
                                         class="filled-in" />
                                     <span class="report-checkbox">It contains offensive language and/or themes.</span>
                                 </label>
@@ -94,8 +94,8 @@
                         </div>
                         <div class="col m6">
                             <p>
-                                <label for="report-check-6">
-                                    <input type="checkbox" id="report-check-6" name="report-check-6"
+                                <label for="report_check_6">
+                                    <input type="checkbox" value="true" id="report_check_6" name="report_check_6"
                                         class="filled-in" />
                                     <span class="report-checkbox">For a reason not within this list.</span>
                                 </label>
@@ -107,14 +107,12 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="report-details">Report Details</label>
-                                <textarea id="report-details" name="report-details"
+                                <label for="report_details">Report Details</label>
+                                <textarea id="report_details" name="report_details"
                                     class="materialize-textarea validate" required></textarea>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col s6 m4 offset-m2 center-align">
                             <a href="{{ url_for('play_deck', deck_id=deck._id) }}"

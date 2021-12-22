@@ -357,9 +357,14 @@ def create_report(deck_id):
         if request.method == "POST":
 
             report = {
-                "deck_name": deck.deck_name,
-                "report_reason": request.form.get("deck_language"),
-                "deck_description": request.form.get("deck_description"),
+                "deck_name": deck.get("deck_name"),
+                "report_check_1": request.form.get("report_check_1"),
+                "report_check_2": request.form.get("report_check_2"),
+                "report_check_3": request.form.get("report_check_3"),
+                "report_check_4": request.form.get("report_check_4"),
+                "report_check_5": request.form.get("report_check_5"),
+                "report_check_6": request.form.get("report_check_6"),
+                "report_details": request.form.get("report_details"),
                 "report_closed": False
             }
             mongo.db.reports.insert_one(report)
