@@ -88,6 +88,12 @@ main {
     margin: 40px;
 }
 
+/* Report Management */
+
+.report-details-text p {
+    overflow-wrap:break-word;
+}
+
 /* Error 404.html and Error 500.html */
 
 .warning-box {
