@@ -3,6 +3,18 @@
 
 <h3 class="center-align">Edit Deck</h3>
 <div class="center-align"><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Delete This Deck</a>
+    <div class="row">
+        <div class="col s12 m6">
+            {% if deck.deck_love_counter == 0 %}
+                <h5>{{deck.deck_love_counter}} people love this deck... yet!</h5>
+            {% else %}
+                <h5>{{deck.deck_love_counter}} people love this deck!</h5>
+            {% endif %}
+        </div>
+        <div class="col s12 m6">
+            <h5>{{deck.deck_report_counter}} people have reported this deck.</h5>
+        </div>
+    </div>
 </div>
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
