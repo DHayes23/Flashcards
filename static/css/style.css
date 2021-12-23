@@ -26,6 +26,7 @@ main {
 
 #logo {
     font-size: 4em;
+    margin-left: 60px;
 }
 
 .flash-messages h4{
@@ -34,7 +35,7 @@ main {
 }
 
 .final-nav-item {
-    margin-right: 40px;
+    margin-right: 60px;
 }
 
 .nav-icon {
