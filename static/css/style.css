@@ -86,6 +86,10 @@ main {
     width: 100%;
 }
 
+.info-icon {
+    margin-left: 10px;
+}
+
 /* Create Report Form */
 
 .report-checkbox {

@@ -161,17 +161,35 @@ def create_deck():
                 "deck_language": request.form.get("deck_language"),
                 "deck_level": request.form.get("deck_level"),
                 "deck_description": request.form.get("deck_description"),
-                "deck_card_contents": [],
                 "deck_created_by": session["user"],
                 "deck_created_by_id": session["id"],
                 "deck_loved_by": [],
                 "deck_love_counter": 0,
                 "deck_report_counter": 0,
                 "deck_times_played": 0,
-                "deck_number_of_cards": 0,
             }
+            
+            deck["deck_card_contents"] = []
+            
+            max_cards = 50
+
+            for i in range(max_cards):
+
+                front_input_name = f"{i+1}_card_front"
+                back_input_name = f"{i+1}_card_back"
+
+                front_input_value = request.form.get(front_input_name)
+                back_input_value = request.form.get(back_input_name)
+                
+                if front_input_value is not "" and front_input_value is not None and back_input_value is not "" and back_input_value is not None:
+                    deck['deck_card_contents'].append(
+                        {f'{i+1}_card_front': front_input_value, f'{i+1}_card_back': back_input_value})
+                
+                else:
+                    break
+
             mongo.db.decks.insert_one(deck)
-            flash("Deck Changes Saved!")
+            flash("Deck Created!")
             return redirect(url_for("my_decks", username=session["user"]))
 
         return render_template("create_deck.html")
