@@ -12,6 +12,13 @@ $(document).ready(function () {
     });
     $('#textarea1').val('New Text');
     $('.scrollspy').scrollSpy();
+    let cardCounter = 1
+    $("#add-card-button").click(function () {
+        cardCounter++
+        $("#card-container").append(
+            '<div class="card grey lighten-5"><div class="card-content white-text"><div class="row"><div class="col s12 m2 black-text"><h5 class="center-align">Card 1</h5></div><div class="col s12 m4"><label for="1_card_front">English</label><input type="text" id="1_card_front" name="1_card_front"></div><div class="col s12 m4"><label for="1_card_back">Translation</label><input type="text" id="1_card_back" name="1_card_back"></div></div></div></div>');
+        console.log(cardCounter)
+      });
 });
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
