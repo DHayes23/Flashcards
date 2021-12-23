@@ -166,6 +166,7 @@ def create_deck():
                 "deck_created_by_id": session["id"],
                 "deck_loved_by": [],
                 "deck_love_counter": 0,
+                "deck_report_counter": 0,
                 "deck_times_played": 0,
                 "deck_number_of_cards": 0,
             }
@@ -371,6 +372,8 @@ def create_report(deck_id):
                 "report_details": request.form.get("report_details"),
                 "report_closed": False
             }
+
+            mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_report_counter": 1}})
             mongo.db.reports.insert_one(report)
             flash("Thanks, your report has been sumbitted!")
             return redirect(url_for("my_decks", username=session["user"]))
@@ -386,15 +389,36 @@ def report_management():
         reports = mongo.db.reports.find({"report_closed": False}).sort("report_date")
         return render_template("report_management.html", reports=reports)
 
+
+@app.route("/report_archive")
+def report_archive():
+
+    if session["admin"]:
+
+        reports = mongo.db.reports.find({"report_closed": True}).sort("report_date")
+        return render_template("report_archive.html", reports=reports)
+
+
 @app.route("/admin_close_report/<report_id>")
 def admin_close_report(report_id):
     if session["admin"]:
 
         mongo.db.reports.update({"_id": ObjectId(report_id)}, {"$set": {
-                "report_closed": "true"}})
+                "report_closed": True}})
         flash("Report Closed")
-        
+
         return redirect(url_for("report_management"))
+
+
+@app.route("/admin_reopen_report/<report_id>")
+def admin_reopen_report(report_id):
+    if session["admin"]:
+
+        mongo.db.reports.update({"_id": ObjectId(report_id)}, {"$set": {
+                "report_closed": False}})
+        flash("Report Reopened")
+
+        return redirect(url_for("report_archive"))
 
 
 @app.errorhandler(404)

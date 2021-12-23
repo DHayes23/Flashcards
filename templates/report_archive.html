@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<section class="container">
+    <h3 class="center-align">Report Archive</h3>
+    <h4 class="center-align form-sub-heading">Archived Reports</h4>
+    <ul class="collapsible popout">
+        {% for report in reports %}
+            {% if report.report_closed == true %}
+            <li>
+                <div class="collapsible-header grey lighten-2">
+                    <span><i class="fas fa-file-alt"></i><strong>Deck Name:</strong> {{ report.deck_name|title }} <br><br> <i class="fas fa-user fa-2x"></i><strong>Reported By: </strong>{{ report.reported_by|title }}<br><br> <i class="fas fa-calendar-alt"></i><strong>Date of Report: </strong>{{ report.report_date|title }}</span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <h5 class="center-align form-sub-heading"><strong>Report Reasons:</strong></h5>
+                        <div class="col m6 l4">
+                            <label>
+                                {% if report.report_check_1 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">Cards are not in the correct language.</span>
+                            </label>
+                        </div>
+                        <div class="col m6 l4 offset-l4">
+                            <label>
+                                {% if report.report_check_2 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">It contains improperly translated cards.</span>
+                            </label>
+                        </div>
+                        <div class="col m6 l4">
+                            <label>
+                                {% if report.report_check_3 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">The content does not align with the level.</span>
+                            </label>
+                        </div>
+                        <div class="col m6 l4 offset-l4">
+                            <label>
+                                {% if report.report_check_4 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">The deck name and content don't match.</span>
+                            </label>
+                        </div>
+                        <div class="col m6 l4">
+                            <label>
+                                {% if report.report_check_5 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">It contains offensive language and/or themes.</span>
+                            </label>
+                        </div>
+                        <div class="col m6 l4 offset-l4">
+                            <label>
+                                {% if report.report_check_6 == "true" %}
+                                <input type="checkbox" disabled="disabled" checked="checked" class="filled-in" />
+                                {% else %}
+                                <input type="checkbox" disabled="disabled" class="filled-in" />
+                                {% endif %}
+                                <span class="report-checkbox">For a reason not within this list.</span>
+                            </label>
+                        </div>
+                    
+                    </div>
+                    <hr>
+                    <h5 class="center-align form-sub-heading"><strong>Report Details:</strong></h5>
+                    <div class="row">
+                        <div class="card-panel grey lighten-1 center-align">
+                            <span>
+                                "{{ report.report_details }}" -{{ report.reported_by|title }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">Report created on: {{ report.report_date }}</div>
+                    <br>
+                    <div class="row">
+                        <div class="col s6 m4 offset-m2 center-align">
+                            <a href="{{ url_for('edit_deck', deck_id=report.deck_id) }}"
+                                class="waves-effect waves-light btn-small manage-deck-button orange">Edit Deck</a>
+                        </div>
+                        <!-- This button posts the changes made to the report to the server. -->
+                        <div class="col s6 m4 center-align">
+                            <a href="{{ url_for('admin_reopen_report', report_id=report._id) }}"
+                                class="waves-effect waves-light btn-small manage-deck-button red">Reopen Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>
+
+
+{% endblock %}
