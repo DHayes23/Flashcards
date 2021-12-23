@@ -12,6 +12,8 @@
                 <th>Created By</th>
                 <th>Deck Language</th>
                 <th>Deck Level</th>
+                <th>Deck Love</th>
+                <th>Deck Reports</th>
             </tr>
         </thead>
 
@@ -22,8 +24,8 @@
                     <td>{{ deck.deck_created_by|title }}</td>
                     <td>{{ deck.deck_language }}</td>
                     <td>{{ deck.deck_level }}</td>
-                    <td><a class="waves-effect waves-light btn blue"
-                        href="{{ url_for('play_deck', deck_id=deck._id) }}">Play Deck</a></td>
+                    <td>{{ deck.deck_love_counter }}</td>
+                    <td>{{ deck.deck_report_counter }}</td>
                     <td><a class="waves-effect waves-light btn orange"
                         href="{{ url_for('edit_deck', deck_id=deck._id) }}">Edit Deck</a></td>
                     <td><a class="waves-effect waves-light btn modal-trigger red"
