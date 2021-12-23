@@ -8,7 +8,7 @@
     <h4 class="center-align form-sub-heading">Open Reports</h4>
     <ul class="collapsible popout">
         {% for report in reports %}
-        {% if report.report_closed != "true" %}
+        {% if report.report_closed == false %}
         <li>
             <div class="collapsible-header grey lighten-2">
                 <span><i class="fas fa-file-alt"></i><strong>Deck Name:</strong> {{ report.deck_name|title }} <br><br> <i class="fas fa-user fa-2x"></i><strong>Reported By: </strong>{{ report.reported_by|title }}<br><br> <i class="fas fa-calendar-alt"></i><strong>Date of Report: </strong>{{ report.report_date|title }}</span>
@@ -107,6 +107,13 @@
         {% endif %}
         {% endfor %}
     </ul>
+    <div class="row">
+        <div class="col m6 offset-m3">
+            <a href="{{ url_for('report_archive') }}"
+                            class="waves-effect waves-light btn-small manage-deck-button blue">Report Archive</a>
+        </div>
+    </div>
+    
 </section>
 
 
