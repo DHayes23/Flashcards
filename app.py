@@ -284,6 +284,30 @@ def admin_delete_user(user_id):
         return redirect(url_for("user_management", users=users))
 
 
+@app.route("/admin_promote_user/<user_id>")
+def admin_promote_user(user_id):
+    if session["admin"]:
+
+        users = list(mongo.db.users.find())
+        mongo.db.users.update({"_id": ObjectId(user_id)}, {"$set": {
+                "is_admin": True}})
+        flash("User Promoted!")
+
+        return redirect(url_for("user_management", users=users))
+
+
+@app.route("/admin_demote_user/<user_id>")
+def admin_demote_user(user_id):
+    if session["admin"]:
+
+        users = list(mongo.db.users.find())
+        mongo.db.users.update({"_id": ObjectId(user_id)}, {"$set": {
+                "is_admin": False}})
+        flash("User Demoted!")
+
+        return redirect(url_for("user_management", users=users))
+
+
 @app.route("/create_new_admin", methods=["GET", "POST"])
 def create_new_admin():
     if session["super_admin"]:
