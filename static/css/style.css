@@ -33,6 +33,13 @@ main {
     line-height: 3;
 }
 
+.final-nav-item {
+    margin-right: 40px;
+}
+
+.nav-icon {
+    margin-left: 5px;
+}
 /* Base.html Footer */
 
 .page-footer {
