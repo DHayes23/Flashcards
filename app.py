@@ -181,7 +181,7 @@ def create_deck():
                 front_input_value = request.form.get(front_input_name)
                 back_input_value = request.form.get(back_input_name)
                 
-                if front_input_value is not "" and front_input_value is not None and back_input_value is not "" and back_input_value is not None:
+                if front_input_value != "" and front_input_value is not None and back_input_value != "" and back_input_value is not None:
                     deck['deck_card_contents'].append(
                         {f'{i+1}_card_front': front_input_value, f'{i+1}_card_back': back_input_value})
                 
