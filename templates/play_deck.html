@@ -38,22 +38,28 @@
             </div>
         </div>
     </div>
-    <div id="container-body">
-        <div class="container card-container">
-            <div class="card center-align">
-                <div class="front">
-                    <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
-                    <h3 class="card-text">=</h3>
-                    <h1>?</h1>
-                </div>
-                <div class="back">
-
-                    <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
-                    <h3 class="card-text">=</h3>
-                    <h3>{{ deck.deck_card_backs[0] }}</h3>
+    <div id="deck-container" class="row">
+        {% if deck.deck_card_fronts[0] %}
+            <div class="col s12 m6 l4">
+                <div class="container-body">
+                    <div class="container card-container">
+                        <div class="card center-align">
+                            <div class="front">
+                                <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
+                                <h3 class="card-text">=</h3>
+                                <h1>?</h1>
+                            </div>
+                            <div class="back">
+                                <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
+                                <h3 class="card-text">=</h3>
+                                <h3>{{ deck.deck_card_backs[0] }}</h3>
+                            </div>
+                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 </section>
 
