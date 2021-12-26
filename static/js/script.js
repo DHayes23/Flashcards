@@ -30,7 +30,11 @@ $(document).ready(function () {
     $(document).on("click", ".remove-card-button", function(){
     cardCounter--
     $(this).parent().remove()
-});
+    });
+
+    $(".card-container").on("click", function(){
+        $(".card").toggleClass("flipping");
+    })
 
 });
 
