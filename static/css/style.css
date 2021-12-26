@@ -173,6 +173,10 @@ main {
     margin: 30px;
 }
 
+.reset-button {
+    margin: 40px;
+}
+
 /* Error 404.html and Error 500.html */
 
 .warning-box {
