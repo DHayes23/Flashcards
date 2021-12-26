@@ -32,7 +32,7 @@ $(document).ready(function () {
     $(this).parent().remove()
     });
 
-    // Card flip controllers
+    // Card flip controller
     
     $(".flip-button").on("click", function(){
         $(this).parent().toggleClass("flipping");
