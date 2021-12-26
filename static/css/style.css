@@ -162,6 +162,14 @@ main {
     margin-top: 60px;
 }
 
+.card-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 30px;
+}
+
 /* Error 404.html and Error 500.html */
 
 .warning-box {

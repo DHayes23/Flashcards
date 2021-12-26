@@ -32,8 +32,11 @@ $(document).ready(function () {
     $(this).parent().remove()
     });
 
-    $(".card-container").on("click", function(){
-        $(".card").toggleClass("flipping");
+    // Card flip controllers
+    
+    $(".flip-button").on("click", function(){
+        $(this).parent().toggleClass("flipping");
+        $(this).remove();
     })
 
 });
