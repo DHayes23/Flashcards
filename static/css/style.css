@@ -90,6 +90,10 @@ main {
     margin-left: 10px;
 }
 
+.remove-card-button {
+    margin: 10px;
+}
+
 /* Create Report Form */
 
 .report-checkbox {

@@ -12,18 +12,29 @@ $(document).ready(function () {
     });
     $('#textarea1').val('New Text');
     $('.scrollspy').scrollSpy();
-    let cardCounter = 2
+    let cardCounter = 1;
+    let cardId = 1;
     $("#add-card-button").click(function () {
-        if (cardCounter <= 50){
+        if (cardCounter < 50){
 
         $("#card-container").append(`
-            '<div class="card grey lighten-5"><div class="card-content white-text"><div class="row"><div class="col s12 m2 black-text"><h5 id="${cardCounter}-card-locator" class="center-align">Card ${cardCounter}</h5></div><div class="col s12 m4"><label for="${cardCounter}_card_front">English</label><input type="text" id="${cardCounter}_card_front" name="${cardCounter}_card_front"></div><div class="col s12 m4"><label for="${cardCounter}_card_back">Translation</label><input type="text" id="${cardCounter}_card_back" name="${cardCounter}_card_back"></div></div></div></div>'`);
-        $("#add-card-button").attr("href", `#${cardCounter-1}-card-locator`)
-        console.log(cardCounter)
-        cardCounter++
+            '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardId}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardId}_card_front">English</label><input type="text" id="${cardId}_card_front" name="${cardId}_card_front" class="validate" required></div><div class="col s12 m4"><label for="${cardId}_card_back">Translation</label><input type="text" id="${cardId}_card_back" name="${cardId}_card_back" class="validate" required></div></div></div></div>'`);
+        $("#add-card-button").attr("href", `#${cardCounter}-card-locator`)
+       
+        cardId++
+        cardCounter++ 
+        console.log("Card ID = " + cardId)
+        console.log("Card Counter = " + cardCounter)
     }});
+    
+    $(document).on("click", ".remove-card-button", function(){
+    cardCounter--
+    $(this).parent().remove()
+});
 
 });
+
+
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
 //  This code applies validation to select elements in the same style as other Materialize from elements.
