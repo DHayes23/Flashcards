@@ -169,7 +169,8 @@ def create_deck():
                 "deck_times_played": 0,
             }
             
-            deck["deck_card_contents"] = []
+            deck["deck_card_fronts"] = []
+            deck["deck_card_backs"] = []
             
             max_cards = 50
 
@@ -182,9 +183,11 @@ def create_deck():
                 back_input_value = request.form.get(back_input_name)
                 
                 if front_input_value != "" and front_input_value is not None and back_input_value != "" and back_input_value is not None:
-                    deck['deck_card_contents'].append(
-                        {f'{i}_card_front': front_input_value, f'{i}_card_back': back_input_value})
-                
+                    deck['deck_card_fronts'].append(
+                        front_input_value)
+                    deck['deck_card_backs'].append(
+                        back_input_value)
+
                 else:
                     pass
 
