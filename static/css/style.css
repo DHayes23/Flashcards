@@ -158,12 +158,8 @@ main {
 
 }
 
-.card-front-text {
-    margin: 15px;
-}
-
-.card-back-text {
-    margin: 15px;
+.card-text {
+    margin-top: 60px;
 }
 
 /* Error 404.html and Error 500.html */
