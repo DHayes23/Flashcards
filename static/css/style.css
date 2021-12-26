@@ -116,7 +116,7 @@ main {
     https://www.youtube.com/watch?v=IrVLi0t8HRQ&t=328s&ab_channel=SOFT-CODING
         and adapted for use within this project. */
 
-.container-body {
+#container-body {
     margin: 0;
     padding: 0;
     display: flex;
