@@ -18,7 +18,7 @@ $(document).ready(function () {
         if (cardCounter < 50){
 
         $("#card-container").append(`
-            '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardId}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardId}_card_front">English</label><input type="text" id="${cardId}_card_front" name="${cardId}_card_front" class="validate" required></div><div class="col s12 m4"><label for="${cardId}_card_back">Translation</label><input type="text" id="${cardId}_card_back" name="${cardId}_card_back" class="validate" required></div></div></div></div>'`);
+            '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardId}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardId}_card_front">English</label><input type="text" id="${cardId}_card_front" name="${cardId}_card_front" class="validate" required minlength="2" maxlength="32"></div><div class="col s12 m4"><label for="${cardId}_card_back">Translation</label><input type="text" id="${cardId}_card_back" name="${cardId}_card_back" class="validate" required minlength="2" maxlength="32"></div></div></div></div>'`);
         $("#add-card-button").attr("href", `#${cardCounter}-card-locator`)
        
         cardId++
