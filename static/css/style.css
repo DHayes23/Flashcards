@@ -132,12 +132,15 @@ main {
     perspective: 700px;
 }
 
-.card {
+.play-card {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.160, 0.777, 0.40, 1.250);
     text-transform: capitalize;
+    border: black solid 5px;
+    margin-top: 30px;
+    
 }
 
 .card .front,
