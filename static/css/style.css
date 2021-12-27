@@ -228,6 +228,12 @@ main {
     }
   }
   
-  
-  
-  
+@media (max-width: 600px) {
+
+/*--------Navbar--------*/
+
+    #logo {
+        margin-left: 0px;
+        font-size: 3em;
+    }
+}
