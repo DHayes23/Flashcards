@@ -125,12 +125,16 @@ def my_decks(username):
     # Find the session user's username from database.
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    user = mongo.db.users.find_one(
+            {"username": session["user"]})
+    user_id = str(ObjectId(user.get("_id")))
 
-    user_decks = mongo.db.decks.find({"deck_created_by": username})
+    user_decks = list(mongo.db.decks.find({"deck_created_by": username}))
+    user_loved_decks = mongo.db.decks.find({"deck_loved_by": user_id})
 
     if session["user"]:
         return render_template(
-            "my_decks.html", username=username, user_decks=user_decks)
+            "my_decks.html", username=username, user_decks=user_decks, user_loved_decks=user_loved_decks)
 
     return redirect(url_for("login"))
 
