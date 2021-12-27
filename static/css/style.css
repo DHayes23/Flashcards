@@ -94,6 +94,12 @@ main {
     margin: 10px;
 }
 
+/* Edit Deck Form */
+
+.remove-card-button-edit {
+    margin: 10px;
+}
+
 /* Create Report Form */
 
 .report-checkbox {
