@@ -12,8 +12,55 @@
                         <!-- This field is used to name the deck. -->
                         <div class="row">
                             <h4 class="center-align black-text form-sub-heading">Deck Overview</h4>
+                             <!-- Clicking the icon below triggers the deck-info-modal -->
+                        <p class="center-align"><a href="#deck-info-modal" class="modal-trigger"><i class="fas fa-info-circle fa-2x info-icon"></i></a></p>
+                        <!-- The deck-info-modal gives the user some information about deck creation. -->
+                        <div id="deck-info-modal" class="modal modal-fixed-footer blue lighten-4">
+                            <div class="modal-content black-text">
+                              <h4 class="center-align">Building a Deck</h4>
+                              <h5 class="center-align">Building a Deck is easy! Follow these steps to build a great Deck:</h5>
+                              <br>
+                              <ol>
+                                  <li>
+                                    <p>Give your Deck a Name: The first thing you need to do is pick a good name for your Deck. The best Deck names let other people instantly know what they can expect to find in your Deck.</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Tell people which Language this Deck translates words into: <strong>You should never mix several languages into one Deck!</strong> This will help our learners to avoid saying things like 'Bonjour Senor' while holidaying in Germany!</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Tell people which Level of learner this Deck is suitable for: As a rough guide, <strong>Beginner</strong> Decks are for people who have just started to learn the language. <strong>Intermediate</strong> Decks are for people who have spent between six months and two years learning the lanugage. <strong>Advanced</strong> Decks contain the toughest vocabulary, and are for people approaching fluency in a language. You'll have to use your own discretion to decide which level your Deck fits into.</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Add a Deck Description: Giving your Deck a detailed description allows our learners to find out exactly what your Deck about. Good Deck Descriptions tell learners what the main themes of the Deck are, and why you've grouped this collection of vocabulary together.</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Add Cards to your Deck: A Deck without Cards is like an ocean without water; it's not going to float anyone's boat. You can add up to 30 cards to a Deck. Make sure your cards are at least two letters and at most 32 letters long. Don't forget to add both the English and the translation, or your card will not be saved!</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Hit "Create Deck" to upload your Deck or "Discard Deck" if you aren't happy with it. You can find your new Deck in 'My Decks'</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>Other learners will be able to see any Decks you create, so please refrain from using any offensive vocabulary in the Deck Overview or in the Cards you create.</p>
+                                  </li>
+                                  <br>
+                                  <li>
+                                    <p>If you find a Deck that doesn't adhere to this guide, feel free to report it using the Report Flag on the Deck, which will ask you to tell us more. After you submit a report, an Admin will review your report and make changes to the Deck if necessary. In some cases, a Deck may be deleted.</p>
+                                  </li>
+                              </ol>
+                            </div>
+                            <div class="modal-footer grey">
+                              <a href="#!" class="modal-close waves-effect waves-blue btn orange">Close</a>
+                            </div>
+                          </div>
+                          <!-- The deck-info-modal ends here -->
                             <div class="input-field col s12 m10 offset-m1">
-                                <input placeholder="What is your deck called?" id="deck_name" name="deck_name"
+                                <input placeholder="What is your Deck called?" id="deck_name" name="deck_name"
                                     minlength="5" maxlength="30" type="text" class="validate" required>
                                 <label for="deck_name">Deck Name</label>
                             </div>
@@ -23,7 +70,7 @@
                         <!-- This field allows the user to specify which language their deck is in. -->
                         <div class="input-field col s12 l5 offset-l1">
                             <select id="deck_language" name="deck_language" required>
-                                <option value="" disabled selected>Choose deck language.</option>
+                                <option value="" disabled selected>Choose Deck language.</option>
                                 <option value="French"
                                     data-icon="{{ url_for('static', filename='images/flag-icons/france.jpg') }}">French
                                 </option>
@@ -42,7 +89,7 @@
                         <!-- This field allows the user to indicate which level of difficulty their deck corresponds with. -->
                         <div class="input-field col s12 l5">
                             <select id="deck_level" name="deck_level" class="validate" required>
-                                <option value="" disabled selected>Choose deck level.</option>
+                                <option value="" disabled selected>Choose Deck level.</option>
                                 <option value="Beginner">Beginner</option>
                                 <option value="Intermediate">Intermediate</option>
                                 <option value="Advanced">Advanced</option>
@@ -53,14 +100,13 @@
                     <!-- This field prompts the user to provide a brief description of their deck. -->
                     <div class="row">
                         <div class="input-field col s12 l10 offset-l1">
-                            <input placeholder="Describe your deck." id="deck_description" name="deck_description"
+                            <input placeholder="Describe your Deck." id="deck_description" name="deck_description"
                                 minlength="20" maxlength="100" type="text" class="validate" required>
                             <label for="deck_description">Deck Description</label>
                         </div>
                     </div>
                     <div class="container">
                         <h4 class="center-align black-text form-sub-heading">Cards</h4>
-                        <p class="center-align"><a href=""><i class="fas fa-info-circle fa-2x info-icon"></i></a></p>
                         <div id="card-container">
                             <div class="card grey lighten-5">
                                 <div class="card-content white-text">
