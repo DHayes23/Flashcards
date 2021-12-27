@@ -200,6 +200,7 @@ def create_deck():
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
     if session["user"]:
+        deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
 
         if request.method == "POST":
             mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
@@ -208,9 +209,34 @@ def edit_deck(deck_id):
                 "deck_level": request.form.get("deck_level"),
                 "deck_description": request.form.get("deck_description"),
             }})
-            flash("Deck Changes Saved!")
+            deck["deck_card_fronts"] = []
+            deck["deck_card_backs"] = []
+            
+            max_cards = 30
 
-        deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
+            for i in range(max_cards):
+
+                front_input_name = f"{i}_card_front"
+                back_input_name = f"{i}_card_back"
+
+                front_input_value = request.form.get(front_input_name)
+                back_input_value = request.form.get(back_input_name)
+                
+                if front_input_value != "" and front_input_value is not None and back_input_value != "" and back_input_value is not None:
+                    deck['deck_card_fronts'].append(
+                        front_input_value)
+                    deck['deck_card_backs'].append(
+                        back_input_value)
+                
+                else:
+                    pass
+                mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
+                    "deck_card_fronts": deck['deck_card_fronts'],
+                    "deck_card_backs": deck['deck_card_backs'],
+                    }})
+
+            flash("Deck Changes Saved!")
+            
         return render_template("edit_deck.html", deck=deck)
 
 

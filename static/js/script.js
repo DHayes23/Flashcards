@@ -42,6 +42,25 @@ $(document).ready(function () {
         $(this).remove();
     })
 
+    cardCounterEdit = $('#counter-class-container .counter-class').length
+    cardIdEdit = $('#counter-class-container .counter-class').length
+    console.log("Counter class: " +cardCounterEdit)
+
+    $("#add-card-button-edit").click(function () {
+        if (cardCounterEdit < 30){
+            
+        $(".card-container-edit").last().append(`
+            '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardIdEdit}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardIdEdit}_card_front">English</label><input type="text" id="${cardIdEdit}_card_front" name="${cardIdEdit}_card_front" class="validate" required minlength="2" maxlength="32"></div><div class="col s12 m4"><label for="${cardIdEdit}_card_back">Translation</label><input type="text" id="${cardIdEdit}_card_back" name="${cardIdEdit}_card_back" class="validate" required minlength="2" maxlength="32"></div></div></div></div>'`);
+        $("#add-card-button-edit").attr("href", `#${cardCounterEdit}-card-locator`)
+       
+        cardIdEdit++
+        cardCounterEdit++ 
+        console.log("Card ID Edit = " + cardIdEdit)
+        console.log("Card Counter Edit = " + cardCounterEdit)
+    }});
+    
+
+
 });
 
 
