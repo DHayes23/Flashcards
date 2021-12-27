@@ -172,7 +172,7 @@ def create_deck():
             deck["deck_card_fronts"] = []
             deck["deck_card_backs"] = []
             
-            max_cards = 50
+            max_cards = 30
 
             for i in range(max_cards):
 
