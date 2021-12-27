@@ -32,6 +32,7 @@ $(document).ready(function () {
     $(document).on("click", ".remove-card-button", function(){
     cardCounter--
     $(this).parent().remove()
+    cardId--
     });
 
     // Card flip controller
