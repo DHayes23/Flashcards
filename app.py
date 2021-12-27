@@ -62,8 +62,8 @@ def create_an_account():
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(request.form.get("password")),
                 "is_admin": False,
+                "is_super_admin": False,
                 "join_date": date.strftime("%-d-%b-%Y"),
-                "my_decks": [],
                 "loved_decks": []
             }
             mongo.db.users.insert_one(new_user)
