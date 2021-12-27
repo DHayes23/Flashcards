@@ -137,7 +137,7 @@ main {
 
 .card-container {
     width: 300px;
-    height: 450px;
+    height: 500px;
     position: relative;
     perspective: 700px;
 }
