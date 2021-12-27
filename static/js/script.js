@@ -15,7 +15,7 @@ $(document).ready(function () {
     let cardCounter = 1;
     let cardId = 1;
     $("#add-card-button").click(function () {
-        if (cardCounter < 50){
+        if (cardCounter < 30){
 
         $("#card-container").append(`
             '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardId}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardId}_card_front">English</label><input type="text" id="${cardId}_card_front" name="${cardId}_card_front" class="validate" required minlength="2" maxlength="32"></div><div class="col s12 m4"><label for="${cardId}_card_back">Translation</label><input type="text" id="${cardId}_card_back" name="${cardId}_card_back" class="validate" required minlength="2" maxlength="32"></div></div></div></div>'`);
@@ -26,6 +26,8 @@ $(document).ready(function () {
         console.log("Card ID = " + cardId)
         console.log("Card Counter = " + cardCounter)
     }});
+
+    // Clicking the remove-card-button removes a card from the form, and reduces the card counter.
     
     $(document).on("click", ".remove-card-button", function(){
     cardCounter--
