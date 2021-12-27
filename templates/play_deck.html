@@ -6,7 +6,7 @@
 <section class="container">
     <div class="row">
         <div class="col s12 m4 offset-m4">
-            <div class="card-panel blue-grey darken-1">
+            <div class="card-panel white-text blue-grey darken-1">
                 <ul>
                     {% if session.user != deck.deck_created_by %}
                         {% if user_id in deck.deck_loved_by %} 
@@ -31,11 +31,11 @@
                             alt="Icon sized image of the Spanish flag.">
                         {% endif %}
                     </li><br>
-                    <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
-                    <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
-                    <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
-                    <li class="card-title center-align card-item">Deck Description: {{ deck.deck_description}}</li><br>
-                    <li class="card-title center-align card-item">Created by: {{ deck.deck_created_by|title }}</li><br>
+                    <li class="card-title center-align card-item"><h5>{{ deck.deck_language }}</h3></li><br>
+                    <li class="card-title center-align card-item"><h5>{{ deck.deck_name|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>Level: {{ deck.deck_level }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>Created by: {{ deck.deck_created_by|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><p>Deck Description: {{ deck.deck_description}}</p></li><br>
                 </ul>
             </div>
         </div>
