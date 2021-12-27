@@ -80,7 +80,6 @@ def create_an_account():
         return redirect(url_for("my_decks", username=session["user"]))
 
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if session.get("user") is None:
@@ -201,6 +200,7 @@ def create_deck():
 
         return render_template("create_deck.html")
 
+
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
     if session["user"]:
@@ -258,6 +258,7 @@ def delete_cards(deck_id):
 
 
         return redirect(url_for("edit_deck", deck_id=deck_id))
+
 
 @app.route("/play_deck/<deck_id>")
 def play_deck(deck_id):
