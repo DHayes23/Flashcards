@@ -353,7 +353,7 @@ def admin_delete_user(user_id):
 
 @app.route("/admin_promote_user/<user_id>")
 def admin_promote_user(user_id):
-    if session["admin"]:
+    if session["super_admin"]:
 
         users = list(mongo.db.users.find())
         mongo.db.users.update({"_id": ObjectId(user_id)}, {"$set": {
@@ -365,7 +365,7 @@ def admin_promote_user(user_id):
 
 @app.route("/admin_demote_user/<user_id>")
 def admin_demote_user(user_id):
-    if session["admin"]:
+    if session["super_admin"]:
 
         users = list(mongo.db.users.find())
         mongo.db.users.update({"_id": ObjectId(user_id)}, {"$set": {
