@@ -240,6 +240,21 @@ def edit_deck(deck_id):
         return render_template("edit_deck.html", deck=deck)
 
 
+@app.route("/delete_cards/<deck_id>")
+def delete_cards(deck_id):
+    
+    if session["user"]:
+
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
+                    "deck_card_fronts": ["Add your word here!"],
+                    "deck_card_backs": ["Add the translation here!"],
+                    }})
+        flash("Cards Deleted")
+        
+
+
+        return redirect(url_for("edit_deck", deck_id=deck_id))
+
 @app.route("/play_deck/<deck_id>")
 def play_deck(deck_id):
     if session["user"]:
