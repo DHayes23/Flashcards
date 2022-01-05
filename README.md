@@ -330,6 +330,7 @@ Access the live website at: https://milestone-project-3-dh.herokuapp.com
   ---
  ## **Database - Data Schema**
  ---
+ ![](README_ASSETS/DataSchema.jpeg)
   ---
  ## **Database - Collections - Users**
  ---
@@ -401,6 +402,10 @@ Access the live website at: https://milestone-project-3-dh.herokuapp.com
  * This uses Flask's templating system to render the different views of the website.
  * All templates extend from base.html.
  * Each section 
+---
+ ## **Site Structure - User Flow Chart**
+---
+ ![](README_ASSETS/UserFlowChart.jpeg)
 ---
  ## **Site Structure - Template: base.html - (Accessible by: All Users)**
 ---
