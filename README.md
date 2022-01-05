@@ -407,6 +407,17 @@ Access the live website at: https://milestone-project-3-dh.herokuapp.com
 ---
  ![](README_ASSETS/UserFlowChart.jpeg)
 ---
+ ## **Site Structure - Wireframes**
+ * This section contains images of the wireframes created in the pre-production stages of this project.
+ * All wireframes that have been created can be found in the README_ASSETS/Wireframes_Desktop and README_ASSETS/Wireframes_Mobile.
+![](README_ASSETS/Wireframes_Decktop/HomePage(LoggedOut)-Desktop.png)
+![](README_ASSETS/Wireframes_Decktop/LogInForm.png)
+![](README_ASSETS/Wireframes_Decktop/UserProfilePage.png)
+![](README_ASSETS/Wireframes_Decktop/EditDeckPage.png)
+
+---
+ ![](README_ASSETS/UserFlowChart.jpeg)
+---
  ## **Site Structure - Template: base.html - (Accessible by: All Users)**
 ---
 * This is the base view, from which all other views on the site extend.
