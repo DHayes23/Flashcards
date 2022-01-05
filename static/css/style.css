@@ -234,6 +234,17 @@ main {
 
     #logo {
         margin-left: 0px;
-        font-size: 3em;
     }
+
+
+/*---------Index Headings---------*/
+
+    .index-heading {
+        font-size: 1.3em;
+        margin: 20px;
+    }
+    .index-heading:last-of-type {
+        margin-bottom: 5px;
+    }
+
 }
