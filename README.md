@@ -511,6 +511,9 @@ Access the live website at: https://milestone-project-3-dh.herokuapp.com
 * The website has been designed to be fully responsive, meaning that it functions properly on any screen size.
 * The primary responsivity tool used has been the Materialize grid system in conjuntion with the preset screen size settings (s, m, l etc.) provided with Materialize.
 * Where necessary, CSS Media Queries have been used to create custom display rules outside of those present within the Materialize framework. These Media Queries have been created in line with the screen sizes present in the Materialize framework, thereby ensuring compatibility and predictable usage.
+ ![](README_ASSETS/Responsivity_Images/Index.png)
+ ![](README_ASSETS/Responsivity_Images/LogIn.png)
+ ![](README_ASSETS/Responsivity_Images/Play.png)
 ---
  ## **Design Notes - Animations**
 ---
