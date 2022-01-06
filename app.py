@@ -417,11 +417,10 @@ def deck_management():
 def admin_delete_deck(deck_id):
     if session["admin"]:
 
-        decks = list(mongo.db.decks.find())
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
         flash("Deck Deleted")
         
-        return redirect(url_for("deck_management", decks=decks))
+        return redirect(url_for("deck_management"))
 
 
 @app.route("/admin_view_decks/<user_id>")
