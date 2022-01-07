@@ -18,7 +18,7 @@ Testing Procedure:
 * Observe the tab in which the website is open.
 * If the Favicon is present, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Header**
 Expected Functionality:
@@ -39,7 +39,7 @@ Testing Procedure:
 * If the navigation links are replaced with a 'burger menu', click the menu.
 * If clicking the menu icon opens a sidenave which displays the same link elements as would be found on a large screen, albeit displayed vertically, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Footer**
 Expected Functionality:
@@ -55,7 +55,7 @@ Testing Procedure:
 * Click on the Email icon. If a new tab opens with the user's default email client and automatically fills the 'To' field of the email with a contact email address, this aspect of the feature is functioning as expected.
 * Click on the 'Back to Top' button. If the page scrolls gently back to the top, this aspect of the feature is functioning as expected. NOTE: If the page does not have sufficient content to navigate away from the top of the page, this button will not scroll. This is the expected functionality of the button.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
  ## **Feature Set - Index**
@@ -70,7 +70,7 @@ Testing Procedure:
 * Click on the "Create an Account" link within the heading.
 * If clicking the link redirects to the Create an Account page, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Deck Display - All Decks**
 Expected Functionality:
@@ -85,7 +85,7 @@ Testing Procedure:
 * Click the Play button on a deck.
 * If clicking the Play button redirects to that specific deck's corresponding Play page, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
  ## **Feature Set - Create an Account**
@@ -109,7 +109,7 @@ Testing Procedure:
 * Click the 'Create Account' button.
 * If upon clicking the button a prompt appears requesting changes be made to the input/s, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Call to Action**
 Expected Functionality:
@@ -120,7 +120,7 @@ Testing Procedure:
 * Click on the "Log in here!" link within the heading.
 * If clicking the link redirects to the Log In page, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ---
  ## **Feature Set - Log In**
@@ -144,7 +144,7 @@ Testing Procedure:
 * Click the 'Log In' button.
 * If upon clicking the button a prompt appears requesting changes be made to the input/s, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Call to Action**
 Expected Functionality:
@@ -155,7 +155,7 @@ Testing Procedure:
 * Click on the "Log in here!" link within the heading.
 * If clicking the link redirects to the Log In page, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ---
  ## **Feature - Log Out**
@@ -168,7 +168,7 @@ Testing Procedure:
 * Click on the Log Out button.
 * If clicking the button removes all session cookies and redirects the user to the Index page, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ## **Feature Set - My Decks**
  ---
@@ -181,7 +181,7 @@ Testing Procedure:
 * Log in as any user.
 * Observe the Username Banner. If the user's username is being displayed correctly, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Your Decks - Deck Display**
  Expected Functionality:
@@ -200,7 +200,7 @@ Testing Procedure:
 * Click the Edit button on a deck.
 * If clicking the Edit button redirects to that specific deck's corresponding Edit Deck page, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Create New Deck Button**
  Expected Functionality:
@@ -211,7 +211,7 @@ Testing Procedure:
 * Click on the Create New Deck button.
 * If clicking the button redirects to the Create Deck Page, this feeature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Decks You Love - Deck Display**
 Expected Functionality:
@@ -227,7 +227,7 @@ Testing Procedure:
 * Click the Play button on a deck.
 * If clicking the Play button redirects to that specific deck's corresponding Play page, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
 ## **Feature - Love System**
@@ -247,7 +247,7 @@ Testing Procedure:
 * Check the deck's 'deck_loved_by' array for the currently logged in user's _id again. If the _id is no longer present, this aspect of the feature is functioning as expected.
 * Navigate to the currently logged in user's My Decks page. Observe the Decks You Love Deck Display. Check that the deck that has just been 'unloved' is no longer present in the display. If the deck is not present, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ## **Feature Set - Create New Deck**
 ---
@@ -265,7 +265,7 @@ Testing Procedure:
 * Click on any part of the website outside of the modal.
 * If clicking any part of the website outside of the modal closes the modal, this aspect of the feature is fucntioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Create New Deck - Deck Overview - Form**
   Expected Functionality:
@@ -283,7 +283,7 @@ Testing Procedure:
 * Click the 'Create Deck' button.
 * If upon clicking the button a prompt appears requesting changes be made to the input/s, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Create New Deck - Cards - Form**
    Expected Functionality:
@@ -308,7 +308,7 @@ Testing Procedure:
 * Click the 'X' icon within the newly created card element.
 * If clicking the icon removes the card element to which it is associated, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ---
 ## **Feature Set - Edit Deck**
@@ -331,7 +331,7 @@ Testing Procedure:
 * Click the 'Create Deck' button.
 * If upon clicking the button a prompt appears requesting changes be made to the input/s, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Edit Deck - Cards - Form**
 Expected Functionality:
@@ -351,7 +351,7 @@ Testing Procedure:
 * Click the 'Create Deck' button.
 * If upon clicking the button a prompt appears requesting changes be made to the input/s, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Edit Deck - Delete All Cards - Button**
    Expected Functionality:
@@ -375,7 +375,7 @@ Testing Procedure:
 * Click on any part of the website outside of the modal.
 * If clicking any part of the website outside of the modal closes the modal, this aspect of the feature is fucntioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Edit Deck - Delete This Deck - Button**
   Expected Functionality:
@@ -398,7 +398,7 @@ Testing Procedure:
 * Click on any part of the website outside of the modal.
 * If clicking any part of the website outside of the modal closes the modal, this aspect of the feature is fucntioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Edit Deck - Love Counter Display**
 Expected Functionality:
@@ -411,7 +411,7 @@ Testing Procedure:
 * Note the 'deck_love_counter' field's value.
 * Compare the integer in the 'deck_love_counter' field in the database with that presented in the Love Counter Display. If the values match, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Edit Deck - Report Counter Display**
 Expected Functionality:
@@ -424,7 +424,7 @@ Testing Procedure:
 * Note the 'deck_report_counter' field's value.
 * Compare the integer in the 'deck_report_counter' field in the database with that presented in the Report Counter Display. If the values match, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ---
 ## **Feature Set - Play Deck**
@@ -436,7 +436,7 @@ Current Status: <span style="color:green">**Functional**</span>
 Testing Procedure:
 * Navigate to the Play page for any deck and observe the Deck Display. If the details of the deck are displayed correctly this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Play Deck - Love Deck**
  Expected Functionality:
@@ -457,7 +457,7 @@ Testing Procedure:
 * Click the Report Deck flag icon.
 * If the site redirects to the Create Report page, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Play Deck - Cards**
  Expected Functionality:
@@ -473,7 +473,7 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Decks' collection. Find the deck that is currently being played. 
 * Cross reference the cards displayed on the Play page with the 'deck_card_fronts' and 'deck_card_backs' for the corresponding deck. If the data matches, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ### **Play Deck - Reset Deck - Button**
   Expected Functionality:
@@ -484,7 +484,7 @@ Testing Procedure:
 * Flip any combination of the cards on the Play page.
 * Click either of the Reset Deck buttons. If all cards on the Play deck page return to their original state, this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
  ---
 ## **Feature Set - Report Deck**
@@ -496,7 +496,7 @@ Current Status: <span style="color:green">**Functional**</span>
 Testing Procedure:
 * Navigate to the Report Deck page for any deck and observe the Deck Display. If the details of the deck are displayed correctly this feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Report Deck - Information Display**
 Expected Functionality:
@@ -506,7 +506,7 @@ Testing Procedure:
 * Navigate to the Report Deck page for any deck while using a large screen and observe the Information Display. If the Information Display is visible, this aspect of the feature is functioning as expecting.
 * Navigate to the Report Deck page for any deck while using a small screen and observe the Information Display. If the Information Display is not visible, this aspect of the feature is functioning as expecting.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Report Deck - Form**
 Expected Functionality:
@@ -522,7 +522,7 @@ Testing Procedure:
 * Click the 'Report' button.
 * If upon clicking the Report button a prompt appears requesting changes be made to the form, this aspect of the feature is functioning as expected.
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
 ## **Feature Set - Admin Utility - User Management**
@@ -536,7 +536,7 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Users' collection.
 * Cross reference the data displayed on the Administrator Display with the data found in the 'Users' collection. If the appropriate data is being displayed, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **User Management - Standard Users Display**
 Expected Functionality:
@@ -547,7 +547,7 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Users' collection.
 * Cross reference the data displayed on the Standard Users Display with the data found in the 'Users' collection. If the appropriate data is being displayed, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
 ## **Feature Set - Admin Utility - Deck Management**
@@ -562,7 +562,7 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Decks' collection.
 * Cross reference the data displayed on the All Decks Display with the data found in the 'Decks' collection. If the appropriate data is being displayed, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
 ## **Feature Set - Admin Utility - Report Management**
@@ -577,7 +577,7 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Reports' collection.
 * Cross reference the data displayed on the Open Reports Display with the data found in the 'Reports' collection. If the appropriate data is being displayed, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ### **Report Management - Archived Reports**
 Expected Functionality:
@@ -588,6 +588,50 @@ Testing Procedure:
 * Log into MongoDB and browse the 'Reports' collection.
 * Cross reference the data displayed on the Archived Reports Display with the data found in the 'Reports' collection. If the appropriate data is being displayed, this feature is functioning as expected. 
 
-Current Status: <span style="color:green">**Functional**</span>
+Current Status: <span style="color:green">**FUNCTIONAL**</span>
+
+---
+ ## **Browser Compatibility**
+ The following section documents the compatibility of the site with a variety of browsers.
+ ---
+  ---
+## **Browser Compatibility - Google Chrome**
+ ---
+**Testing Status:** <span style="color:green">**COMPLETE**</span>
+
+**Testing Result:** <span style="color:green">**FULLY COMPATIBLE**</span>
+
+---
+## **Browser Compatibility - Firefox**
+ ---
+**Testing Status:** <span style="color:green">**COMPLETE**</span>
+
+**Testing Result:** <span style="color:green">**FULLY COMPATIBLE**</span>
+
+---
+## **Browser Compatibility - Microsoft Edge**
+ ---
+**Testing Status:** <span style="color:green">**COMPLETE**</span>
+
+**Testing Result:** <span style="color:green">**FULLY COMPATIBLE**</span>
+
+---
+## **Browser Compatibility - Internet Explorer**
+ ---
+**Testing Status:** <span style="color:green">**COMPLETE**</span>
+
+**Testing Result:** <span style="color:red">**INCOMPATIBLE**</span>
+
+**Details:**
+* Internet Explorer does not support the animation used to 'flip' cards, thereby making all Play screens unusable.
+* The Materialize library of JavaScript components is not compatible with Internet explorer, meaning that all elements using the library do not function.
+* Due to the sweeping nature of the incompatibilities and the fact that Microsoft is retiring Internet Explorer, no attempt to make this website compatible with the browser will be made.
+
+---
+## **Browser Compatibility - Safari**
+ ---
+**Testing Status:** <span style="color:red">**INCOMPLETE**</span>
+
+**Testing Result:** <span style="color:orange">**UNKNOWN**</span>
 
 ---
