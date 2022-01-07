@@ -21,9 +21,9 @@
     href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" 
     href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <title>Flashcards</title>
     {% block styles  %}
     {% endblock  %}
-    <title>Flashcards</title>
 </head>
 
 <body>
@@ -45,8 +45,7 @@
                     {% endif %}
                     <a href="#" data-target="mobile-demo"
                      class="sidenav-trigger right"><i class="fas fa-bars">
-
-                     </i></i></a>
+                     </i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if not session.user %}
                         <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -183,8 +182,6 @@
             </div>
             <div class="row center-align"><a class="btn-small orange"
                href="#top-nav">Back to Top</a></div>
-        </div>
-
         </div>
     </footer>
 
