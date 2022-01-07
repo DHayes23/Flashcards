@@ -9,117 +9,152 @@
                 <ul>
                     <li class="center-align card-item flag-icon">
                         {% if deck.deck_language == "French" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/france.jpg') }}"
                             alt="Icon sized image of the French flag.">
                         {% elif deck.deck_language == "German" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/germany.jpg') }}"
                             alt="Icon sized image of the German flag.">
                         {% elif deck.deck_language == "Italian" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/italy.jpg') }}"
                             alt="Icon sized image of the Italian flag.">
                         {% elif deck.deck_language == "Spanish" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/spain.jpg') }}"
                             alt="Icon sized image of the Spanish flag.">
                         {% endif %}
                     </li><br>
-                    <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
-                    <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
-                    <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
-                    <li class="card-title center-align card-item">Created by: {{ deck.deck_created_by|title }}</li><br>
+                    <li class="card-title center-align card-item">
+                      {{ deck.deck_language }}</li><br>
+                    <li class="card-title center-align card-item">
+                      {{ deck.deck_name|title }}</li><br>
+                    <li class="card-title center-align card-item">
+                      Level: {{ deck.deck_level }}</li><br>
+                    <li class="card-title center-align card-item">
+                      Created by: {{ deck.deck_created_by|title }}</li><br>
                     <li class="center-align card-item">
                         <a class="waves-effect waves-light btn-small blue"
-                            href="{{ url_for('play_deck', deck_id=deck._id) }}">Return to Deck</a>
+                            href="{{ url_for('play_deck', deck_id=deck._id) }}">
+                            Return to Deck</a>
                     </li>
                 </ul>
             </div>
         </div>
-        <h5 class="hide-on-med-and-down">When you report a deck, our Admins will review the deck and, if necessary, will
+        <h5 class="hide-on-med-and-down">When you report a deck, our Admins will
+           review the deck and, if necessary, will
             make changes to its content.</h5>
-        <h5 class="hide-on-med-and-down">In some cases, a deck may be deleted.</h5>
+        <h5 class="hide-on-med-and-down">In some cases, a deck may
+           be deleted.</h5>
     </div>
 
-    <form class="col s12 l8" method="POST" action="{{ url_for('create_report', deck_id=deck._id) }}">
+    <form class="col s12 l8" method="POST" action="{{ url_for('create_report',
+     deck_id=deck._id) }}">
         <div class="card grey lighten-5">
             <div class="card-content">
                 <ul>
-                    <h5 class="center-align form-sub-heading">I am reporting this deck for the following reasons:</h5>
+                    <h5 class="center-align form-sub-heading">I am reporting
+                       this deck for the following reasons:</h5>
                     <hr>
                     <br>
                     <div class="row">
                         <div class="col m6">
                             <p class="report-checkbox">
                                 <label for="report_check_1">
-                                    <input type="checkbox" value="true" id="report_check_1" name="report_check_1"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_1" name="report_check_1"
                                         class="filled-in" />
-                                    <span class="report-checkbox">Cards are not in the correct language.</span>
+                                    <span class="report-checkbox">Cards are not
+                                       in the correct language.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col m6">
                             <p>
                                 <label for="report_check_2">
-                                    <input type="checkbox" value="true" id="report_check_2" name="report_check_2"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_2" name="report_check_2"
                                         class="filled-in" />
-                                    <span class="report-checkbox">It contains improperly translated cards.</span>
+                                    <span class="report-checkbox">It contains 
+                                      improperly translated cards.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col m6">
                             <p>
                                 <label for="report_check_3">
-                                    <input type="checkbox" value="true" id="report_check_3" name="report_check_3"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_3" name="report_check_3"
                                         class="filled-in" />
-                                    <span class="report-checkbox">The content does not align with the level.</span>
+                                    <span class="report-checkbox">The content 
+                                      does not align with the level.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col m6">
                             <p>
                                 <label for="report_check_4">
-                                    <input type="checkbox" value="true" id="report_check_4" name="report_check_4"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_4" name="report_check_4"
                                         class="filled-in" />
-                                    <span class="report-checkbox">The deck name and content don't match.</span>
+                                    <span class="report-checkbox">The deck name
+                                       and content don't match.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col m6">
                             <p>
                                 <label for="report_check_5">
-                                    <input type="checkbox" value="true" id="report_check_5" name="report_check_5"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_5" name="report_check_5"
                                         class="filled-in" />
-                                    <span class="report-checkbox">It contains offensive language and/or themes.</span>
+                                    <span class="report-checkbox">It contains 
+                                      offensive language and/or themes.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col m6">
                             <p>
                                 <label for="report_check_6">
-                                    <input type="checkbox" value="true" id="report_check_6" name="report_check_6"
+                                    <input type="checkbox" value="true" 
+                                    id="report_check_6" name="report_check_6"
                                         class="filled-in" />
-                                    <span class="report-checkbox">For a reason not within this list.</span>
+                                    <span class="report-checkbox">For a reason 
+                                      not within this list.</span>
                                 </label>
                             </p>
                         </div>
                         <div class="col s12">
-                            <h5 class="center-align form-sub-heading">Tell us more about why you're reporting this deck
+                            <h5 class="center-align form-sub-heading">Tell us 
+                              more about why you're reporting this deck
                                 below.</h5>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="report_details">Report Details</label>
-                                <textarea id="report_details" name="report_details"
-                                    class="materialize-textarea validate" minlength="20" maxlength="350" required placeholder="Between 20 and 350 characters."></textarea>
+                                <label for="report_details">
+                                  Report Details</label>
+                                <textarea id="report_details" 
+                                name="report_details"
+                                    class="materialize-textarea validate" 
+                                    minlength="20" maxlength="350" required 
+                                    placeholder="Between 20 and 350 characters."
+                                    ></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6 m4 offset-m2 center-align">
-                            <a href="{{ url_for('play_deck', deck_id=deck._id) }}"
-                                class="waves-effect waves-light btn-large manage-deck-button red">Cancel</a>
+                            <a href="{{ url_for('play_deck',
+                             deck_id=deck._id) }}"
+                                class="waves-effect waves-light btn-large
+                                 manage-deck-button red">Cancel</a>
                         </div>
-                        <!-- This button posts the changes made to the report to the server. -->
+                        <!-- This button posts the changes made to the report
+                           to the server. -->
                         <div class="col s6 m4 center-align">
-                            <button class="waves-effect waves-light btn-large manage-deck-button light-green"
+                            <button class="waves-effect waves-light btn-large
+                             manage-deck-button light-green"
                                 type="submit">Report</button>
                         </div>
                     </div>

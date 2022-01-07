@@ -4,14 +4,16 @@
 <h3 class="center-align">Log In</h3>
 
 <div class="row container">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
+    <form class="col s12 m8 offset-m2" method="POST"
+     action="{{ url_for('login') }}">
         <div class="card-panel">
             <!-- Username Input -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user fa-2x prefix"></i>
                     <input id="username" name="username" type="text"
-                     pattern="^[a-zA-Z0-9]{5,15}$" class="validate" minlength="5" maxlength="15" required>
+                     pattern="^[a-zA-Z0-9]{5,15}$" class="validate" 
+                     minlength="5" maxlength="15" required>
                     <label for="username">Username</label>
                 </div>
             </div>
@@ -19,17 +21,20 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-lock fa-2x prefix"></i>
-                    <input id="password" name="password" type="password" pattern="^[a-zA-Z0-9]{5,20}$"
+                    <input id="password" name="password" type="password" 
+                    pattern="^[a-zA-Z0-9]{5,20}$"
                     class="validate" minlength="8" maxlength="20" required>
                     <label for="password">Password</label>
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="col s6 offset-s3 btn-large">Log In</button>
+                <button type="submit" class="col s6 offset-s3
+                 btn-large">Log In</button>
             </div>
         </div>
 </div>
-<h5 class="center-align">Don't have your account yet? <a href="{{ url_for('create_an_account') }}">Create an Account!</a></h5>
+<h5 class="center-align">Don't have your account yet?
+   <a href="{{ url_for('create_an_account') }}">Create an Account!</a></h5>
 </form>
 </div>
 

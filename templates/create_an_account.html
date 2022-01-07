@@ -4,14 +4,16 @@
 <h3 class="center-align">Create Your Account</h3>
 
 <div class="row container">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('create_an_account') }}">
+    <form class="col s12 m8 offset-m2" method="POST"
+     action="{{ url_for('create_an_account') }}">
         <div class="card-panel">
             <!-- Username Input -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user-plus fa-2x prefix"></i>
                     <input id="username" name="username" type="text"
-                     pattern="^[a-zA-Z0-9]{5,15}$" class="validate" minlength="5" maxlength="15" required>
+                     pattern="^[a-zA-Z0-9]{5,15}$" class="validate"
+                      minlength="5" maxlength="15" required>
                     <label for="username">Username</label>
                 </div>
             </div>
@@ -19,17 +21,21 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-lock fa-2x prefix"></i>
-                    <input id="password" name="password" type="password" pattern="^[a-zA-Z0-9]{5,20}$"
-                    class="validate" minlength="8" maxlength="20" required>
+                    <input id="password" name="password" type="password"
+                     pattern="^[a-zA-Z0-9]{5,20}$"
+                    class="validate" minlength="8" maxlength="20"
+                     required>
                     <label for="password">Password</label>
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="col s6 offset-s3 btn-large">Create Account</button>
+                <button type="submit"
+                 class="col s6 offset-s3 btn-large">Create Account</button>
             </div>
         </div>
 </div>
-<h5 class="center-align">Already have an account? <a href="{{ url_for('login') }}">Log in here!</a></h4>
+<h5 class="center-align">Already have an account? <a 
+  href="{{ url_for('login') }}">Log in here!</a></h4>
 </form>
 </div>
 

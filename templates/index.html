@@ -2,9 +2,12 @@
 {% block content %}
 
 <section class="container">
-    <h3 class="center-align index-heading">Learning new vocabulary is easy with Flashcards!</h3>
-    <h4 class="center-align index-heading">Click 'Play' on a deck below to get started or <a
-            href="{{ url_for('create_an_account') }}">Create an Account</a> to build your own!</h4>
+    <h3 class="center-align index-heading">Learning new vocabulary is
+       easy with Flashcards!</h3>
+    <h4 class="center-align index-heading">Click 'Play' on a deck below
+       to get started or <a
+            href="{{ url_for('create_an_account') }}">Create an
+             Account</a> to build your own!</h4>
 
     <h4 class="center-align index-heading">All Decks</h4>
     <div class="row">
@@ -15,24 +18,33 @@
                     <ul>
                         <li class="center-align card-item flag-icon">
                             {% if deck.deck_language == "French" %}
-                                <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                                <img src="{{ url_for('static',
+                                 filename='images/flag-icons/france.jpg') }}"
                                     alt="Icon sized image of the French flag.">
                             {% elif deck.deck_language == "German" %}
-                                <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                                <img src="{{ url_for('static',
+                                 filename='images/flag-icons/germany.jpg') }}"
                                     alt="Icon sized image of the German flag.">
                             {% elif deck.deck_language == "Italian" %}
-                                <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                                <img src="{{ url_for('static',
+                                 filename='images/flag-icons/italy.jpg') }}"
                                     alt="Icon sized image of the Italian flag.">
                             {% elif deck.deck_language == "Spanish" %}
-                                <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                                <img src="{{ url_for('static',
+                                 filename='images/flag-icons/spain.jpg') }}"
                                     alt="Icon sized image of the Spanish flag.">
                             {% endif %}
                         </li><br>
-                        <li class="card-title center-align card-item">{{ deck.deck_language }}</li><br>
-                        <li class="card-title center-align card-item">{{ deck.deck_name|title }}</li><br>
-                        <li class="card-title center-align card-item">Level: {{ deck.deck_level }}</li><br>
+                        <li class="card-title center-align card-item">
+                          {{ deck.deck_language }}</li><br>
+                        <li class="card-title center-align card-item">
+                          {{ deck.deck_name|title }}</li><br>
+                        <li class="card-title center-align card-item">
+                          Level: {{ deck.deck_level }}</li><br>
                         <li class="center-align card-item">
-                            <a class="waves-effect waves-light btn-large" href="{{ url_for('play_deck_anonymous', deck_id=deck._id) }}">Play</a>
+                            <a class="waves-effect waves-light btn-large"
+                             href="{{ url_for('play_deck_anonymous',
+                              deck_id=deck._id) }}">Play</a>
                         </li>
                     </ul>
                 </div>
