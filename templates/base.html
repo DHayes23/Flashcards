@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn new vocabulary with our Flashcards!">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    <meta name="description" 
+    content="Learn new vocabulary with our Flashcards!">
+    <link rel="stylesheet" 
+    href="
+    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="
+        sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    <link rel="stylesheet" 
+    href="
+    https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         type="text/css">
-    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="shortcut icon" type="image/png" 
+    href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" 
+    href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles  %}
     {% endblock  %}
     <title>Flashcards</title>
@@ -21,42 +29,64 @@
 <body>
 
     <header>
-        <!-- Mobile Collapsible Navbar from Materialize shows a standard navbar when on larger screens and shows a burger menu when viewed on mobile. -->
+        <!-- Mobile Collapsible Navbar from Materialize shows a standard
+           navbar when on larger screens and shows a burger menu when viewed on mobile. -->
         <div id="top-nav" class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
                     {% if not session.user %}
-                        <a href="{{ url_for('index') }}" class="brand-logo left" id="logo">Flashcards</a>
+                        <a href="{{ url_for('index') }}" class="brand-logo left"
+                         id="logo">Flashcards</a>
                     {% endif %}
                     {% if session.user %}
-                        <a href="{{ url_for('all_decks', username=session['user']) }}" class="brand-logo left" id="logo">Flashcards</a>
+                        <a href="{{ url_for('all_decks',
+                         username=session['user']) }}" class="brand-logo left"
+                          id="logo">Flashcards</a>
                     {% endif %}
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></i></a>
+                    <a href="#" data-target="mobile-demo"
+                     class="sidenav-trigger right"><i class="fas fa-bars">
+
+                     </i></i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if not session.user %}
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
+                        <li><a href="{{ url_for('create_an_account') }}">
+                          Create an Account</a></li>
                         {% endif %}
                         {% if session.user %}
-                            <li><a href="{{ url_for('all_decks', username=session['user']) }}">Home</a></li>
+                            <li><a href="{{ url_for('all_decks',
+                               username=session['user']) }}">Home</a></li>
                             {% if session.admin %}
-                                <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
-                                <ul id="admin-dropdown" class="dropdown-content">
+                                <li><a href="{{ url_for('my_decks',
+                                   username=session['user']) }}">My Decks</a>
+                                </li>
+                                <ul id="admin-dropdown"
+                                 class="dropdown-content">
                                     <li class="divider"></li>
-                                    <li><a href="{{ url_for('report_management') }}">Reports</a></li>
+                                    <li><a href="{{ url_for('report_management')
+                                     }}">Reports</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="{{ url_for('user_management') }}">User Management</a></li>
+                                    <li><a href="{{ url_for('user_management')
+                                     }}">User Management</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
+                                    <li><a href="{{ url_for('deck_management')
+                                     }}">Deck Management</a></li>
                                 </ul>
-                                <li><a class="dropdown-trigger" href="#!" data-target="admin-dropdown">Admin Utilities<i class="fas fa-caret-square-down fa-1x nav-icon"></i></a></li>
-                                <li><a href="{{ url_for('logout') }}" class="final-nav-item">Log Out</a></li>
+                                <li><a class="dropdown-trigger" href="#!" 
+                                  data-target="admin-dropdown">Admin Utilities
+                                  <i class="fas fa-caret-square-down fa-1x
+                                   nav-icon"></i></a></li>
+                                <li><a href="{{ url_for('logout') }}"
+                                   class="final-nav-item">Log Out</a></li>
                             {% endif %}
                             {% if not session.admin %}
                                 {% if session.user %}
-                                    <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
-                                    <li><a href="{{ url_for('logout') }}" class="final-nav-item">Log Out</a></li>
+                                    <li><a href="{{ url_for('my_decks',
+                                       username=session['user']) }}">
+                                       My Decks</a></li>
+                                    <li><a href="{{ url_for('logout') }}"
+                                       class="final-nav-item">Log Out</a></li>
                                 {% endif %}
                             {% endif %}
                         {% endif %}
@@ -64,7 +94,8 @@
                 </div>
             </nav>
         </div>
-        <!-- This is the side menu, only visible on mobile, which corresponds to the main navbar above -->
+        <!-- This is the side menu, only visible on mobile, which
+           corresponds to the main navbar above -->
         <ul class="sidenav" id="mobile-demo">
             <li>
                 <h4 class="center-align">Flashcards</h4>
@@ -72,26 +103,36 @@
             {% if not session.user %}
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('create_an_account') }}">Create an Account</a></li>
+                <li><a href="{{ url_for('create_an_account') }}">
+                  Create an Account</a></li>
             {% endif %}
             {% if session.user %}
-                <li><a href="{{ url_for('all_decks', username=session['user']) }}">Home</a></li>
+                <li><a href="{{ url_for('all_decks',
+                   username=session['user']) }}">Home</a></li>
                 {% if session.admin %}
-                    <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
+                    <li><a href="{{ url_for('my_decks',
+                       username=session['user']) }}">My Decks</a></li>
                     <ul id="admin-dropdown-mobile" class="dropdown-content">
                         <li class="divider"></li>
-                        <li><a href="{{ url_for('report_management') }}">Reports</a></li>
+                        <li><a href="{{ url_for('report_management')
+                         }}">Reports</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ url_for('user_management') }}">User Management</a></li>
+                        <li><a href="{{ url_for('user_management')
+                         }}">User Management</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ url_for('deck_management') }}">Deck Management</a></li>
+                        <li><a href="{{ url_for('deck_management')
+                         }}">Deck Management</a></li>
                     </ul>
-                    <li><a class="dropdown-trigger" href="#!" data-target="admin-dropdown-mobile">Admin Utilities</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    <li><a class="dropdown-trigger" href="#!" 
+                      data-target="admin-dropdown-mobile">
+                      Admin Utilities</a></li>
+                    <li><a href="{{ url_for('logout') }}">
+                      Log Out</a></li>
                 {% endif %}
                 {% if not session.admin %}
                     {% if session.user %}
-                        <li><a href="{{ url_for('my_decks', username=session['user']) }}">My Decks</a></li>
+                        <li><a href="{{ url_for('my_decks',
+                           username=session['user']) }}">My Decks</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% endif %}
                 {% endif %}
@@ -104,7 +145,8 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div class="row flash-messages red darken-4 tracking-in-contract-bck">
+                    <div class="row flash-messages red darken-4
+                     tracking-in-contract-bck">
                         <h4 class="center-align">{{ message }}</h4>
                     </div>
                 {% endfor %}
@@ -123,26 +165,35 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h5 class="white-text center-align">Check out my other projects on Github or get in touch via email!
+                    <h5 class="white-text center-align">Check out my other
+                       projects on Github or get in touch via email!
                     </h5>
                 </div>
                 <div class="col s12 center-align">
-                    <a href="https://github.com/DHayes23" target="_blank" class="footer-link"><i
-                            class="fab fa-github-square fa-3x footer-icon"></i></a>
-                    <a href="mailto:d.hayesacademy23@gmail.com" target="_blank" class="footer-link"><i
-                            class="fas fa-envelope-square fa-3x footer-icon"></i></a>
+                    <a href="https://github.com/DHayes23" target="_blank"
+                     class="footer-link"><i
+                            class="fab fa-github-square fa-3x footer-icon">
+                          </i></a>
+                    <a href="mailto:d.hayesacademy23@gmail.com"
+                     target="_blank" class="footer-link"><i
+                            class="fas fa-envelope-square
+                             fa-3x footer-icon"></i></a>
                 </div>
                 <div class="col s12 center-align">&#169; Denis Hayes 2021</div>
             </div>
-            <div class="row center-align"><a class="btn-small orange" href="#top-nav">Back to Top</a></div>
+            <div class="row center-align"><a class="btn-small orange"
+               href="#top-nav">Back to Top</a></div>
         </div>
 
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
+    <script src="
+    https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+  </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
