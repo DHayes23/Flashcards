@@ -635,3 +635,101 @@ Current Status: <span style="color:green">**FUNCTIONAL**</span>
 **Testing Result:** <span style="color:orange">**UNKNOWN**</span>
 
 ---
+ ## **Code Validation**
+ The following section documents the validation test results for code document.
+ ---
+ ---
+## **Code Validation - App.py**
+ ---
+**Testing Method:** PEP8(Pycodestyle) Linter
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Style.css**
+ ---
+**Testing Method:** The W3C CSS Validation Service https://jigsaw.w3.org/css-validator/validator
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Template - 404_error.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Template - 500_error.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Template - admin_view_decks.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Template - all_decks.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+ ---
+## **Code Validation - Template - create_an_account.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - create_deck.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - create_new_admin.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - create_report.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:red">**ERRORS**</span>
+
+---
+## **Code Validation - Template - deck_management.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - edit_deck.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - index.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:orange">**ONE ERROR - REPEATED**</span>
+
+**Error Details:** Element br not allowed as child of element ul in this context.
+
+**Error Handling:** Due to the late discovery of this error, it can not be rectified without breaking the deck display. In the future the br tags can be removed and replaced with Materialize grid elements. This error is present on all pages where a deck is displayed, but will only be referenced here.
+
