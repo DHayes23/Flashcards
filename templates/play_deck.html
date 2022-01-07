@@ -10,32 +10,47 @@
                 <ul>
                     {% if session.user != deck.deck_created_by %}
                         {% if user_id in deck.deck_loved_by %} 
-                            <li><a href="{{ url_for('unlove_deck', deck_id=deck._id) }}"><i class="fas fa-3x fa-heart deck-heart-icon left"></i></a></li>
+                            <li><a href="{{ url_for('unlove_deck',
+                               deck_id=deck._id) }}"><i class="fas fa-3x
+                                fa-heart deck-heart-icon left"></i></a></li>
                         {% elif user_id not in deck.deck_loved_by %}
-                            <li><a href="{{ url_for('love_deck', deck_id=deck._id) }}"><i class="far fa-3x fa-heart deck-heart-icon left"></i></a></li>
+                            <li><a href="{{ url_for('love_deck',
+                               deck_id=deck._id) }}"><i class="far fa-3x
+                                fa-heart deck-heart-icon left"></i></a></li>
                         {% endif %}
-                    <li><a href="{{ url_for('create_report', deck_id=deck._id) }}"><i class="far fa-3x fa-flag deck-flag-icon right"></i></a></li>
+                    <li><a href="{{ url_for('create_report',
+                       deck_id=deck._id) }}"><i class="far fa-3x fa-flag 
+                       deck-flag-icon right"></i></a></li>
                     {% endif %}
                     <li class="center-align card-item flag-icon">
                         {% if deck.deck_language == "French" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                        <img src="{{ url_for('static', 
+                        filename='images/flag-icons/france.jpg') }}"
                             alt="Icon sized image of the French flag.">
                             {% elif deck.deck_language == "German" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                        <img src="{{ url_for('static', 
+                        filename='images/flag-icons/germany.jpg') }}"
                             alt="Icon sized image of the German flag.">
                             {% elif deck.deck_language == "Italian" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                        <img src="{{ url_for('static', 
+                        filename='images/flag-icons/italy.jpg') }}"
                             alt="Icon sized image of the Italian flag.">
                             {% elif deck.deck_language == "Spanish" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                        <img src="{{ url_for('static', 
+                        filename='images/flag-icons/spain.jpg') }}"
                             alt="Icon sized image of the Spanish flag.">
                         {% endif %}
                     </li><br>
-                    <li class="card-title center-align card-item"><h5>{{ deck.deck_language }}</h3></li><br>
-                    <li class="card-title center-align card-item"><h5>{{ deck.deck_name|title }}</h5></li><br>
-                    <li class="card-title center-align card-item"><h5>Level: {{ deck.deck_level }}</h5></li><br>
-                    <li class="card-title center-align card-item"><h5>Created by: {{ deck.deck_created_by|title }}</h5></li><br>
-                    <li class="card-title center-align card-item"><p>Deck Description: {{ deck.deck_description}}</p></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      {{ deck.deck_language }}</h3></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      {{ deck.deck_name|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      Level: {{ deck.deck_level }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      Created by: {{ deck.deck_created_by|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><p>
+                      Deck Description: {{ deck.deck_description}}</p></li><br>
                 </ul>
             </div>
         </div>
@@ -50,16 +65,19 @@
                     <div class="container card-container">
                         <div class="card play-card center-align">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[0] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3 blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[0] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[0] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[0] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -71,16 +89,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[1] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[1] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[1] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[1] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[1] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -92,16 +113,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[2] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[2] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[2] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[2] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[2] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -113,16 +137,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[3] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[3] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[3] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[3] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[3] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -134,16 +161,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[4] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[4] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[4] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[4] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[4] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -155,16 +185,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[5] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[5] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[5] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[5] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[5] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -176,16 +209,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[6] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[6] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[6] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[6] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[6] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -197,16 +233,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[7] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[7] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[7] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[7] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[7] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -218,16 +257,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[8] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[8] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[8] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[8] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[8] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -239,16 +281,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[9] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[9] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[9] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[9] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[9] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -260,16 +305,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[10] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[10] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[10] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[10] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[10] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -281,16 +329,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[11] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[11] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[11] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[11] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[11] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -302,16 +353,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[12] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[12] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[12] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[12] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[12] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -323,16 +377,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[13] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[13] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[13] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[13] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[13] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -344,16 +401,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[14] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[14] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[14] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[14] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[14] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -365,16 +425,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[15] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[15] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[15] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[15] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[15] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -386,16 +449,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[16] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[16] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[16] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[16] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[16] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -407,16 +473,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[17] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[17] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[17] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[17] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[17] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -428,16 +497,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[18] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[18] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[18] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[18] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[18] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -449,16 +521,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[19] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[19] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[19] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[19] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[19] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -470,16 +545,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[20] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[20] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[20] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[20] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[20] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -491,16 +569,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[21] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[21] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[21] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[21] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[21] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -512,16 +593,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[22] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[22] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[22] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[22] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[22] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -533,16 +617,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[23] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[23] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[23] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[23] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[23] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -554,16 +641,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[24] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[24] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[24] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[24] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[24] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -575,16 +665,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[25] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[25] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[25] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[25] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[25] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -596,16 +689,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[26] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[26] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[26] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[26] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[26] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -617,16 +713,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[27] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[27] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[27] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[27] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[27] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -638,16 +737,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[28] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[28] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[28] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[28] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[28] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
@@ -659,16 +761,19 @@
                     <div class="container card-container">
                         <div class="card center-align play-card">
                             <div class="front orange accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[29] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[29] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h1>?</h1>
                             </div>
                             <div class="back blue accent-3">
-                                <h3 class="card-text">{{ deck.deck_card_fronts[29] }}</h3>
+                                <h3 class="card-text">
+                                  {{ deck.deck_card_fronts[29] }}</h3>
                                 <h3 class="card-text">=</h3>
                                 <h3>{{ deck.deck_card_backs[29] }}</h3>
                             </div>
-                            <i class="fas fa-3x fa-sync-alt card-icon center-align flip-button btn-large blue"></i>
+                            <i class="fas fa-3x fa-sync-alt card-icon 
+                            center-align flip-button btn-large blue"></i>
                         </div>
                     </div>
                 </div>
