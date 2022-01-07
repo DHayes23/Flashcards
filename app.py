@@ -1,7 +1,7 @@
 import os
 from flask import (
      Flask, flash, render_template,
-      redirect, request, session, url_for)
+     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -17,6 +17,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
 
 @app.route("/")
 @app.route("/index")
@@ -60,7 +61,8 @@ def create_an_account():
 
             new_user = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(request.form.get(
+                    "password")),
                 "is_admin": False,
                 "is_super_admin": False,
                 "join_date": date.strftime("%-d-%b-%Y"),
@@ -90,18 +92,19 @@ def login():
 
             if existing_user:
                 # Confirm matching password
-                if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = existing_user.get("username")
-                        # The following session is granted to admins,
-                        #  providing special access
-                        session["admin"] = existing_user.get("is_admin")
-                        session["super_admin"] = existing_user.get("is_super_admin")
-                        user_id = str(ObjectId(existing_user.get("_id")))
-                        session["id"] = user_id
-                        flash("You've been logged in!")
-                        return redirect(url_for(
-                            "my_decks", username=session["user"]))
+                if check_password_hash(existing_user["password"],
+                                       request.form.get("password")):
+                    session["user"] = existing_user.get("username")
+                    # The following session is granted to admins,
+                    #  providing special access
+                    session["admin"] = existing_user.get("is_admin")
+                    session["super_admin"] = existing_user.get(
+                        "is_super_admin")
+                    user_id = str(ObjectId(existing_user.get("_id")))
+                    session["id"] = user_id
+                    flash("You've been logged in!")
+                    return redirect(url_for(
+                        "my_decks", username=session["user"]))
                 else:
                     # Invalid password match
                     flash("Please enter a valid Username and Password")
@@ -133,7 +136,8 @@ def my_decks(username):
 
     if session["user"]:
         return render_template(
-            "my_decks.html", username=username, user_decks=user_decks, user_loved_decks=user_loved_decks)
+            "my_decks.html", username=username, user_decks=user_decks,
+            user_loved_decks=user_loved_decks)
 
     return redirect(url_for("login"))
 
@@ -149,7 +153,8 @@ def logout():
 @app.route("/create_deck", methods=["GET", "POST"])
 def create_deck():
     if session["user"]:
-        # The following code is used to ensure that a user will have a 'session["id"]'
+        # The following code is used to ensure that
+        #  a user will have a 'session["id"]'
         #  even if they have just created their account, and have
         #  not been granted a 'session["id"]' through login.
         user = mongo.db.users.find_one(
@@ -171,10 +176,10 @@ def create_deck():
                 "deck_report_counter": 0,
                 "deck_times_played": 0,
             }
-            
+
             deck["deck_card_fronts"] = []
             deck["deck_card_backs"] = []
-            
+
             max_cards = 30
 
             for i in range(max_cards):
@@ -184,8 +189,10 @@ def create_deck():
 
                 front_input_value = request.form.get(front_input_name)
                 back_input_value = request.form.get(back_input_name)
-                
-                if front_input_value != "" and front_input_value is not None and back_input_value != "" and back_input_value is not None:
+
+                if (front_input_value != "" and front_input_value is not None
+                        and back_input_value != ""
+                        and back_input_value is not None):
                     deck['deck_card_fronts'].append(
                         front_input_value)
                     deck['deck_card_backs'].append(
@@ -215,7 +222,7 @@ def edit_deck(deck_id):
             }})
             deck["deck_card_fronts"] = []
             deck["deck_card_backs"] = []
-            
+
             max_cards = 30
 
             for i in range(max_cards):
@@ -225,13 +232,15 @@ def edit_deck(deck_id):
 
                 front_input_value = request.form.get(front_input_name)
                 back_input_value = request.form.get(back_input_name)
-                
-                if front_input_value != "" and front_input_value is not None and back_input_value != "" and back_input_value is not None:
+
+                if (front_input_value != "" and front_input_value is not None
+                        and back_input_value != ""
+                        and back_input_value is not None):
                     deck['deck_card_fronts'].append(
                         front_input_value)
                     deck['deck_card_backs'].append(
                         back_input_value)
-                
+
                 else:
                     pass
                 mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
@@ -240,13 +249,13 @@ def edit_deck(deck_id):
                     }})
 
             flash("Deck Changes Saved!")
-            
+
         return render_template("edit_deck.html", deck=deck)
 
 
 @app.route("/delete_cards/<deck_id>")
 def delete_cards(deck_id):
-    
+
     if session["user"]:
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
@@ -254,8 +263,6 @@ def delete_cards(deck_id):
                     "deck_card_backs": ["Add the translation here!"],
                     }})
         flash("Cards Deleted")
-        
-
 
         return redirect(url_for("edit_deck", deck_id=deck_id))
 
@@ -295,7 +302,8 @@ def love_deck(deck_id):
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$push": {
             "deck_loved_by": user_id}})
-        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_love_counter": 1}})
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {
+            "$inc": {"deck_love_counter": 1}})
 
         return redirect(url_for("play_deck", deck_id=deck_id))
 
@@ -314,7 +322,8 @@ def unlove_deck(deck_id):
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$pull": {
             "deck_loved_by": user_id}})
-        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_love_counter": -1}})
+        mongo.db.decks.update({"_id": ObjectId(deck_id)}, {
+            "$inc": {"deck_love_counter": -1}})
 
         return redirect(url_for("play_deck", deck_id=deck_id))
 
@@ -346,7 +355,7 @@ def admin_delete_user(user_id):
         users = list(mongo.db.users.find())
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         mongo.db.decks.remove({"deck_created_by_id": user_id})
-        
+
         flash("User and Decks Deleted")
 
         return redirect(url_for("user_management", users=users))
@@ -391,7 +400,8 @@ def create_new_admin():
 
             new_user = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(
+                    request.form.get("password")),
                 "is_admin": True,
                 "is_super_admin": False,
                 "join_date": date.strftime("%-d-%b-%Y"),
@@ -422,7 +432,7 @@ def admin_delete_deck(deck_id):
         mongo.db.reports.remove({"deck_id": ObjectId(deck_id)})
 
         flash("Deck Deleted")
-        
+
         return redirect(url_for("deck_management"))
 
 
@@ -431,13 +441,15 @@ def admin_view_decks(user_id):
     if session["admin"]:
 
         user_decks = list(mongo.db.decks.find({"deck_created_by_id": user_id}))
-        return render_template("admin_view_decks.html", user_id=user_id, user_decks=user_decks)
+        return render_template("admin_view_decks.html",
+                               user_id=user_id, user_decks=user_decks)
 
 
 @app.route("/create_report/<deck_id>", methods=["GET", "POST"])
 def create_report(deck_id):
     if session["user"]:
-        # The following code is used to ensure that a user will have a 'session["id"]'
+        # The following code is used to ensure
+        #  that a user will have a 'session["id"]'
         #  even if they have just created their account, and have
         #  not been granted a 'session["id"]' through login.
         date = datetime.now().date()
@@ -466,7 +478,8 @@ def create_report(deck_id):
                 "report_closed": False
             }
 
-            mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_report_counter": 1}})
+            mongo.db.decks.update({"_id": ObjectId(deck_id)}, {
+                "$inc": {"deck_report_counter": 1}})
             mongo.db.reports.insert_one(report)
             flash("Thanks, your report has been submitted!")
             return redirect(url_for("my_decks", username=session["user"]))
@@ -479,7 +492,8 @@ def report_management():
 
     if session["admin"]:
 
-        reports = mongo.db.reports.find({"report_closed": False}).sort("report_date")
+        reports = mongo.db.reports.find({
+            "report_closed": False}).sort("report_date")
         return render_template("report_management.html", reports=reports)
 
 
@@ -488,7 +502,8 @@ def report_archive():
 
     if session["admin"]:
 
-        reports = mongo.db.reports.find({"report_closed": True}).sort("report_date")
+        reports = mongo.db.reports.find({
+            "report_closed": True}).sort("report_date")
         return render_template("report_archive.html", reports=reports)
 
 
