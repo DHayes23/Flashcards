@@ -324,6 +324,7 @@ def delete_deck(deck_id):
     if session["user"]:
 
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
+        mongo.db.reports.remove({"deck_id": ObjectId(deck_id)})
         flash("Deck Deleted")
         return redirect(url_for("my_decks", username=session["user"]))
 
@@ -418,6 +419,8 @@ def admin_delete_deck(deck_id):
     if session["admin"]:
 
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
+        mongo.db.reports.remove({"deck_id": ObjectId(deck_id)})
+
         flash("Deck Deleted")
         
         return redirect(url_for("deck_management"))
