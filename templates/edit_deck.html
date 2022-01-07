@@ -2,9 +2,11 @@
 {% block content %}
 
 <h3 class="center-align">Edit Deck</h3>
-<div class="center-align"><a class="waves-effect waves-light btn modal-trigger black modal-button" href="#delete-deck-modal">Delete This Deck</a>
+<div class="center-align"><a class="waves-effect waves-light btn modal-trigger
+   black modal-button" href="#delete-deck-modal">Delete This Deck</a>
 <br>
-<div class="center-align"><a class="waves-effect waves-light btn modal-trigger red modal-button" href="#delete-cards-modal">Delete All Cards</a>
+<div class="center-align"><a class="waves-effect waves-light btn modal-trigger
+   red modal-button" href="#delete-cards-modal">Delete All Cards</a>
     <div class="row">
         <div class="col s12 m6">
             {% if deck.deck_love_counter == 0 %}
@@ -19,9 +21,11 @@
             {% if deck.deck_report_counter == 0 %}
                 <h5>No one has reported this deck.</h5>
             {% elif deck.deck_report_counter == 1 %}
-                <h5>{{deck.deck_report_counter}} person has reported this deck!</h5>
+                <h5>{{deck.deck_report_counter}}
+                   person has reported this deck!</h5>
             {% else %}
-                <h5>{{deck.deck_report_counter}} people have reported this deck!</h5>
+                <h5>{{deck.deck_report_counter}} people have reported
+                   this deck!</h5>
             {% endif %}
         </div>
     </div>
@@ -30,10 +34,12 @@
 <div id="delete-deck-modal" class="modal">
     <div class="modal-content">
         <h4>Delete Deck</h4>
-        <p>Are you sure you want to delete this deck? This can not be undone.</p>
+        <p>Are you sure you want to delete this deck? This can not be
+           undone.</p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat grey lighten-3 left">Cancel</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat
+         grey lighten-3 left">Cancel</a>
         <a href="{{ url_for('delete_deck', deck_id=deck._id) }}"
             class="modal-close waves-effect waves-green btn-flat red">Delete</a>
     </div>
@@ -41,10 +47,12 @@
 <div id="delete-cards-modal" class="modal">
     <div class="modal-content">
         <h4>Delete Cards</h4>
-        <p>Are you sure you want to delete all of the cards in this deck? This can not be undone.</p>
+        <p>Are you sure you want to delete all of the cards in this deck?
+           This can not be undone.</p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat grey lighten-3 left">Cancel</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat grey
+         lighten-3 left">Cancel</a>
         <a href="{{ url_for('delete_cards', deck_id=deck._id) }}"
             class="modal-close waves-effect waves-green btn-flat red">Delete</a>
     </div>
@@ -61,45 +69,74 @@
                         <!-- This field is used to name the deck. -->
                         <div class="row">
                             <div class="input-field col s12 m10 offset-m1">
-                                <input placeholder="What is your deck called?" id="deck_name" name="deck_name"
-                                    minlength="5" maxlength="30" value="{{ deck.deck_name|title }}" type="text"
+                                <input placeholder="What is your deck called?"
+                                 id="deck_name" name="deck_name"
+                                    minlength="5" maxlength="30" value=
+                                    "{{ deck.deck_name|title }}" type="text"
                                     class="validate" required>
                                 <label for="deck_name">Deck Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <!-- This field allows the user to specify which language their deck is in. -->
+                        <!-- This field allows the user to specify which
+                           language their deck is in. -->
                         <div class="input-field col s12 l5 offset-l1">
-                            <select id="deck_language" name="deck_language" required>
-                                <option value="" disabled selected>Choose deck language.</option>
+                            <select id="deck_language" name="deck_language"
+                             required>
+                                <option value="" disabled
+                                 selected>Choose deck language.</option>
                                 {% if deck.deck_language == "French" %}
-                                    <option value="French" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/france.jpg') }}" selected>French</option>
+                                    <option value="French" data-icon=
+                                    "{{ url_for('static',
+                                        filename='images/flag-icons/france.jpg')
+                                       }}" selected>French</option>
                                 {% else %}
-                                    <option value="French" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/france.jpg') }}">French</option>
+                                    <option value="French" data-icon=
+                                    "{{ url_for('static',
+                                        filename='images/flag-icons/france.jpg')
+                                       }}">French</option>
                                 {% endif %}
                                 {% if deck.deck_language == "German" %}
-                                    <option value="German" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/germany.jpg') }}" selected>German</option>
+                                    <option
+                                     value="German"
+                                      data-icon="{{ url_for('static',
+                                        filename='
+                                        images/flag-icons/germany.jpg') }}"
+                                         selected>German</option>
                                 {% else %}
-                                    <option value="German" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/germany.jpg') }}">German</option>
+                                    <option
+                                     value="German"
+                                      data-icon="{{ url_for('static',
+                                        filename='
+                                        images/flag-icons/germany.jpg') }}"
+                                        >German</option>
                                 {% endif %}
                                 {% if deck.deck_language == "Italian" %}
-                                    <option value="Italian" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/italy.jpg') }}" selected>Italian</option>
+                                    <option
+                                     value="Italian"
+                                      data-icon="{{ url_for('static',
+                                        filename='images/flag-icons/italy.jpg')
+                                       }}" selected>Italian</option>
                                 {% else %}
-                                    <option value="Italian" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/italy.jpg') }}">Italian</option>
+                                    <option
+                                     value="Italian"
+                                      data-icon="{{ url_for('static',
+                                        filename='images/flag-icons/italy.jpg')
+                                       }}">Italian</option>
                                 {% endif %}
                                 {% if deck.deck_language == "Spanish" %}
-                                    <option value="Spanish" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/spain.jpg') }}" selected>Spanish</option>
+                                    <option
+                                     value="Spanish"
+                                      data-icon="{{ url_for('static',
+                                        filename='images/flag-icons/spain.jpg')
+                                       }}" selected>Spanish</option>
                                 {% else %}
-                                    <option value="Spanish" data-icon="{{ url_for('static',
-                                        filename='images/flag-icons/spain.jpg') }}">Spanish</option>
+                                    <option
+                                     value="Spanish"
+                                      data-icon="{{ url_for('static',
+                                        filename='images/flag-icons/spain.jpg')
+                                       }}">Spanish</option>
                                 {% endif %}
                             </select>
                             <label for="deck_language">Deck Language</label>
@@ -107,20 +144,26 @@
                         <!-- This field allows the user to indicate which level
                              of difficulty their deck corresponds with. -->
                         <div class="input-field col s12 l5">
-                            <select id="deck_level" name="deck_level" class="validate" required>
-                                <option value="" disabled selected>Choose deck level.</option>
+                            <select id="deck_level" name="deck_level" 
+                            class="validate" required>
+                                <option value="" disabled 
+                                selected>Choose deck level.</option>
                                 {% if deck.deck_level == "Beginner" %}
-                                    <option value="Beginner" selected>Beginner</option>
+                                    <option value="Beginner" 
+                                    selected>Beginner</option>
                                 {% else %}
                                     <option value="Beginner">Beginner</option>
                                 {% endif %}
                                 {% if deck.deck_level == "Intermediate" %}
-                                    <option value="Intermediate" selected>Intermediate</option>
+                                    <option value="Intermediate" 
+                                    selected>Intermediate</option>
                                 {% else %}
-                                    <option value="Intermediate">Intermediate</option>
+                                    <option 
+                                    value="Intermediate">Intermediate</option>
                                 {% endif %}
                                 {% if deck.deck_level == "Advanced" %}
-                                    <option value="Advanced" selected>Advanced</option>
+                                    <option value="Advanced" 
+                                    selected>Advanced</option>
                                 {% else %}
                                     <option value="Advanced">Advanced</option>
                                 {% endif %}
@@ -128,31 +171,56 @@
                             <label for="deck_level">Deck Level</label>
                         </div>
                     </div>
-                    <!-- This field prompts the user to provide a brief description of their deck. -->
+                    <!-- This field prompts the user to provide a brief
+                       description of their deck. -->
                     <div class="row">
                         <div class="input-field col s12 l10 offset-l1">
-                            <input placeholder="Describe your deck." id="deck_description" name="deck_description"
-                                minlength="20" maxlength="100" type="text" class="validate" required
+                            <input placeholder="Describe your deck." 
+                            id="deck_description" name="deck_description"
+                                minlength="20" maxlength="100" type="text" 
+                                class="validate" required
                                 value="{{ deck.deck_description }}">
-                            <label for="deck_description">Deck Description</label>
+                            <label 
+                            for="deck_description">Deck Description</label>
                         </div>
                     </div>
                     <div id="counter-class-container" >
                         {% if deck.deck_card_fronts[0] %}
                             <div class="container">
-                                <h4 class="center-align black-text form-sub-heading">Cards</h4>
+                                <h4 class="center-align black-text
+                                 form-sub-heading">Cards</h4>
                                 <div class="card-container-edit">
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="1-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="1-card-locator"
+                                                 class="col s12 m2 black-text
+                                                  counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="0_card_front">English</label>
-                                                    <input type="text" id="0_card_front" name="0_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[0] }}">
+                                                    <label for="0_card_front"
+                                                    >English</label>
+                                                    <input type="text" 
+                                                    id="0_card_front" 
+                                                    name="0_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[0]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="0_card_back">Translation</label>
-                                                    <input type="text" id="0_card_back" name="0_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[0] }}">
+                                                    <label 
+                                                    for="0_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="0_card_back" 
+                                                    name="0_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[0] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -164,14 +232,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="2-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="2-card-locator" class="
+                                                col s12 m2 black-text
+                                                 counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="1_card_front">English</label>
-                                                    <input type="text" id="1_card_front" name="1_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[1] }}">
+                                                    <label for="1_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="1_card_front" 
+                                                    name="1_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" 
+                                                    maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_fronts[1]
+                                                     }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="1_card_back">Translation</label>
-                                                    <input type="text" id="1_card_back" name="1_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[1] }}">
+                                                    <label for="1_card_back"
+                                                    >Translation</label>
+                                                    <input type="text" 
+                                                    id="1_card_back" 
+                                                    name="1_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[1] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -183,14 +271,33 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="3-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="3-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="2_card_front">English</label>
-                                                    <input type="text" id="2_card_front" name="2_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[2] }}">
+                                                    <label for="2_card_front"
+                                                    >English</label>
+                                                    <input type="text" 
+                                                    id="2_card_front" 
+                                                    name="2_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[2] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="2_card_back">Translation</label>
-                                                    <input type="text" id="2_card_back" name="2_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[2] }}">
+                                                    <label for="2_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="2_card_back" 
+                                                    name="2_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[2] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -202,14 +309,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="4-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="4-card-locator" 
+                                                class="col s12 m2 black-text
+                                                 counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="3_card_front">English</label>
-                                                    <input type="text" id="3_card_front" name="3_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[3] }}">
+                                                    <label for="3_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="3_card_front" 
+                                                    name="3_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[3] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="3_card_back">Translation</label>
-                                                    <input type="text" id="3_card_back" name="3_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[3] }}">
+                                                    <label for="3_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="3_card_back" 
+                                                    name="3_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[3] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -221,14 +348,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="5-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="5-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="4_card_front">English</label>
-                                                    <input type="text" id="4_card_front" name="4_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[4] }}">
+                                                    <label for="4_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="4_card_front" 
+                                                    name="4_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[4] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="4_card_back">Translation</label>
-                                                    <input type="text" id="4_card_back" name="4_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[4] }}">
+                                                    <label for="4_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="4_card_back" 
+                                                    name="4_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[4] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -240,14 +387,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="6-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="6-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="5_card_front">English</label>
-                                                    <input type="text" id="5_card_front" name="5_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[5] }}">
+                                                    <label for="5_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="5_card_front" 
+                                                    name="5_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[5] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="5_card_back">Translation</label>
-                                                    <input type="text" id="5_card_back" name="5_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[5] }}">
+                                                    <label for="5_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="5_card_back" 
+                                                    name="5_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[5] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -259,14 +426,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="7-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="7-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="6_card_front">English</label>
-                                                    <input type="text" id="6_card_front" name="6_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[6] }}">
+                                                    <label for="6_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="6_card_front" 
+                                                    name="6_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[6] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="6_card_back">Translation</label>
-                                                    <input type="text" id="6_card_back" name="6_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[6] }}">
+                                                    <label for="6_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="6_card_back" 
+                                                    name="6_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[6] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -278,14 +465,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="8-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="8-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="7_card_front">English</label>
-                                                    <input type="text" id="7_card_front" name="7_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[7] }}">
+                                                    <label for="7_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="7_card_front" 
+                                                    name="7_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[7] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="7_card_back">Translation</label>
-                                                    <input type="text" id="7_card_back" name="7_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[7] }}">
+                                                    <label for="7_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="7_card_back" 
+                                                    name="7_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[7] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -297,14 +504,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="9-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="9-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="8_card_front">English</label>
-                                                    <input type="text" id="8_card_front" name="8_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[8] }}">
+                                                    <label for="8_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="8_card_front" 
+                                                    name="8_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[8] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="8_card_back">Translation</label>
-                                                    <input type="text" id="8_card_back" name="8_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[8] }}">
+                                                    <label for="8_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="8_card_back" 
+                                                    name="8_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[8] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -316,14 +543,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="10-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="10-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="9_card_front">English</label>
-                                                    <input type="text" id="9_card_front" name="9_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[9] }}">
+                                                    <label for="9_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="9_card_front" 
+                                                    name="9_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[9] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="9_card_back">Translation</label>
-                                                    <input type="text" id="9_card_back" name="9_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[9] }}">
+                                                    <label for="9_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="9_card_back" 
+                                                    name="9_card_back" 
+                                                    class="validate" required
+                                                     min="2" maxlength="32" 
+                                                     value="{{ 
+                                                       deck.deck_card_backs[9] 
+                                                      }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -335,14 +582,34 @@
                                 <div class="card grey lighten-5">
                                     <div class="card-content white-text">
                                         <div class="row">
-                                            <div id="11-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                            <div id="11-card-locator" 
+                                            class="col s12 m2 black-text 
+                                            counter-class"></div>
                                             <div class="col s12 m4">
-                                                <label for="10_card_front">English</label>
-                                                <input type="text" id="10_card_front" name="10_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[10] }}">
+                                                <label for="10_card_front"
+                                                >English</label>
+                                                <input 
+                                                type="text" 
+                                                id="10_card_front" 
+                                                name="10_card_front" 
+                                                class="validate" required 
+                                                minlength="2" maxlength="32" 
+                                                value="{{ 
+                                                  deck.deck_card_fronts[10] 
+                                                }}">
                                             </div>
                                             <div class="col s12 m4">
-                                                <label for="10_card_back">Translation</label>
-                                                <input type="text" id="10_card_back" name="10_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[10] }}">
+                                                <label for="10_card_back"
+                                                >Translation</label>
+                                                <input 
+                                                type="text" 
+                                                id="10_card_back" 
+                                                name="10_card_back" 
+                                                class="validate" required 
+                                                min="2" maxlength="32" 
+                                                value="{{ 
+                                                  deck.deck_card_backs[10] 
+                                                }}">
                                             </div>
                                         </div>
                                     </div>
@@ -354,14 +621,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="12-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="12-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="11_card_front">English</label>
-                                                    <input type="text" id="11_card_front" name="11_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[11] }}">
+                                                    <label for="11_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="11_card_front" 
+                                                    name="11_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[11] 
+                                                      }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="11_card_back">Translation</label>
-                                                    <input type="text" id="11_card_back" name="11_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[11] }}">
+                                                    <label for="11_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="11_card_back" 
+                                                    name="11_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[11] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -373,14 +660,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="13-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="13-card-locator"
+                                                 class="col s12 m2 black-text 
+                                                 counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="12_card_front">English</label>
-                                                    <input type="text" id="12_card_front" name="12_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[12] }}">
+                                                    <label for="12_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="12_card_front" 
+                                                    name="12_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[12]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="12_card_back">Translation</label>
-                                                    <input type="text" id="12_card_back" name="12_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[12] }}">
+                                                    <label for="12_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="12_card_back" 
+                                                    name="12_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[12] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -392,14 +699,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="14-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="14-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="13_card_front">English</label>
-                                                    <input type="text" id="13_card_front" name="13_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[13] }}">
+                                                    <label for="13_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="13_card_front" 
+                                                    name="13_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[13]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="13_card_back">Translation</label>
-                                                    <input type="text" id="13_card_back" name="13_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[13] }}">
+                                                    <label for="13_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="13_card_back" 
+                                                    name="13_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[13] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -411,14 +738,33 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="15-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="15-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="14_card_front">English</label>
-                                                    <input type="text" id="14_card_front" name="14_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[14] }}">
+                                                    <label for="14_card_front"
+                                                    >English</label>
+                                                    <input type="text"
+                                                     id="14_card_front" 
+                                                     name="14_card_front" 
+                                                     class="validate" required 
+                                                     minlength="2" 
+                                                     maxlength="32" value="{{ 
+                                                       deck.deck_card_fronts[14]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="14_card_back">Translation</label>
-                                                    <input type="text" id="14_card_back" name="14_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[14] }}">
+                                                    <label for="14_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="14_card_back" 
+                                                    name="14_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[14]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -430,14 +776,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="16-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="16-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="15_card_front">English</label>
-                                                    <input type="text" id="15_card_front" name="15_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[15] }}">
+                                                    <label for="15_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="15_card_front" 
+                                                    name="15_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[15]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="15_card_back">Translation</label>
-                                                    <input type="text" id="15_card_back" name="15_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[15] }}">
+                                                    <label for="15_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="15_card_back" 
+                                                    name="15_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[15] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -449,14 +815,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="17-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="17-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="16_card_front">English</label>
-                                                    <input type="text" id="16_card_front" name="16_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[16] }}">
+                                                    <label for="16_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="16_card_front" 
+                                                    name="16_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[16]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="16_card_back">Translation</label>
-                                                    <input type="text" id="16_card_back" name="16_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[16] }}">
+                                                    <label for="16_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="16_card_back" 
+                                                    name="16_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[16]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -468,14 +854,33 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="18-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="18-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="17_card_front">English</label>
-                                                    <input type="text" id="17_card_front" name="17_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[17] }}">
+                                                    <label for="17_card_front"
+                                                    >English</label>
+                                                    <input type="text" 
+                                                    id="17_card_front" 
+                                                    name="17_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[17]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="17_card_back">Translation</label>
-                                                    <input type="text" id="17_card_back" name="17_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[17] }}">
+                                                    <label for="17_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="17_card_back" 
+                                                    name="17_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[17] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -487,14 +892,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="19-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="19-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="18_card_front">English</label>
-                                                    <input type="text" id="18_card_front" name="18_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[18] }}">
+                                                    <label for="18_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="18_card_front" 
+                                                    name="18_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[18]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="18_card_back">Translation</label>
-                                                    <input type="text" id="18_card_back" name="18_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[18] }}">
+                                                    <label for="18_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="18_card_back" 
+                                                    name="18_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[18]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -506,14 +931,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="20-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="20-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="19_card_front">English</label>
-                                                    <input type="text" id="19_card_front" name="19_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[19] }}">
+                                                    <label for="19_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="19_card_front" 
+                                                    name="19_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[19]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="19_card_back">Translation</label>
-                                                    <input type="text" id="19_card_back" name="19_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[19] }}">
+                                                    <label for="19_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="19_card_back" 
+                                                    name="19_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[19] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -525,14 +970,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="21-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="21-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="20_card_front">English</label>
-                                                    <input type="text" id="20_card_front" name="20_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[20] }}">
+                                                    <label for="20_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="20_card_front" 
+                                                    name="20_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[20]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="20_card_back">Translation</label>
-                                                    <input type="text" id="20_card_back" name="20_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[20] }}">
+                                                    <label for="20_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="20_card_back" 
+                                                    name="20_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[20] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -544,14 +1009,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="22-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="22-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="21_card_front">English</label>
-                                                    <input type="text" id="21_card_front" name="21_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[21] }}">
+                                                    <label for="21_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="21_card_front" 
+                                                    name="21_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[21]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="21_card_back">Translation</label>
-                                                    <input type="text" id="21_card_back" name="21_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[21] }}">
+                                                    <label for="21_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="21_card_back" 
+                                                    name="21_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[21] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -563,14 +1048,33 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="23-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="23-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="22_card_front">English</label>
-                                                    <input type="text" id="22_card_front" name="22_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[22] }}">
+                                                    <label for="22_card_front"
+                                                    >English</label>
+                                                    <input type="text" 
+                                                    id="22_card_front" 
+                                                    name="22_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[22]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="22_card_back">Translation</label>
-                                                    <input type="text" id="22_card_back" name="22_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[22] }}">
+                                                    <label for="22_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="22_card_back" 
+                                                    name="22_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[22] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -582,14 +1086,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="24-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="24-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="23_card_front">English</label>
-                                                    <input type="text" id="23_card_front" name="23_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[23] }}">
+                                                    <label for="23_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="23_card_front" 
+                                                    name="23_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[23]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="23_card_back">Translation</label>
-                                                    <input type="text" id="23_card_back" name="23_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[23] }}">
+                                                    <label for="23_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="23_card_back" 
+                                                    name="23_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[23] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -601,14 +1125,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="25-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="25-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="24_card_front">English</label>
-                                                    <input type="text" id="24_card_front" name="24_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[24] }}">
+                                                    <label for="24_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="24_card_front" 
+                                                    name="24_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[24]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="24_card_back">Translation</label>
-                                                    <input type="text" id="24_card_back" name="24_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[24] }}">
+                                                    <label for="24_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="24_card_back" 
+                                                    name="24_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[24]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -620,14 +1164,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="26-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="26-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="25_card_front">English</label>
-                                                    <input type="text" id="25_card_front" name="25_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[25] }}">
+                                                    <label for="25_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="25_card_front" 
+                                                    name="25_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[25]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="25_card_back">Translation</label>
-                                                    <input type="text" id="25_card_back" name="25_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[25] }}">
+                                                    <label for="25_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="25_card_back" 
+                                                    name="25_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[25]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -639,14 +1203,33 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="27-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="27-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="26_card_front">English</label>
-                                                    <input type="text" id="26_card_front" name="26_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[26] }}">
+                                                    <label for="26_card_front"
+                                                    >English</label>
+                                                    <input type="text" 
+                                                    id="26_card_front" 
+                                                    name="26_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[26]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="26_card_back">Translation</label>
-                                                    <input type="text" id="26_card_back" name="26_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[26] }}">
+                                                    <label for="26_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="26_card_back" 
+                                                    name="26_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[26]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -658,14 +1241,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="28-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="28-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="27_card_front">English</label>
-                                                    <input type="text" id="27_card_front" name="27_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[27] }}">
+                                                    <label for="27_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="27_card_front" 
+                                                    name="27_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[27]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="27_card_back">Translation</label>
-                                                    <input type="text" id="27_card_back" name="27_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[27] }}">
+                                                    <label for="27_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="27_card_back" 
+                                                    name="27_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[27]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -677,14 +1280,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="29-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="29-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="28_card_front">English</label>
-                                                    <input type="text" id="28_card_front" name="28_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[28] }}">
+                                                    <label for="28_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="28_card_front" 
+                                                    name="28_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[28]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="28_card_back">Translation</label>
-                                                    <input type="text" id="28_card_back" name="28_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[28] }}">
+                                                    <label for="28_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="28_card_back" 
+                                                    name="28_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[28] 
+                                                    }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -696,14 +1319,34 @@
                                     <div class="card grey lighten-5">
                                         <div class="card-content white-text">
                                             <div class="row">
-                                                <div id="30-card-locator" class="col s12 m2 black-text counter-class"></div>
+                                                <div id="30-card-locator" 
+                                                class="col s12 m2 black-text 
+                                                counter-class"></div>
                                                 <div class="col s12 m4">
-                                                    <label for="29_card_front">English</label>
-                                                    <input type="text" id="29_card_front" name="29_card_front" class="validate" required minlength="2" maxlength="32" value="{{ deck.deck_card_fronts[29] }}">
+                                                    <label for="29_card_front"
+                                                    >English</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="29_card_front" 
+                                                    name="29_card_front" 
+                                                    class="validate" required 
+                                                    minlength="2" maxlength="32"
+                                                     value="{{ 
+                                                       deck.deck_card_fronts[29]
+                                                       }}">
                                                 </div>
                                                 <div class="col s12 m4">
-                                                    <label for="29_card_back">Translation</label>
-                                                    <input type="text" id="29_card_back" name="29_card_back" class="validate" required min="2" maxlength="32" value="{{ deck.deck_card_backs[29] }}">
+                                                    <label for="29_card_back"
+                                                    >Translation</label>
+                                                    <input 
+                                                    type="text" 
+                                                    id="29_card_back" 
+                                                    name="29_card_back" 
+                                                    class="validate" required 
+                                                    min="2" maxlength="32" 
+                                                    value="{{ 
+                                                      deck.deck_card_backs[29]
+                                                     }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -712,8 +1355,11 @@
                             </div>  {% endif %}
                         <div class="row center-align">
                             <div class="col s12 m4 offset-m4">
-                                <a id="add-card-button-edit" class="btn waves-effect waves-light center-align">Add New
-                                    Card<i class="far fa-plus-square right"></i></a>
+                                <a id="add-card-button-edit" 
+                                class="btn waves-effect waves-light
+                                 center-align">Add New
+                                    Card<i class="far fa-plus-square
+                                     right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -721,14 +1367,18 @@
                         <!-- This button does not post any changes to the deck
                              and returns the user to the 'My Decks' page. -->
                         <div class="col s6 m4 offset-m2 center-align">
-                            <a href="{{ url_for('my_decks', username=session['user']) }}"
-                                class="waves-effect waves-light btn-large manage-deck-button red">
+                            <a href="{{ url_for('my_decks', 
+                            username=session['user']) }}"
+                                class="waves-effect waves-light btn-large
+                                 manage-deck-button red">
                                 Cancel Changes
                             </a>
                         </div>
-                        <!-- This button posts the changes made to the deck to the server. -->
+                        <!-- This button posts the changes made to the
+                           deck to the server. -->
                         <div class="col s6 m4 center-align">
-                            <button class="waves-effect waves-light btn-large manage-deck-button light-green"
+                            <button class="waves-effect waves-light btn-large
+                             manage-deck-button light-green"
                                 type="submit">Save Changes</button>
                         </div>
                     </div>
