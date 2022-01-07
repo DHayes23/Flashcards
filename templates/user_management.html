@@ -7,8 +7,8 @@
         <h4 class="center-align">Administrators</h4>
         <div class="center-align">
             {% if session.super_admin %}
-            <a href="{{ url_for('create_new_admin') }}"
-             class="waves-effect waves-light btn-small green">Create
+            <a href="{{ url_for('create_new_admin') }}" class="waves-effect
+             waves-light btn-small green">Create
                 New Admin<i class="fas fa-plus-square right"></i></a>
             {% endif %}
         </div>
@@ -30,39 +30,42 @@
                                 <td><i class="fas fa-crown fa-2x"></i></td>
                                 <td>{{ user.username|title }}</td>
                                 <td>{{ user.join_date }}</td>
-                                <td><a href="{{ url_for('admin_view_decks',
-                                   user_id=user._id) }}" class="btn-small
-                                    blue">View Decks</a></td>
+                                <td><a href=
+                                  "{{ url_for('admin_view_decks',
+                                   user_id=user._id) }}" 
+                                   class="btn-small blue">View Decks</a></td>
                                 {% if session.super_admin %}
                                     {% if not user.username == "admin" %}
-                                        <td><a class="waves-effect waves-light
-                                           btn modal-trigger orange"
-                                            href="{{ 
-                                              url_for('admin_demote_user',
-                                               user_id=user._id) }}">
-                                               Demote Admin</a></td>
-                                        <td><a class="waves-effect waves-light
-                                           btn modal-trigger red" 
-                                           href="#delete-admin-modal-
-                                           {{ user._id }}">Delete Admin</a></td>
+                                        <td><a 
+                                          class="waves-effect waves-light btn 
+                                          modal-trigger orange" href=
+                                          "{{ url_for('admin_demote_user',
+                                           user_id=user._id) }}"
+                                           >Demote Admin</a></td>
+                                        <td>
+                                          <a class="waves-effect waves-light btn
+                                           modal-trigger red" 
+                                           href=
+                                           "#delete-admin-modal-{{ user._id }}"
+                                           >Delete Admin</a></td>
                                     {% endif %}
-                                    <div id="delete-admin-modal-
-                                    {{ user._id }}" class="modal">
+                                    <div id="delete-admin-modal-{{ user._id }}" 
+                                    class="modal">
                                         <div class="modal-content">
                                             <h4>Delete Admin</h4>
-                                            <p>Are you sure you want
-                                               to delete <strong>
-                                                 {{ user.username|title }}
-                                                </strong> and all of their 
-                                                <strong>decks</strong>? This 
-                                                operation cannot be undone.</p>
+                                            <p>Are you sure you want to delete 
+                                              <strong>{{ user.username|title }}
+                                              </strong> and all of their 
+                                              <strong>decks</strong>? This 
+                                              operation cannot be undone.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="#!" class="modal-close 
-                                            waves-effect waves-green btn-flat
-                                             grey lighten-3 left">Cancel</a>
-                                            <a href="
-                                            {{ url_for('admin_delete_user',
+                                            <a href="#!" 
+                                            class="modal-close waves-effect 
+                                            waves-green btn-flat grey lighten-3 
+                                            left">Cancel</a>
+                                            <a href=
+                                            "{{ url_for('admin_delete_user',
                                              user_id=user._id) }}" 
                                              class="btn-small red">
                                              Delete Admin</a>
@@ -96,27 +99,28 @@
                                user_id=user._id) }}" class="btn-small blue">
                                View Decks</a></td>
                             {% if session.super_admin %}
-                                <td><a class="waves-effect waves-light btn
-                                   modal-trigger orange" href="
-                                   {{ url_for('admin_promote_user',
-                                    user_id=user._id) }}">Promote User</a></td>
+                                <td><a class="waves-effect waves-light btn 
+                                  modal-trigger orange" href=
+                                  "{{ url_for('admin_promote_user',
+                                   user_id=user._id) }}">Promote User</a></td>
                             {% endif %}
                             <td><a class="waves-effect waves-light btn 
-                              modal-trigger red" href="#delete-admin-modal-
-                              {{ user._id }}">Delete User</a></td>
-                            <div id="delete-admin-modal-{{ user._id }}" 
-                            class="modal">
+                              modal-trigger red" href=
+                              "#delete-admin-modal-{{ user._id }}">
+                              Delete User</a></td>
+                            <div id="delete-admin-modal-{{ user._id }}"
+                             class="modal">
                                 <div class="modal-content">
                                     <h4>Delete User</h4>
                                     <p>Are you sure you want to delete <strong>
-                                      {{ user.username|title }}</strong>
-                                       and all of their <strong>decks</strong>? 
-                                       This operation cannot be undone.</p>
+                                      {{ user.username|title }}</strong> 
+                                      and all of their <strong>decks</strong>
+                                      ? This operation cannot be undone.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close waves-effect
-                                     waves-green btn-flat grey
-                                      lighten-3 left">Cancel</a>
+                                     waves-green btn-flat grey lighten-3 left">
+                                     Cancel</a>
                                     <a href="{{ url_for('admin_delete_user',
                                      user_id=user._id) }}" class="btn-small
                                       red">Delete User</a>
