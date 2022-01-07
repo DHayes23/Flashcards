@@ -10,24 +10,33 @@
                 <ul>
                     <li class="center-align card-item flag-icon">
                         {% if deck.deck_language == "French" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/france.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/france.jpg') }}"
                             alt="Icon sized image of the French flag.">
                             {% elif deck.deck_language == "German" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/germany.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/germany.jpg') }}"
                             alt="Icon sized image of the German flag.">
                             {% elif deck.deck_language == "Italian" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/italy.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/italy.jpg') }}"
                             alt="Icon sized image of the Italian flag.">
                             {% elif deck.deck_language == "Spanish" %}
-                        <img src="{{ url_for('static', filename='images/flag-icons/spain.jpg') }}"
+                        <img src="{{ url_for('static',
+                         filename='images/flag-icons/spain.jpg') }}"
                             alt="Icon sized image of the Spanish flag.">
                         {% endif %}
                     </li><br>
-                    <li class="card-title center-align card-item"><h5>{{ deck.deck_language }}</h3></li><br>
-                    <li class="card-title center-align card-item"><h5>{{ deck.deck_name|title }}</h5></li><br>
-                    <li class="card-title center-align card-item"><h5>Level: {{ deck.deck_level }}</h5></li><br>
-                    <li class="card-title center-align card-item"><h5>Created by: {{ deck.deck_created_by|title }}</h5></li><br>
-                    <li class="card-title center-align card-item"><p>Deck Description: {{ deck.deck_description}}</p></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      {{ deck.deck_language }}</h3></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      {{ deck.deck_name|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      Level: {{ deck.deck_level }}</h5></li><br>
+                    <li class="card-title center-align card-item"><h5>
+                      Created by: {{ deck.deck_created_by|title }}</h5></li><br>
+                    <li class="card-title center-align card-item"><p>
+                      Deck Description: {{ deck.deck_description}}</p></li><br>
                 </ul>
             </div>
         </div>
