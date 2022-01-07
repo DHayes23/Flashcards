@@ -465,7 +465,7 @@ def create_report(deck_id):
 
             mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$inc": {"deck_report_counter": 1}})
             mongo.db.reports.insert_one(report)
-            flash("Thanks, your report has been sumbitted!")
+            flash("Thanks, your report has been submitted!")
             return redirect(url_for("my_decks", username=session["user"]))
 
         return render_template("create_report.html", deck=deck)
