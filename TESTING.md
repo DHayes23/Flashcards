@@ -3,8 +3,10 @@
 
 ## **Milestone Project 3** by Denis Hayes
 ---
+---
  ## **Manual Test Procedures and Current Statuses**
  The following section documents the Testing Procedures used to test feature functionality and the feature's current status.
+ ---
  ---
  ---
 ## **Feature Set - Base**
@@ -591,8 +593,10 @@ Testing Procedure:
 Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 ---
+---
  ## **Browser Compatibility**
  The following section documents the compatibility of the site with a variety of browsers.
+ ---
  ---
   ---
 ## **Browser Compatibility - Google Chrome**
@@ -635,8 +639,10 @@ Current Status: <span style="color:green">**FUNCTIONAL**</span>
 **Testing Result:** <span style="color:orange">**UNKNOWN**</span>
 
 ---
+---
  ## **Code Validation**
  The following section documents the validation test results for code document.
+ ---
  ---
  ---
 ## **Code Validation - App.py**
@@ -733,3 +739,32 @@ Current Status: <span style="color:green">**FUNCTIONAL**</span>
 
 **Error Handling:** Due to the late discovery of this error, it can not be rectified without breaking the deck display. In the future the br tags can be removed and replaced with Materialize grid elements. This error is present on all pages where a deck is displayed, but will only be referenced here.
 
+---
+## **Code Validation - Template - login.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - my_decks.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - play_deck_anonymous.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
+## **Code Validation - Template - play_deck.html**
+ ---
+**Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
+
+**Testing Result:** <span style="color:green">**NO ERRORS**</span>
+
+---
