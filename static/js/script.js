@@ -12,6 +12,7 @@ $(document).ready(function () {
     });
     $('#textarea1').val('New Text');
     $('.scrollspy').scrollSpy();
+    // The following code appends a new card element to the Cards section of the 'Create a Deck' form.
     let cardCounter = 1;
     let cardId = 1;
     $("#add-card-button").click(function () {
@@ -40,7 +41,7 @@ $(document).ready(function () {
         $(this).parent().toggleClass("flipping");
         $(this).remove();
     });
-
+    // The following code appends a new card element to the Cards section of the 'Edit Deck' form.
     cardCounterEdit = $('#counter-class-container .counter-class').length;
     cardIdEdit = $('#counter-class-container .counter-class').length;
     console.log("Counter class: " +cardCounterEdit);
@@ -66,8 +67,6 @@ $(document).ready(function () {
 
 
 });
-
-
 
 // // The following code snippet has been taken from the Code Institute's video on Materialize Select Validation.
 //  This code applies validation to select elements in the same style as other Materialize from elements.
