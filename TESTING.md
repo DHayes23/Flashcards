@@ -659,6 +659,15 @@ Current Status: <span style="color:green">**FUNCTIONAL**</span>
 **Testing Result:** <span style="color:green">**NO ERRORS**</span>
 
  ---
+## **Code Validation - Script.js**
+ ---
+**Testing Method:** JSHint https://jshint.com/ NOTE: The following code must be inserted at the start of the JSHint document to avoid errors with ES6:
+
+ ` /*jshint esversion: 6 */ `
+
+**Testing Result:** <span style="color:green">**ONLY FALSE ERRORS**</span>
+
+ ---
 ## **Code Validation - Template - 404_error.html**
  ---
 **Testing Method:** The W3C Markup Validation Service https://validator.w3.org/#validate_by_input
