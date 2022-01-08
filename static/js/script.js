@@ -20,18 +20,18 @@ $(document).ready(function () {
         $("#card-container").append(`
             '<div class="card grey lighten-5"><a class="remove-card-button right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardId}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardId}_card_front">English</label><input type="text" id="${cardId}_card_front" name="${cardId}_card_front" class="validate" required minlength="2" maxlength="32"></div><div class="col s12 m4"><label for="${cardId}_card_back">Translation</label><input type="text" id="${cardId}_card_back" name="${cardId}_card_back" class="validate" required minlength="2" maxlength="32"></div></div></div></div>'`);
        
-        cardId++
-        cardCounter++ 
-        console.log("Card ID = " + cardId)
-        console.log("Card Counter = " + cardCounter)
+        cardId++;
+        cardCounter++ ;
+        console.log("Card ID = " + cardId);
+        console.log("Card Counter = " + cardCounter);
     }});
 
     // Clicking the remove-card-button removes a card from the form, and reduces the card counter.
     
     $(document).on("click", ".remove-card-button", function(){
-    cardCounter--
-    $(this).parent().remove()
-    cardId--
+    cardCounter--;
+    $(this).parent().remove();
+    cardId--;
     });
 
     // Card flip controller
@@ -39,11 +39,11 @@ $(document).ready(function () {
     $(".flip-button").on("click", function(){
         $(this).parent().toggleClass("flipping");
         $(this).remove();
-    })
+    });
 
-    cardCounterEdit = $('#counter-class-container .counter-class').length
-    cardIdEdit = $('#counter-class-container .counter-class').length
-    console.log("Counter class: " +cardCounterEdit)
+    cardCounterEdit = $('#counter-class-container .counter-class').length;
+    cardIdEdit = $('#counter-class-container .counter-class').length;
+    console.log("Counter class: " +cardCounterEdit);
 
     $("#add-card-button-edit").click(function () {
         if (cardCounterEdit < 30){
@@ -51,16 +51,16 @@ $(document).ready(function () {
         $(".card-container-edit").last().append(`
             '<div class="card grey lighten-5"><a class="remove-card-button-edit right" href="#" onClick="return false;"><i class=" far fa-3x fa-times-circle red-text"></i></a><div class="card-content white-text"><div class="row"><div id="${cardIdEdit}-card-locator" class="col s12 m2 black-text"></div><div class="col s12 m4"><label for="${cardIdEdit}_card_front">English</label><input type="text" id="${cardIdEdit}_card_front" name="${cardIdEdit}_card_front" class="validate" required minlength="2" maxlength="32"></div><div class="col s12 m4"><label for="${cardIdEdit}_card_back">Translation</label><input type="text" id="${cardIdEdit}_card_back" name="${cardIdEdit}_card_back" class="validate" required minlength="2" maxlength="32"></div></div></div></div>'`);
        
-        cardIdEdit++
-        cardCounterEdit++ 
-        console.log("Card ID Edit = " + cardIdEdit)
-        console.log("Card Counter Edit = " + cardCounterEdit)
+        cardIdEdit++;
+        cardCounterEdit++; 
+        console.log("Card ID Edit = " + cardIdEdit);
+        console.log("Card Counter Edit = " + cardCounterEdit);
     }});
 
     $(document).on("click", ".remove-card-button-edit", function(){
-        cardCounterEdit--
-        $(this).parent().remove()
-        cardIdEdit--
+        cardCounterEdit--;
+        $(this).parent().remove();
+        cardIdEdit--;
         });
     
 
