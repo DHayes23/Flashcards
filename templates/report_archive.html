@@ -6,6 +6,8 @@
 <section class="container">
     <h3 class="center-align">Report Archive</h3>
     <h4 class="center-align form-sub-heading">Archived Reports</h4>
+    <!-- The following display presents each closed report
+    in a Materialize collapsible element.-->
     <ul class="collapsible popout">
         {% for report in reports %}
             {% if report.report_closed == true %}

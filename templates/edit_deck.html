@@ -184,6 +184,11 @@
                             for="deck_description">Deck Description</label>
                         </div>
                     </div>
+                    <!-- The following divs contain card elements for
+                    each potential card that could be created. Attempts
+                    were made to make this section dynamic and be created
+                    as needed, however limitations of Flask, PyMongo and
+                    JavaScript meant that this was untenable.-->
                     <div id="counter-class-container" >
                         {% if deck.deck_card_fronts[0] %}
                             <div class="container">

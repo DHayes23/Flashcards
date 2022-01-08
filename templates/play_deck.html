@@ -58,6 +58,11 @@
     <div class="col s12 m6 offset-m3 center-align">
         <a href="" class="btn-large reset-button blue lighten-2">Reset Deck</a>
     </div>
+    <!-- The following divs contain card elements for
+    each potential card that could be created. Attempts
+    were made to make this section dynamic and be created
+    as needed, however limitations of Flask, PyMongo and
+    JavaScript meant that this was untenable.-->
     <div id="deck-container" class="row">
         {% if deck.deck_card_fronts[0] %}
             <div class="col s12 m6 l4">

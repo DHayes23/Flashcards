@@ -11,6 +11,8 @@
         <a href="{{ url_for('create_deck') }}" class="waves-effect waves-light
          btn-large blue lighten-2">Create
             New Deck<i class="fas fa-plus-square right"></i></a>
+    <!-- The following display presents all of the decks that
+    the logged in user has created. -->
         <div class="row">
             {% for deck in user_decks %}
             <div class="col s12 m6 xl4">
@@ -72,6 +74,8 @@
         <h4 class="center-align index-heading">Decks You Love <i class="fas
            fa-1x fa-heart deck-heart-icon"></i></h4>
         <hr>
+        <!-- The following display presents all of the decks that
+        the logged in user has loved. -->
         <div class="row">
             {% for deck in user_loved_decks %}
             <div class="col s12 m6 xl4">

@@ -5,6 +5,8 @@
 
 <section class="container">
     <h4 class="center-align">All Decks</h4>
+    <!-- The following display presents all decks in the decks 
+        collection in tabular form.. -->
     <table class="centered responsive-table striped">
         <thead>
             <tr>
@@ -30,6 +32,8 @@
                          darken-2"
                         href="{{ url_for('edit_deck', deck_id=deck._id) }}">
                         Edit Deck</a></td>
+                        <!-- The following button opens the delete deck
+                         modal -->
                     <td><a class="waves-effect waves-light btn
                        modal-trigger red"
                         href="#delete-deck-modal-{{ deck._id }}">Delete Deck
@@ -53,6 +57,5 @@
         </tbody>
     </table>
 </section>
-
 
 {% endblock %}

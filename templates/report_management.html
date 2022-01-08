@@ -6,6 +6,8 @@
 <section class="container">
     <h3 class="center-align">Report Management</h3>
     <h4 class="center-align form-sub-heading">Open Reports</h4>
+     <!-- The following display presents each open report
+    in a Materialize collapsible element.-->
     <ul class="collapsible popout">
         {% for report in reports %}
         {% if report.report_closed == false %}
