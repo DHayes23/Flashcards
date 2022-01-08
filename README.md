@@ -629,7 +629,7 @@ echo web: python app.py > Procfile
 7. Once created, push the Procfile to GitHub.
 
 ---
- ## **Deployment Preparation**
+ ## **Heroku Deployment**
  This section contains the details of preparation taken before this website was deployed to Heroku.
 ---
 ---
