@@ -22,6 +22,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
+    # This template renders a list of all decks to a non-logged in user.
     decks = list(mongo.db.decks.find())
     return render_template("index.html", decks=decks)
 
@@ -29,6 +30,7 @@ def index():
 @app.route("/all_decks/<username>")
 def all_decks(username):
     if session["user"]:
+        # This template renders a list of all decks to a logged in user.
         # Find the session user's username from database.
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
@@ -48,6 +50,7 @@ def all_decks(username):
 
 @app.route("/create_an_account", methods=["GET", "POST"])
 def create_an_account():
+    # This template renders a form to allow a user to create an account.
     # Prevents an already logged in user from creating a new account.
     if session.get("user") is None:
         if request.method == "POST":
@@ -84,6 +87,7 @@ def create_an_account():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    # This page renders a form to allow a user to log in.
     if session.get("user") is None:
         if request.method == "POST":
             # Check if username is in database
@@ -124,6 +128,8 @@ def login():
 
 @app.route("/my_decks/<username>", methods=["GET", "POST"])
 def my_decks(username):
+    # This template renders all decks created by the logged in user
+    # and any deck that they have 'loved'.
     # Find the session user's username from database.
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -144,7 +150,7 @@ def my_decks(username):
 
 @app.route("/logout")
 def logout():
-    # Remove user from session cookies
+    # This function removes all session cookies from a user.
     flash("Log Out Successful")
     session.clear()
     return redirect(url_for("login"))
@@ -152,6 +158,7 @@ def logout():
 
 @app.route("/create_deck", methods=["GET", "POST"])
 def create_deck():
+    # This template renders a form to allow a user to create a deck.
     if session["user"]:
         # The following code is used to ensure that
         #  a user will have a 'session["id"]'
@@ -210,6 +217,7 @@ def create_deck():
 
 @app.route("/edit_deck/<deck_id>", methods=["GET", "POST"])
 def edit_deck(deck_id):
+    # This template renders a form to allow a user to edit a deck.
     if session["user"]:
         deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
 
@@ -255,7 +263,7 @@ def edit_deck(deck_id):
 
 @app.route("/delete_cards/<deck_id>")
 def delete_cards(deck_id):
-
+    # This function deletes all cards within a deck.
     if session["user"]:
 
         mongo.db.decks.update({"_id": ObjectId(deck_id)}, {"$set": {
@@ -269,6 +277,9 @@ def delete_cards(deck_id):
 
 @app.route("/play_deck/<deck_id>")
 def play_deck(deck_id):
+    # This template renders all cards within a specific deck
+    # for a logged in user, allowing the user to play that
+    # deck by flipping cards.
     if session["user"]:
 
         user = mongo.db.users.find_one(
@@ -282,6 +293,9 @@ def play_deck(deck_id):
 
 @app.route("/play_deck_anonymous/<deck_id>")
 def play_deck_anonymous(deck_id):
+    # This template renders all cards within a specific deck
+    # for a non-logged in user, allowing the user to play that
+    # deck by flipping cards.
 
     deck = mongo.db.decks.find_one({"_id": ObjectId(deck_id)})
     return render_template(
@@ -291,6 +305,8 @@ def play_deck_anonymous(deck_id):
 @app.route("/love_deck/<deck_id>")
 def love_deck(deck_id):
     if session["user"]:
+        # This function adds a user to the 'deck_loved_by' 
+        # array for a specific deck.
         # The following code is used to ensure
         # that a user will have a 'session["id"]'
         # even if they have just created their account, and have
@@ -310,6 +326,8 @@ def love_deck(deck_id):
 
 @app.route("/unlove_deck/<deck_id>")
 def unlove_deck(deck_id):
+     # This function removes a user from the 'deck_loved_by' 
+    # array for a specific deck.
     if session["user"]:
         # The following code is used to ensure
         # that a user will have a 'session["id"]'
@@ -330,6 +348,8 @@ def unlove_deck(deck_id):
 
 @app.route("/delete_deck/<deck_id>")
 def delete_deck(deck_id):
+    # This function removes a specific deck from the 'Decks'
+    # collection.
     if session["user"]:
 
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
@@ -340,6 +360,8 @@ def delete_deck(deck_id):
 
 @app.route("/user_management")
 def user_management():
+    # This template renders a set of tabular data of all users within
+    # the 'Users' collection. 
 
     if session["admin"]:
 
@@ -350,6 +372,9 @@ def user_management():
 
 @app.route("/admin_delete_user/<user_id>")
 def admin_delete_user(user_id):
+    # This function allows an admin to remove a specific user
+    #  from the 'Users' collection and the decks they've
+    # created from the 'Decks' collection.
     if session["admin"]:
 
         users = list(mongo.db.users.find())
@@ -363,6 +388,8 @@ def admin_delete_user(user_id):
 
 @app.route("/admin_promote_user/<user_id>")
 def admin_promote_user(user_id):
+    # This function allows a super_admin to promote a standard
+    # user to the position of admin.
     if session["super_admin"]:
 
         users = list(mongo.db.users.find())
@@ -375,6 +402,8 @@ def admin_promote_user(user_id):
 
 @app.route("/admin_demote_user/<user_id>")
 def admin_demote_user(user_id):
+    # This function allows a super_admin to demote an admin
+    # to the position of standard user.
     if session["super_admin"]:
 
         users = list(mongo.db.users.find())
@@ -387,6 +416,7 @@ def admin_demote_user(user_id):
 
 @app.route("/create_new_admin", methods=["GET", "POST"])
 def create_new_admin():
+    # This template allows a super_admin to create a new admin.
     if session["super_admin"]:
 
         if request.method == "POST":
@@ -417,6 +447,8 @@ def create_new_admin():
 
 @app.route("/deck_management")
 def deck_management():
+    # This template renders a set of tabular data of all decks within
+    # the 'Decks' collection. 
 
     if session["admin"]:
 
@@ -426,6 +458,8 @@ def deck_management():
 
 @app.route("/admin_delete_deck/<deck_id>")
 def admin_delete_deck(deck_id):
+    # This function allows an admin to remove any deck from the 
+    # 'Decks' collection.
     if session["admin"]:
 
         mongo.db.decks.remove({"_id": ObjectId(deck_id)})
@@ -438,6 +472,8 @@ def admin_delete_deck(deck_id):
 
 @app.route("/admin_view_decks/<user_id>")
 def admin_view_decks(user_id):
+    # This template allows an admin to view all of the decks 
+    # created by a specific user.
     if session["admin"]:
 
         user_decks = list(mongo.db.decks.find({"deck_created_by_id": user_id}))
@@ -447,6 +483,9 @@ def admin_view_decks(user_id):
 
 @app.route("/create_report/<deck_id>", methods=["GET", "POST"])
 def create_report(deck_id):
+    # This template allows a user to add a new
+    # report to the 'Reports' collection.
+
     if session["user"]:
         # The following code is used to ensure
         #  that a user will have a 'session["id"]'
@@ -489,6 +528,8 @@ def create_report(deck_id):
 
 @app.route("/report_management")
 def report_management():
+    # This template renders a collapsible element for each open report
+    # within the 'Reports' collection.
 
     if session["admin"]:
 
@@ -499,7 +540,8 @@ def report_management():
 
 @app.route("/report_archive")
 def report_archive():
-
+# This template renders a collapsible element for each closed report
+# within the 'Reports' collection.
     if session["admin"]:
 
         reports = mongo.db.reports.find({
@@ -509,6 +551,7 @@ def report_archive():
 
 @app.route("/admin_close_report/<report_id>")
 def admin_close_report(report_id):
+    # This function allows an admin to close a report.
     if session["admin"]:
 
         mongo.db.reports.update({"_id": ObjectId(report_id)}, {"$set": {
@@ -520,6 +563,7 @@ def admin_close_report(report_id):
 
 @app.route("/admin_reopen_report/<report_id>")
 def admin_reopen_report(report_id):
+    # This function allows an admin to reopen a report.
     if session["admin"]:
 
         mongo.db.reports.update({"_id": ObjectId(report_id)}, {"$set": {
@@ -531,12 +575,16 @@ def admin_reopen_report(report_id):
 
 @app.errorhandler(404)
 def error_404(e):
+    # This template renders a message to the user when they navigate
+    # to a page that does not exist.
 
     return render_template('404_error.html')
 
 
 @app.errorhandler(500)
 def internal_server_error(e):
+    # This template renders a message to the user
+    # when there is an internal server error.
 
     return render_template('500_error.html')
 
