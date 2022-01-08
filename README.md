@@ -598,11 +598,56 @@ Access the live website at: https://milestone-project-3-dh.herokuapp.com
 * This website renders other sites on a variety of virtual screens, all of different sizes and designed to emulate real world devices.
 * Screenshots of Flashcards being run on the AmIResponsive site have been added to this readme to give the reader a concise view of the website running on different devices.
 ---
- ## **Deployment**
- This section contains the details of how this website was deployed.
+ ## **Deployment Preparation**
+ This section contains the details of preparation taken before this website was deployed to Heroku.
 ---
+---
+1. Within your IDE, create a .gitignore file. This file will be used to tell the IDE which files should **NOT** be pushed to GitHub. All files containing sensitive information must have their filename added to this file.
+2. Within your IDE, create an env.py file. This file will contain the environment variables required to link the Flask app to Heroku and MongoDB. The following code, customised with your unique information, should be the content of the env.py file.
+```
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "YOUR SECRET KEY HERE")
+os.environ.setdefault("MONGO_URI", "YOUR MONGODB URI HERE")
+os.environ.setdefault("MONGO_DBNAME", "YOUR DATABASE NAME HERE")
+```
+3. Add the following filename to the GitIgnore file to protect the sensitive information it contains.
+ ``` 
+env.py
+ ```
+4. Use the following terminal command to create the file which tells the host which Python packages are required to run the app:
+```
+pip3 freeze --local > requirements.txt
+```
+5. Push the requirements.txt file to GitHub.
+6. Within your IDE, create a Procfile. This file is used by Heroku to specify which commands need to be executed on startup. The Procfile can be created by using the following terminal command:
+```
+echo web: python app.py > Procfile
+```
+7. Once created, push the Procfile to GitHub.
 
 ---
+ ## **Deployment Preparation**
+ This section contains the details of preparation taken before this website was deployed to Heroku.
+---
+---
+1. Log into Heroku.com.
+2. Click the 'New' button and then click 'Create New App'.
+3. Input a unique app-name as prompted and choose a region.
+4. Navigate to the Deploy tab. 
+5. Choose the Connect to GitHub deployment method, using the repository name associated with the app you wish to connect.
+6. Navigate to the Settings tab.
+7. Click the 'Reveal Config Vars' button.
+8. Fill out the form with the key/value pairs in your env.py file.
+9. Navigate to the Deploy tab again.
+10. Click the 'Enable Automatic Deployment' button. 
+11. Still within the Deploy tab, navigate to the Manual Deploy section.
+12. Select the branch of the repository that you wish to deploy.
+13. Click Deploy Branch.
+---
+
  ## **Acknowledgments**
  This section contains the details of those who assisted in the development of this project.
 ---
