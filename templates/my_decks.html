@@ -9,7 +9,7 @@
     <!-- This button allows the user to create a new deck. -->
     <div class="center-align">
         <a href="{{ url_for('create_deck') }}" class="waves-effect waves-light
-         btn-large">Create
+         btn-large blue lighten-2">Create
             New Deck<i class="fas fa-plus-square right"></i></a>
         <div class="row">
             {% for deck in user_decks %}
@@ -52,11 +52,12 @@
                              card-item">Level: {{ deck.deck_level }}</li><br>
                             <li class="center-align card-item">
                                 <a class="waves-effect waves-light btn-large 
-                                deck-button" href="{{ url_for('edit_deck',
-                                 deck_id=deck._id) }}">Edit</a>
-                                <a class="waves-effect waves-light btn-large 
-                                deck-button" href="{{ url_for('play_deck',
-                                 deck_id=deck._id) }}">Play</a>
+                                orange darken-2 deck-button" href="{{ url_for(
+                                'edit_deck', deck_id=deck._id) }}">Edit</a>
+                                <a class="waves-effect waves-light btn-large  
+                                deck-button blue lighten-2" href="
+                                {{ url_for('play_deck',deck_id=deck._id) }}
+                                ">Play</a>
                             </li>
                         </ul>
                     </div>
@@ -111,7 +112,7 @@
                             <li class="card-title center-align card-item">
                               Level: {{ deck.deck_level }}</li><br>
                             <li class="center-align card-item">
-                                <a class="waves-effect waves-light btn-large"
+                                <a class="waves-effect waves-light btn-large blue lighten-2"
                                  href="{{ url_for('play_deck', deck_id=deck._id)
                                  }}">Play</a>
                             </li>

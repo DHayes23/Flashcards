@@ -32,7 +32,7 @@
         <!-- Mobile Collapsible Navbar from Materialize shows a standard
            navbar when on larger screens and shows a burger menu when viewed on mobile. -->
         <div id="top-nav" class="navbar-fixed">
-            <nav>
+            <nav class="orange darken-2">
                 <div class="nav-wrapper">
                     {% if not session.user %}
                         <a href="{{ url_for('index') }}" class="brand-logo left"
@@ -160,7 +160,7 @@
 
     </main>
 
-    <footer class="page-footer">
+    <footer class="page-footer orange darken-2">
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -180,7 +180,7 @@
                 </div>
                 <div class="col s12 center-align">&#169; Denis Hayes 2021</div>
             </div>
-            <div class="row center-align"><a class="btn-small orange"
+            <div class="row center-align"><a class="btn-small blue lighten-2"
                href="#top-nav">Back to Top</a></div>
         </div>
     </footer>

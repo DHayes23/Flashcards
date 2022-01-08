@@ -33,7 +33,7 @@
                                 <td><a href=
                                   "{{ url_for('admin_view_decks',
                                    user_id=user._id) }}" 
-                                   class="btn-small blue">View Decks</a></td>
+                                   class="btn-small blue lighten-2">View Decks</a></td>
                                 {% if session.super_admin %}
                                     {% if not user.username == "admin" %}
                                         <td><a 
@@ -96,7 +96,8 @@
                             <td>{{ user.username|title }}</td>
                             <td>{{ user.join_date }}</td>
                             <td><a href="{{ url_for('admin_view_decks',
-                               user_id=user._id) }}" class="btn-small blue">
+                               user_id=user._id) }}" class="btn-small
+                               blue lighten-2">
                                View Decks</a></td>
                             {% if session.super_admin %}
                                 <td><a class="waves-effect waves-light btn 
