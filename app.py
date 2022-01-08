@@ -183,7 +183,10 @@ def create_deck():
                 "deck_report_counter": 0,
                 "deck_times_played": 0,
             }
-
+        # The following code scans the deck creation page
+        # for all card fronts and back and inserts them into the following
+        # arrays. As the arrays are ordered and a card front and card back
+        # is required, a full card will be created for each pair of values. 
             deck["deck_card_fronts"] = []
             deck["deck_card_backs"] = []
 
