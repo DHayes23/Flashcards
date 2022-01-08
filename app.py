@@ -31,7 +31,7 @@ def index():
 def all_decks(username):
     if session["user"]:
         # This template renders a list of all decks to a logged in user.
-        # Find the session user's username from database.
+        # Finds the session user's username from database.
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
