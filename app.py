@@ -186,7 +186,7 @@ def create_deck():
         # The following code scans the deck creation page
         # for all card fronts and back and inserts them into the following
         # arrays. As the arrays are ordered and a card front and card back
-        # is required, a full card will be created for each pair of values. 
+        # is required, a full card will be created for each pair of values.
             deck["deck_card_fronts"] = []
             deck["deck_card_backs"] = []
 
@@ -308,7 +308,7 @@ def play_deck_anonymous(deck_id):
 @app.route("/love_deck/<deck_id>")
 def love_deck(deck_id):
     if session["user"]:
-        # This function adds a user to the 'deck_loved_by' 
+        # This function adds a user to the 'deck_loved_by'
         # array for a specific deck.
         # The following code is used to ensure
         # that a user will have a 'session["id"]'
@@ -329,7 +329,7 @@ def love_deck(deck_id):
 
 @app.route("/unlove_deck/<deck_id>")
 def unlove_deck(deck_id):
-     # This function removes a user from the 'deck_loved_by' 
+    # This function removes a user from the 'deck_loved_by'
     # array for a specific deck.
     if session["user"]:
         # The following code is used to ensure
@@ -364,7 +364,7 @@ def delete_deck(deck_id):
 @app.route("/user_management")
 def user_management():
     # This template renders a set of tabular data of all users within
-    # the 'Users' collection. 
+    # the 'Users' collection.
 
     if session["admin"]:
 
@@ -451,7 +451,7 @@ def create_new_admin():
 @app.route("/deck_management")
 def deck_management():
     # This template renders a set of tabular data of all decks within
-    # the 'Decks' collection. 
+    # the 'Decks' collection.
 
     if session["admin"]:
 
@@ -461,7 +461,7 @@ def deck_management():
 
 @app.route("/admin_delete_deck/<deck_id>")
 def admin_delete_deck(deck_id):
-    # This function allows an admin to remove any deck from the 
+    # This function allows an admin to remove any deck from the
     # 'Decks' collection.
     if session["admin"]:
 
@@ -475,7 +475,7 @@ def admin_delete_deck(deck_id):
 
 @app.route("/admin_view_decks/<user_id>")
 def admin_view_decks(user_id):
-    # This template allows an admin to view all of the decks 
+    # This template allows an admin to view all of the decks
     # created by a specific user.
     if session["admin"]:
 
@@ -543,8 +543,8 @@ def report_management():
 
 @app.route("/report_archive")
 def report_archive():
-# This template renders a collapsible element for each closed report
-# within the 'Reports' collection.
+    # This template renders a collapsible element for each closed report
+    # within the 'Reports' collection.
     if session["admin"]:
 
         reports = mongo.db.reports.find({
