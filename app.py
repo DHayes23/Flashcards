@@ -153,7 +153,7 @@ def logout():
     # This function removes all session cookies from a user.
     flash("Log Out Successful")
     session.clear()
-    return redirect(url_for("login"))
+    return redirect(url_for("index"))
 
 
 @app.route("/create_deck", methods=["GET", "POST"])
